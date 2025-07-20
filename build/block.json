@@ -1,0 +1,192 @@
+{
+  "apiVersion": 2,
+  "name": "psb/parallax",
+  "title": "Parallax Section",
+  "description": "Parallax scrolling effects in section.",
+  "category": "widgets",
+  "keywords": [
+    "parallax scroll",
+    "background effect",
+    "scrolling effect"
+  ],
+  "textdomain": "parallax-section",
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": "full"
+    },
+    "speed": {
+      "type": "number",
+      "default": -1
+    },
+    "verticalAlign": {
+      "type": "string",
+      "default": "center"
+    },
+    "textAlign": {
+      "type": "string",
+      "default": "center"
+    },
+    "background": {
+      "type": "object",
+      "default": {
+        "type": "image",
+        "image": {
+          "url": "https://i.imgur.com/n8bbzIE.jpeg"
+        },
+        "repeat": "no-repeat",
+        "size": "cover",
+        "overlayColor": "#000000b3"
+      }
+    },
+    "minHeight": {
+      "type": "string",
+      "default": "700px"
+    },
+    "padding": {
+      "type": "object",
+      "default": {
+        "vertical": "20px",
+        "horizontal": "30px"
+      }
+    },
+    "contents": {
+      "type": "object",
+      "default": {
+        "title": {
+          "text": "Discover Amazing Experiences",
+          "color": "#2d2d2d",
+          "typo": {
+            "fontSize": {
+              "desktop": 64,
+              "tablet": 54,
+              "mobile": 26
+            },
+            "fontWeight": 800
+          }
+        },
+        "description": {
+          "text": "Explore the world with our unique adventures and create memories that last a lifetime",
+          "color": "white",
+          "typo": {
+            "fontSize": {
+              "desktop": 18,
+              "tablet": 18,
+              "mobile": 14
+            },
+            "fontWeight": 400
+          }
+        },
+        "btn": {
+          "status": true,
+          "text": "Get Started",
+          "link": "#",
+          "colors": {
+            "color": "white",
+            "bg": "#ff4757"
+          },
+          "hoverColors": {
+            "color": "white",
+            "bg": "#ff6b81"
+          }
+        }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "default": {
+        "height": {
+          "desktop": "100vh",
+          "tablet": "70vh",
+          "mobile": "60vh"
+        },
+        "width": {
+          "desktop": "100%",
+          "tablet": "100%",
+          "mobile": "100%"
+        },
+        "margin": {
+          "desktop": {
+            "top": "0px",
+            "right": "0px",
+            "bottom": "0px",
+            "left": "0px"
+          },
+          "tablet": {
+            "top": "0px",
+            "right": "0px",
+            "bottom": "0px",
+            "left": "0px"
+          },
+          "mobile": {
+            "top": "0px",
+            "right": "0px",
+            "bottom": "0px",
+            "left": "0px"
+          }
+        },
+        "padding": {
+          "desktop": {
+            "top": "0px",
+            "right": "0px",
+            "bottom": "0px",
+            "left": "0px"
+          },
+          "tablet": {
+            "top": "0px",
+            "right": "0px",
+            "bottom": "0px",
+            "left": "0px"
+          },
+          "mobile": {
+            "top": "0px",
+            "right": "0px",
+            "bottom": "0px",
+            "left": "0px"
+          }
+        }
+      }
+    },
+    "styles": {
+      "type": "object",
+      "default": {
+        "background": {
+          "type": "image",
+          "overlayColor": "rgba(0, 0, 0, 0.40)",
+          "image": {
+            "url": "https://templates.bplugins.com/wp-content/uploads/2025/05/blureffectparallax-scaled.jpeg"
+          },
+          "color": "rgba(0, 168, 53, 0.7)",
+          "repeat": "no-repeat",
+          "position": "center right",
+          "size": "cover"
+        },
+        "textAlign": "left"
+      }
+    },
+    "options": {
+      "type": "object",
+      "default": {
+        "isNewTab": true
+      }
+    }
+  },
+  "supports": {
+    "align": [
+      "wide",
+      "full"
+    ],
+    "html": false
+  },
+  "example": {
+    "attributes": {
+      "preview": true,
+      "sourceType": "link"
+    }
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./view.css",
+  "render": "file:./render.php",
+  "viewScript": "file:./view.js"
+}

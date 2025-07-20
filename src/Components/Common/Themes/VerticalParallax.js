@@ -1,0 +1,71 @@
+import { useEffect, useRef } from "react";
+import { __ } from "@wordpress/i18n";
+import { RichText } from "@wordpress/block-editor";
+import { updateData } from "../../../utils/functions";
+
+const VerticalParallax = ({ form = "", attributes, setAttributes }) => {
+  const parallaxRef = useRef(null);
+  const { contents, options } = attributes || {};
+  const { title, description, btn } = contents || {};
+
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const offset = window.pageYOffset;
+      if (parallaxRef.current) {
+        parallaxRef.current.style.backgroundPositionY = offset * 0.8 + "px";
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+
+
+  return (
+    <section className="BPVerticalParallax">
+      <div ref={parallaxRef} className="parallax-item">
+        <div className="text-cont">
+          {form === "server" ? (
+            <>
+              <RichText
+                tagName="h2"
+                className="title"
+                placeholder={__("title...", "section-collection")}
+                value={title.text}
+                onChange={(value) =>
+                  setAttributes({
+                    content: updateData(contents, value, "title", "text"),
+                  })
+                }
+              />
+              <RichText
+                tagName="p"
+                className="description"
+                placeholder={__("description...", "section-collection")}
+                value={description.text}
+                onChange={(value) =>
+                  setAttributes({
+                    content: updateData(contents, value, "description", "text"),
+                  })
+                }
+              />
+            </>
+          ) : (
+            <>
+              <RichText.Content tagName="h2" className="title" value={title.text} />
+              <RichText.Content tagName="p" className="description" value={description.text} />
+            </>
+          )}
+
+          {
+            btn.status && <a target={options.isNewTab ? "_blank" : "_self"} rel="noreferrer" href={btn.link}><button className="btn">{btn.text}</button></a>
+          }
+        </div>
+      </div>
+    </section>
+  )
+}
+
+export default VerticalParallax
