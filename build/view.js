@@ -2653,7 +2653,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const {
       theme
     } = attributes;
-    const clientId = parallaxEl.id;
+    // const clientId = parallaxEl.id;
     const className = parallaxEl.className;
     console.log(attributes);
     if ('default' === theme) {

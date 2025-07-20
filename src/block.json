@@ -166,6 +166,10 @@
       }
     }
   },
+  "selectedTheme": {
+    "type": "string",
+    "default":"theme1"
+  },
   "supports": {
     "align": ["wide", "full"],
     "html": false

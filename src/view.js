@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		const parallaxImgEl = parallaxEl.querySelector('.psbParallaxImg');
 		const attributes = JSON.parse(parallaxEl.dataset.attributes);
 		const { theme } = attributes;
-		const clientId = parallaxEl.id;
+		// const clientId = parallaxEl.id;
 		const className = parallaxEl.className;
 
 		console.log(attributes);

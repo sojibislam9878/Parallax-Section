@@ -10,7 +10,7 @@ import BlurEffectParallax from '../Common/Themes/BlurEffectParallax';
 import Settings from './Settings/Settings';
 
 const Edit = props => {
-	const { className, attributes, setAttributes, clientId, isSelected } = props;
+	const {attributes, setAttributes, isSelected } = props;
 	const { speed } = attributes;
 	const blockProps = useBlockProps();
 

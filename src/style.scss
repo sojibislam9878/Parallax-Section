@@ -9,47 +9,47 @@ $primaryColor: #4527a4;
 $scroll-factor : 1;
 
 .wp-block-psb-parallax {
-	position: relative;
-	overflow: hidden;
+	// position: relative;
+	// overflow: hidden;
 
-	* {
-		box-sizing: border-box;
-	}
+	// * {
+	// 	box-sizing: border-box;
+	// }
 
-	.psbParallaxImg {
-		width: 100%;
-		height: 1920px;
-		position: absolute;
-		top: 0;
-		left: 50%;
-		transform: translate(-50%, 0);
-		pointer-events: none;
-		z-index: 0;
-	}
+	// .psbParallaxImg {
+	// 	width: 100%;
+	// 	height: 1920px;
+	// 	position: absolute;
+	// 	top: 0;
+	// 	left: 50%;
+	// 	transform: translate(-50%, 0);
+	// 	pointer-events: none;
+	// 	z-index: 0;
+	// }
 
-	.psbParallaxSection {
-		width: 100%;
-		height: 100%;
-		max-height: 100%;
-		z-index: 1;
-		color: #fff;
-		display: flex;
-		flex-direction: column;
+	// .psbParallaxSection {
+	// 	width: 100%;
+	// 	height: 100%;
+	// 	max-height: 100%;
+	// 	z-index: 1;
+	// 	color: #fff;
+	// 	display: flex;
+	// 	flex-direction: column;
 
-		* {
-			z-index: 1;
-		}
+	// 	* {
+	// 		z-index: 1;
+	// 	}
 
-		p {
-			max-width: 100%;
-		}
+	// 	p {
+	// 		max-width: 100%;
+	// 	}
 
-		.block-editor-block-list__layout {
-			>* {
-				max-width: 100%;
-			}
-		}
-	}
+	// 	.block-editor-block-list__layout {
+	// 		>* {
+	// 			max-width: 100%;
+	// 		}
+	// 	}
+	// }
 	.BPBlurEffectParallax{
 		box-sizing: border-box;
   a{
