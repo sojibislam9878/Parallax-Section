@@ -2,281 +2,271 @@ $primaryColor: #4527a4;
 
 // Dashicon
 .dashicons {
-	font-family: dashicons !important;
+  font-family: dashicons !important;
 }
-
 // Parallax Section
-$scroll-factor : 1;
+$scroll-factor: 1;
 
 .wp-block-psb-parallax {
-	// position: relative;
-	// overflow: hidden;
+	position: relative;
+	overflow: hidden;
+  // .BPDefaultParallx {
+    * {
+      box-sizing: border-box;
+    }
 
-	// * {
-	// 	box-sizing: border-box;
-	// }
+    .psbParallaxImg {
+      width: 100%;
+      height: 1920px;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, 0);
+      pointer-events: none;
+      z-index: 0;
+    }
 
-	// .psbParallaxImg {
-	// 	width: 100%;
-	// 	height: 1920px;
-	// 	position: absolute;
-	// 	top: 0;
-	// 	left: 50%;
-	// 	transform: translate(-50%, 0);
-	// 	pointer-events: none;
-	// 	z-index: 0;
-	// }
+    .psbParallaxSection {
+      width: 100%;
+      height: 100%;
+      max-height: 100%;
+      z-index: 1;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
 
-	// .psbParallaxSection {
-	// 	width: 100%;
-	// 	height: 100%;
-	// 	max-height: 100%;
-	// 	z-index: 1;
-	// 	color: #fff;
-	// 	display: flex;
-	// 	flex-direction: column;
+      * {
+        z-index: 1;
+      }
 
-	// 	* {
-	// 		z-index: 1;
-	// 	}
+      p {
+        max-width: 100%;
+      }
 
-	// 	p {
-	// 		max-width: 100%;
-	// 	}
+      .block-editor-block-list__layout {
+        > * {
+          max-width: 100%;
+        }
+      }
+    }
+  // }
+  .BPBlurEffectParallax {
+    box-sizing: border-box;
+    a {
+      text-decoration: none;
+      box-shadow: none;
+    }
+    box-sizing: border-box;
+    .hero {
+      position: relative;
+      // height: 100vh;
+      // width: 100%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: left;
+    }
 
-	// 	.block-editor-block-list__layout {
-	// 		>* {
-	// 			max-width: 100%;
-	// 		}
-	// 	}
-	// }
-	.BPBlurEffectParallax{
-		box-sizing: border-box;
-  a{
-    text-decoration: none;
-    box-shadow: none;
-    
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      // background: rgba(0, 0, 0, 0.3);
+      z-index: 1;
+    }
+
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      // background-image: url('https://images.unsplash.com/photo-1518655048521-f130df041f66?q=80&w=2070&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+      will-change: transform, filter;
+      transition: filter 0.3s ease-out;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 20px;
+      max-width: 800px;
+      transition:
+        transform 0.3s ease-out,
+        opacity 0.3s ease-out;
+    }
+
+    .hero h1 {
+      // font-size: clamp(2.5rem, 5vw, 4rem);
+      margin-bottom: 20px;
+      // text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .hero p {
+      // font-size: clamp(1rem, 2vw, 1.25rem);
+      margin-bottom: 30px;
+      // text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+      animation: fadeInUp 1s ease-out 0.2s forwards;
+      opacity: 0;
+      // color: white;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 30px;
+      // background: #ff4757;
+      // color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-size: 16px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      animation: fadeInUp 1s ease-out 0.4s forwards;
+      opacity: 0;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      border: none;
+    }
+
+    .btn:hover {
+      // background: #ff6b81;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn:focus {
+      border: none;
+      outline: none;
+    }
+
+    .btn:active {
+      border: none;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .content {
+      padding: 80px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      background: white;
+      position: relative;
+      z-index: 3;
+    }
+
+    .content h2 {
+      margin-bottom: 30px;
+      color: #333;
+    }
+
+    .content p {
+      margin-bottom: 20px;
+      line-height: 1.6;
+      color: #555;
+    }
+
+    @media (min-width: 641px) and (max-width: 1024px) {
+    }
+
+    @media (max-width: 480px) {
+      .btn {
+        font-size: 14px;
+        padding: 10px 22px;
+      }
+    }
   }
-	box-sizing: border-box;
-        .hero {
-          position: relative;
-          // height: 100vh;
-          // width: 100%;
-          overflow: hidden;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          text-align: left;
-        }
 
-        .hero::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          // background: rgba(0, 0, 0, 0.3);
-          z-index: 1;
-        }
-
-        .hero-bg {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          // background-image: url('https://images.unsplash.com/photo-1518655048521-f130df041f66?q=80&w=2070&auto=format&fit=crop');
-          background-size: cover;
-          background-position: center;
-          will-change: transform, filter;
-          transition: filter 0.3s ease-out;
-        }
-
-        .hero-content {
-          position: relative;
-          z-index: 2;
-          padding: 0 20px;
-          max-width: 800px;
-          transition: transform 0.3s ease-out, opacity 0.3s ease-out;
-        }
-
-        .hero h1 {
-          // font-size: clamp(2.5rem, 5vw, 4rem);
-          margin-bottom: 20px;
-          // text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-          animation: fadeInUp 1s ease-out;
-        }
-
-        .hero p {
-          // font-size: clamp(1rem, 2vw, 1.25rem);
-          margin-bottom: 30px;
-          // text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-          animation: fadeInUp 1s ease-out 0.2s forwards;
-          opacity: 0;
+  .BPVerticalParallax {
+    a {
+      text-decoration: none;
+      box-shadow: none;
+    }
+    .parallax-item {
+      // background: url("https://templates.bplugins.com/wp-content/uploads/2025/05/Screenshot-2025-05-17-105053.png")
+      //   no-repeat center center;
+      // background-size: cover;
+      background-attachment: fixed; /* You can change to 'fixed' for parallax feel */
+      background-position: center center;
+      background-repeat: repeat-y;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      // font-family: Montserrat, sans-serif;
+      // width: 100%;
+      // min-height: 100vh;
+      .text-cont {
+        width: 60%;
+        text-align: center;
+        .title {
           // color: white;
+          // font-size: 4rem;
+          // font-weight: 800;
+          margin: 0px;
         }
-
+        .description {
+          // color: white;
+          font-weight: 400px;
+          margin: 0px;
+          margin-top: 12px;
+        }
         .btn {
-          display: inline-block;
-          padding: 12px 30px;
-          // background: #ff4757;
-          // color: white;
-          text-decoration: none;
-          border-radius: 50px;
-          font-size: 16px;
-          font-weight: bold;
-          transition: all 0.3s ease;
-          animation: fadeInUp 1s ease-out 0.4s forwards;
-          opacity: 0;
-          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+          font-size: 18px;
+          // color: black;
+          // background-color: white;
+          padding: 12px 8px;
+          border-radius: 8px;
           border: none;
-        }
-
-        .btn:hover {
-          // background: #ff6b81;
-          transform: translateY(-3px);
-          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-          border: none;
-          cursor: pointer;
-        }
-
-        .btn:focus{
-          border: none;
-          outline: none;
-        }
-
-        .btn:active{
-          border: none;
-        }
-
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
+          margin-top: 28px;
+          transition-duration: 100ms;
+          &:hover {
+            cursor: pointer;
           }
-          to {
-            opacity: 1;
-            transform: translateY(0);
+          &:active {
+            scale: 0.93;
+            outline: none;
+            border: none;
+            box-shadow: none;
+          }
+          &:focus {
+            outline: none;
           }
         }
+      }
+    }
 
-        .content {
-          padding: 80px 20px;
-          max-width: 1200px;
-          margin: 0 auto;
-          background: white;
-          position: relative;
-          z-index: 3;
+    @media (min-width: 641px) and (max-width: 1024px) {
+      .parallax-item {
+        .text-cont {
+          width: 80%;
         }
+      }
+    }
 
-        .content h2 {
-          margin-bottom: 30px;
-          color: #333;
+    @media (max-width: 480px) {
+      .parallax-item {
+        .text-cont {
+          width: 100%;
+          padding: 0px 16px;
         }
-
-        .content p {
-          margin-bottom: 20px;
-          line-height: 1.6;
-          color: #555;
-        }
-
-
-    @media  (min-width:641px) and (max-width: 1024px){
-
-      
-			}
-	
-
-
-			@media (max-width: 480px){
-				.btn{
-          font-size: 14px;
-          padding: 10px 22px;
-        }
-			}
-	}
-
-	.BPVerticalParallax{
-		a{
-			text-decoration: none;
-			box-shadow: none;
-		}
-		.parallax-item {
-		
-			// background: url("https://templates.bplugins.com/wp-content/uploads/2025/05/Screenshot-2025-05-17-105053.png")
-			//   no-repeat center center;
-			// background-size: cover;
-			background-attachment: fixed; /* You can change to 'fixed' for parallax feel */
-			background-position: center center;
-			background-repeat: repeat-y;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			font-weight: bold;
-			// font-family: Montserrat, sans-serif;
-			// width: 100%;
-			// min-height: 100vh;
-			.text-cont {
-			width: 60%;
-			text-align: center;
-				.title {
-			// color: white;
-					// font-size: 4rem;
-			// font-weight: 800;
-			margin: 0px;
-				}
-			.description{
-			// color: white;
-			font-weight: 400px;
-			margin: 0px;
-			margin-top: 12px;
-			}
-			.btn{
-			font-size: 18px;
-			// color: black;
-			// background-color: white;
-			padding: 12px 8px;
-			border-radius: 8px;
-			border: none;
-			margin-top: 28px;
-			transition-duration: 100ms;
-				&:hover{
-					cursor: pointer;
-					
-				}
-				&:active{
-					scale:0.93;
-					outline: none;
-					border: none;
-					box-shadow: none;
-				}
-				&:focus{
-					outline: none;
-				}
-			}
-			}
-		}
-	
-		@media  (min-width:641px) and (max-width: 1024px){
-	
-		.parallax-item{
-			.text-cont{
-			width: 80%;
-		}
-		}
-		
-	
-		}
-	
-		@media (max-width: 480px){
-		.parallax-item{
-			.text-cont{
-			width: 100%;
-			padding: 0px 16px;
-		}
-		}
-	
-		}
-	}
+      }
+    }
+  }
 }

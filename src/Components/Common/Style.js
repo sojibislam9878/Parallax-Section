@@ -5,6 +5,10 @@ const Style = ({ attributes, id }) => {
 	const { verticalAlign, textAlign, background, minHeight, padding, layout, styles, contents } = attributes;
 
 	const mainSl = `#${id}`;
+	console.log(mainSl);
+
+	const theme1Sl = `${mainSl} .BPDefaultParallx`
+	
 
 
 	// ================== theme 2 ========================= //
@@ -37,16 +41,16 @@ const Style = ({ attributes, id }) => {
     ${getTypoCSS(titleSL, contents?.title?.typo)?.styles}
     ${getTypoCSS(descriptionSL, contents?.description?.typo)?.styles}
 
-		${mainSl}{
+		${theme1Sl}{
 			min-height: ${minHeight};
 		}
-		${mainSl} .psbParallaxSection{
+		${theme1Sl} .psbParallaxSection{
 			justify-content: ${verticalAlign};
 			text-align: ${textAlign};
 			min-height: ${minHeight};
 			padding: ${getSpaceCSS(padding)};
 		}
-		${mainSl} .psbParallaxImg{
+		${theme1Sl} .psbParallaxImg{
 			${getBackgroundCSS(background)}
 		}
 

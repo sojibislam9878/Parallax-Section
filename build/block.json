@@ -1,5 +1,5 @@
 {
-  "apiVersion": 2,
+  "apiVersion": 3,
   "name": "psb/parallax",
   "title": "Parallax Section",
   "description": "Parallax scrolling effects in section.",
@@ -169,11 +169,11 @@
       "default": {
         "isNewTab": true
       }
+    },
+    "selectedTheme": {
+      "type": "string",
+      "default": "default"
     }
-  },
-  "selectedTheme": {
-    "type": "string",
-    "default": "theme1"
   },
   "supports": {
     "align": [

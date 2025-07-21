@@ -1,6 +1,6 @@
 import { useBlockProps } from "@wordpress/block-editor";
 import { useEffect, useRef } from 'react';
-
+import { withSelect } from "@wordpress/data";
 
 import { tabController } from '../../../../bpl-tools/utils/functions';
 
@@ -8,10 +8,12 @@ import { parallaxInit } from '../../utils/functions';
 import Style from '../Common/Style';
 import BlurEffectParallax from '../Common/Themes/BlurEffectParallax';
 import Settings from './Settings/Settings';
+import VerticalParallax from "../Common/Themes/VerticalParallax";
+import DefultParallax from "../Common/Themes/DefultParallax";
 
 const Edit = props => {
-	const {attributes, setAttributes, isSelected } = props;
-	const { speed } = attributes;
+	const {attributes, setAttributes, isSelected, device} = props;
+	const { speed, selectedTheme = "default" } = attributes;
 	const blockProps = useBlockProps();
 
 	useEffect(() => tabController(), [isSelected]);
@@ -33,16 +35,25 @@ const Edit = props => {
 
 	return (
 		<>
-			<Settings attributes={attributes} setAttributes={setAttributes} />
+			<Settings attributes={attributes} setAttributes={setAttributes} device={device}/>
 
 			<div {...blockProps}>
 				<Style attributes={attributes} id={blockProps.id} />
 
-				{/* <DefultParallax speed={speed} parallaxImgEl={parallaxImgEl} /> */}
-				<BlurEffectParallax {...{ form, attributes, setAttributes }} />
+				{/*  */}
+				
+				{
+					selectedTheme === "default" ? <DefultParallax speed={speed} parallaxImgEl={parallaxImgEl} /> : selectedTheme === "theme1" ? <BlurEffectParallax {...{ form, attributes, setAttributes }} /> : selectedTheme === "theme2" ? <VerticalParallax {...{ form, attributes, setAttributes }} /> : ""
+				}
+
 			</div >
 
 		</>
 	);
 };
-export default Edit;
+export default withSelect((select) => {
+	const { getDeviceType } = select('core/editor');
+	return {
+		device: getDeviceType()?.toLowerCase(),
+	};
+})(Edit);

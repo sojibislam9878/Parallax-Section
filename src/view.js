@@ -4,6 +4,7 @@ import Style from './Components/Common/Style';
 import BlurEffectParallax from './Components/Common/Themes/BlurEffectParallax';
 import './style.scss';
 import { parallaxInit } from './utils/functions';
+import VerticalParallax from './Components/Common/Themes/VerticalParallax';
 
 document.addEventListener('DOMContentLoaded', () => {
 	const parallaxEls = document.querySelectorAll('.wp-block-psb-parallax');
@@ -11,17 +12,16 @@ document.addEventListener('DOMContentLoaded', () => {
 	parallaxEls.forEach(parallaxEl => {
 		const parallaxImgEl = parallaxEl.querySelector('.psbParallaxImg');
 		const attributes = JSON.parse(parallaxEl.dataset.attributes);
-		const { theme } = attributes;
-		// const clientId = parallaxEl.id;
+		const { selectedTheme } = attributes;
 		const className = parallaxEl.className;
-
-		console.log(attributes);
-
-
+		// const clientId = parallaxEl.id;
+		console.log(selectedTheme);
 
 
 
-		if ('default' === theme) {
+
+
+		if (selectedTheme === "default") {
 			if (parallaxImgEl) {
 				parallaxInit(parallaxImgEl, parallaxImgEl.parentElement);
 
@@ -34,7 +34,10 @@ document.addEventListener('DOMContentLoaded', () => {
 				<div className={className} id={parallaxEl.id}>
 					<Style {...{ attributes, id: parallaxEl.id }} />
 
-					<BlurEffectParallax {...{ attributes }} />
+					{
+							selectedTheme === "theme1" ? <BlurEffectParallax {...{ attributes }} /> : selectedTheme === "theme2" ? <VerticalParallax {...{ attributes }} /> : ""
+					}
+
 				</div>
 			</>)
 		}

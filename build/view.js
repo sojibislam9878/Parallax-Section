@@ -2144,6 +2144,8 @@ const Style = ({
     contents
   } = attributes;
   const mainSl = `#${id}`;
+  console.log(mainSl);
+  const theme1Sl = `${mainSl} .BPDefaultParallx`;
 
   // ================== theme 2 ========================= //
   const theme2Sl = `${mainSl} .BPBlurEffectParallax`;
@@ -2174,16 +2176,16 @@ const Style = ({
     ${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)(titleSL, contents?.title?.typo)?.styles}
     ${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)(descriptionSL, contents?.description?.typo)?.styles}
 
-		${mainSl}{
+		${theme1Sl}{
 			min-height: ${minHeight};
 		}
-		${mainSl} .psbParallaxSection{
+		${theme1Sl} .psbParallaxSection{
 			justify-content: ${verticalAlign};
 			text-align: ${textAlign};
 			min-height: ${minHeight};
 			padding: ${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getSpaceCSS)(padding)};
 		}
-		${mainSl} .psbParallaxImg{
+		${theme1Sl} .psbParallaxImg{
 			${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getBackgroundCSS)(background)}
 		}
 
@@ -2447,6 +2449,96 @@ const BlurEffectParallax = ({
 
 /***/ }),
 
+/***/ "./src/Components/Common/Themes/VerticalParallax.js":
+/*!**********************************************************!*\
+  !*** ./src/Components/Common/Themes/VerticalParallax.js ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _utils_functions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../utils/functions */ "./src/utils/functions.js");
+
+
+
+
+
+const VerticalParallax = ({
+  form = "",
+  attributes,
+  setAttributes
+}) => {
+  const parallaxRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  const {
+    contents,
+    options
+  } = attributes || {};
+  const {
+    title,
+    description,
+    btn
+  } = contents || {};
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    const handleScroll = () => {
+      const offset = window.pageYOffset;
+      if (parallaxRef.current) {
+        parallaxRef.current.style.backgroundPositionY = offset * 0.8 + "px";
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("section", {
+    className: "BPVerticalParallax"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    ref: parallaxRef,
+    className: "parallax-item"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "text-cont"
+  }, form === "server" ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    tagName: "h2",
+    className: "title",
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("title...", "section-collection"),
+    value: title.text,
+    onChange: value => setAttributes({
+      content: (0,_utils_functions__WEBPACK_IMPORTED_MODULE_3__.updateData)(contents, value, "title", "text")
+    })
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    tagName: "p",
+    className: "description",
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("description...", "section-collection"),
+    value: description.text,
+    onChange: value => setAttributes({
+      content: (0,_utils_functions__WEBPACK_IMPORTED_MODULE_3__.updateData)(contents, value, "description", "text")
+    })
+  })) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, {
+    tagName: "h2",
+    className: "title",
+    value: title.text
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, {
+    tagName: "p",
+    className: "description",
+    value: description.text
+  })), btn.status && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    target: options.isNewTab ? "_blank" : "_self",
+    rel: "noreferrer",
+    href: btn.link
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    className: "btn"
+  }, btn.text)))));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (VerticalParallax);
+
+/***/ }),
+
 /***/ "./src/style.scss":
 /*!************************!*\
   !*** ./src/style.scss ***!
@@ -2468,6 +2560,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   parallaxInit: () => (/* binding */ parallaxInit),
+/* harmony export */   themeChanger: () => (/* binding */ themeChanger),
 /* harmony export */   updateData: () => (/* binding */ updateData)
 /* harmony export */ });
 /* harmony import */ var immer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! immer */ "./node_modules/immer/dist/immer.mjs");
@@ -2479,10 +2572,16 @@ const updateData = (attr, value, ...props) => {
   const [currentProp, ...remainingProps] = props;
   if (remainingProps.length === 0) {
     return (0,immer__WEBPACK_IMPORTED_MODULE_0__.produce)(attr, draft => {
+      if (Array.isArray(draft[currentProp]) && (draft === null || draft === undefined)) {
+        draft = {};
+      }
       draft[currentProp] = value;
     });
   }
   return (0,immer__WEBPACK_IMPORTED_MODULE_0__.produce)(attr, draft => {
+    if (draft === null || draft === undefined) {
+      draft = {};
+    }
     if (!Object.prototype.hasOwnProperty.call(draft, currentProp)) {
       draft[currentProp] = {};
     }
@@ -2514,6 +2613,67 @@ const parallaxInit = (el, parentEl, scrollTop = false) => {
     el.style.transform = 'translate(-50%, -' + imgPercent + '%)';
   }
 };
+const themeChanger = (theme = "theme1", attributes) => (0,immer__WEBPACK_IMPORTED_MODULE_0__.produce)(attributes, draft => {
+  draft["selectedTheme"] = theme;
+  switch (theme) {
+    //======================= case for theme 1 ========================//
+    case "theme1":
+      // draft["subSections"] = [
+      // 	{
+      // 		"title": "Unleash Your Your <span> Inner Warrior </span>",
+      // 		"description": "Join the battle and conquer the arena with unmatched skill and strategy.",
+      // 		"gradient": "linear-gradient(227deg,#1400c7 0%,#00bbff 100%)",
+      // 		"startPosition": {
+      // 			"X": "",
+      // 			"Y": ""
+      // 		},
+      // 		"image": "https://templates.bplugins.com/wp-content/uploads/2025/06/img-1.avif"
+      // 	},
+      // 	{
+      // 		"title": "Embark on Your <span> Legendary journey </span>",
+      // 		"description": "Immerse Yourself in a World Where Legends Clash And Heros Rise to Glory",
+      // 		"gradient": "linear-gradient(227deg, #28dc28 0%, #00bbff 100%)",
+      // 		"startPosition": {
+      // 			"X": "-35",
+      // 			"Y": "30",
+      // 			"opacity": 0.5
+      // 		},
+      // 		"image": "https://templates.bplugins.com/wp-content/uploads/2025/06/img-2.avif"
+      // 	},
+      // 	{
+      // 		"title": "Master the <span> Art of Magic </span>",
+      // 		"description": "Harness powerful spells and enchantments to dominate your foes and change the course of battle.",
+      // 		"gradient": "linear-gradient(227deg, #1400c7 0%, #b800b1 100%)",
+      // 		"startPosition": {
+      // 			"X": "0",
+      // 			"Y": "50",
+      // 			"opacity": 0.5
+      // 		},
+      // 		"image": "https://templates.bplugins.com/wp-content/uploads/2025/06/img-3.avif"
+      // 	},
+      // 	{
+      // 		"title": "Rise as the <span> Champion </span>",
+      // 		"description": "Lead your team to victory with unparalleled strength and unwavering determination.",
+      // 		"gradient": "linear-gradient(227deg, #b800b1 0%, #f50000 100%)",
+      // 		"startPosition": {
+      // 			"X": "45",
+      // 			"Y": "40",
+      // 			"opacity": 0.5
+      // 		},
+      // 		"image": "https://templates.bplugins.com/wp-content/uploads/2025/06/img-4.avif"
+      // 	}
+      // ];
+
+      break;
+
+    //====================== case for theme 2 ===============================//
+
+    case "theme2":
+      break;
+    default:
+      break;
+  }
+});
 
 /***/ }),
 
@@ -2639,6 +2799,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Components_Common_Themes_BlurEffectParallax__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Components/Common/Themes/BlurEffectParallax */ "./src/Components/Common/Themes/BlurEffectParallax.js");
 /* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./style.scss */ "./src/style.scss");
 /* harmony import */ var _utils_functions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./utils/functions */ "./src/utils/functions.js");
+/* harmony import */ var _Components_Common_Themes_VerticalParallax__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Components/Common/Themes/VerticalParallax */ "./src/Components/Common/Themes/VerticalParallax.js");
+
 
 
 
@@ -2651,12 +2813,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const parallaxImgEl = parallaxEl.querySelector('.psbParallaxImg');
     const attributes = JSON.parse(parallaxEl.dataset.attributes);
     const {
-      theme
+      selectedTheme
     } = attributes;
-    // const clientId = parallaxEl.id;
     const className = parallaxEl.className;
-    console.log(attributes);
-    if ('default' === theme) {
+    // const clientId = parallaxEl.id;
+    console.log(selectedTheme);
+    if (selectedTheme === "default") {
       if (parallaxImgEl) {
         (0,_utils_functions__WEBPACK_IMPORTED_MODULE_5__.parallaxInit)(parallaxImgEl, parallaxImgEl.parentElement);
         document.addEventListener('scroll', () => {
@@ -2670,9 +2832,11 @@ document.addEventListener('DOMContentLoaded', () => {
       }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components_Common_Style__WEBPACK_IMPORTED_MODULE_2__["default"], {
         attributes,
         id: parallaxEl.id
-      }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components_Common_Themes_BlurEffectParallax__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      }), selectedTheme === "theme1" ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components_Common_Themes_BlurEffectParallax__WEBPACK_IMPORTED_MODULE_3__["default"], {
         attributes
-      }))));
+      }) : selectedTheme === "theme2" ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components_Common_Themes_VerticalParallax__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        attributes
+      }) : "")));
     }
   });
 });
