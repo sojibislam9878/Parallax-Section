@@ -2144,7 +2144,8 @@ const Style = ({
     contents
   } = attributes;
   const mainSl = `#${id}`;
-  console.log(mainSl);
+  // console.log(mainSl);
+
   const theme1Sl = `${mainSl} .BPDefaultParallx`;
 
   // ================== theme 2 ========================= //

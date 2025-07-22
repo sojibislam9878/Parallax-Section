@@ -5,7 +5,7 @@ const Style = ({ attributes, id }) => {
 	const { verticalAlign, textAlign, background, minHeight, padding, layout, styles, contents } = attributes;
 
 	const mainSl = `#${id}`;
-	console.log(mainSl);
+	// console.log(mainSl);
 
 	const theme1Sl = `${mainSl} .BPDefaultParallx`
 	

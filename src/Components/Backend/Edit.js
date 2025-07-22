@@ -10,11 +10,15 @@ import BlurEffectParallax from '../Common/Themes/BlurEffectParallax';
 import Settings from './Settings/Settings';
 import VerticalParallax from "../Common/Themes/VerticalParallax";
 import DefultParallax from "../Common/Themes/DefultParallax";
+import { usePremiumInEditor } from "../../../../bpl-tools/hooks";
 
 const Edit = props => {
 	const {attributes, setAttributes, isSelected, device} = props;
 	const { speed, selectedTheme = "default" } = attributes;
 	const blockProps = useBlockProps();
+	const { isPremium } = usePremiumInEditor("ssbUtils", "ssbPremiumChecker");
+	console.log(isPremium);
+	
 
 	useEffect(() => tabController(), [isSelected]);
 
@@ -35,7 +39,7 @@ const Edit = props => {
 
 	return (
 		<>
-			<Settings attributes={attributes} setAttributes={setAttributes} device={device}/>
+			<Settings attributes={attributes} setAttributes={setAttributes} device={device} isPremium={ isPremium} />
 
 			<div {...blockProps}>
 				<Style attributes={attributes} id={blockProps.id} />

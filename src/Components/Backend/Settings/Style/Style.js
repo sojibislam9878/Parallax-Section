@@ -2,8 +2,9 @@ import { __ } from '@wordpress/i18n';
 import { PanelBody } from '@wordpress/components';
 import { Background, ColorControl, ColorsControl, Typography } from '../../../../../../bpl-tools/Components';
 import { updateData } from '../../../../utils/functions';
+import { BControlPro } from "../../../../../../bpl-tools/ProControls";
 
-const Style = ({ attributes, setAttributes }) => {
+const Style = ({ attributes, setAttributes, premiumProps }) => {
   const { background, selectedTheme, contents, styles } = attributes;
 
   const { title, description, btn } = contents || {}
@@ -22,16 +23,59 @@ const Style = ({ attributes, setAttributes }) => {
 
         {
           selectedTheme != "default" && <>
-            <Background value={styles.background} onChange={(value) => setAttributes({ styles: updateData(styles, value, "background") })} />
+            <BControlPro
+              label={__('Background', 'parallax-section')}
+              value={styles.background}
+              onChange={(value) => setAttributes({ styles: updateData(styles, value, "background") })}
+              Component={Background}
+              {...premiumProps}
+            />
 
-            <ColorControl label="Header Color" value={title.color} onChange={(value) => setAttributes({ contents: updateData(contents, value, "title", "color") })} />
-            <Typography label="Header Typo" value={title.typo} onChange={(value) => setAttributes({ contents: updateData(contents, value, "title", "typo") })} />
+            <BControlPro
+              label="Header Color"
+              value={title.color}
+              onChange={(value) => setAttributes({ contents: updateData(contents, value, "title", "color") })}
+              Component={ColorControl}
+              {...premiumProps}
+            />
+            <BControlPro
+              label="Header Typo"
+              value={title.typo}
+              onChange={(value) => setAttributes({ contents: updateData(contents, value, "title", "typo") })}
+              Component={Typography}
+              {...premiumProps}
+            />
 
-            <ColorControl label="Description Color" value={description.color} onChange={(value) => setAttributes({ contents: updateData(contents, value, "description", "color") })} />
-            <Typography label="Description Typo" value={description.typo} onChange={(value) => setAttributes({ contents: updateData(contents, value, "description", "typo") })} />
+            <BControlPro
+              label="Description Color"
+              value={description.color}
+              onChange={(value) => setAttributes({ contents: updateData(contents, value, "description", "color") })}
+              Component={ColorControl}
+              {...premiumProps}
+            />
 
-            <ColorsControl label="Button Colors" value={btn.colors} onChange={(value) => setAttributes({ contents: updateData(contents, value, "btn", "colors") })} />
-            <ColorsControl label="Button Hover Colors" value={btn.hoverColors} onChange={(value) => setAttributes({ contents: updateData(contents, value, "btn", "hoverColors") })} />
+            <BControlPro
+              label="Description Typo"
+              value={description.typo}
+              onChange={(value) => setAttributes({ contents: updateData(contents, value, "description", "typo") })}
+              Component={Typography}
+              {...premiumProps}
+            />
+
+            <BControlPro
+              label="Button Colors" value={btn.colors}
+              onChange={(value) => setAttributes({ contents: updateData(contents, value, "btn", "colors") })}
+              Component={ColorsControl}
+              {...premiumProps}
+            />
+
+            <BControlPro
+              label="Button Hover Colors"
+              value={btn.hoverColors}
+              onChange={(value) => setAttributes({ contents: updateData(contents, value, "btn", "hoverColors") })}
+              Component={ColorsControl}
+              {...premiumProps}
+            />
           </>
         }
 

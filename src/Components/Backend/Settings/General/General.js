@@ -8,7 +8,7 @@ import {
   __experimentalUnitControl as UnitControl,
   __experimentalInputControl as InputControl,
   TextareaControl,
-  FormToggle,
+  ToggleControl ,
   PanelRow,
 } from '@wordpress/components';
 import { pxUnit, emUnit, vhUnit } from '../../../../../../bpl-tools/utils/options';
@@ -16,9 +16,10 @@ import { SpaceControl } from '../../../../../../bpl-tools/Components/Deprecated'
 import { BButtonGroup, BoxControl, Device, Label } from '../../../../../../bpl-tools/Components';
 import { textAlignOptions, themeOptions } from '../../../../utils/options';
 import { themeChanger, updateData } from '../../../../utils/functions';
+import { BControlPro } from "../../../../../../bpl-tools/ProControls";
 
 
-const General = ({ attributes, setAttributes, device }) => {
+const General = ({ attributes, setAttributes, device, premiumProps }) => {
   const { minHeight, padding, speed, selectedTheme = "default", contents, layout, styles, options } = attributes;
 
   return (
@@ -38,10 +39,10 @@ const General = ({ attributes, setAttributes, device }) => {
               label={""}
               value={selectedTheme}
               options={themeOptions}
-              // onChange={(value) =>
-              //   setAttributes(themeChanger(value, attributes, device))
-              // }
-              onChange={(value) => setAttributes({ selectedTheme: updateData(selectedTheme, value) })}
+              onChange={(value) =>
+                setAttributes(themeChanger(value, attributes, device))
+              }
+              // onChange={(value) => setAttributes({ selectedTheme: updateData(selectedTheme, value) })}
             />
           </FlexBlock>
         </Flex>
@@ -74,7 +75,7 @@ const General = ({ attributes, setAttributes, device }) => {
               <Label className="mt0">{__("Min Height", "section-collection")}</Label>
               <Device />
             </PanelRow>
-            <UnitControl
+            <BControlPro
               step={1}
               shiftStep={10}
               max={layout.height[device].includes("%") ? 100 : undefined}
@@ -83,12 +84,14 @@ const General = ({ attributes, setAttributes, device }) => {
                 setAttributes({ layout: updateData(layout, value, "height", device) })
               }
               value={layout.height[device]}
+              Component={UnitControl}
+              {...premiumProps}
             />
             <PanelRow>
               <Label className="mt0">{__("Width", "section-collection")}</Label>
               <Device />
             </PanelRow>
-            <UnitControl
+            <BControlPro
               className="mt5"
               step={1}
               shiftStep={10}
@@ -98,13 +101,15 @@ const General = ({ attributes, setAttributes, device }) => {
                 setAttributes({ layout: updateData(layout, value, "width", device) })
               }
               value={layout.width[device]}
+              Component={UnitControl}
+              {...premiumProps}
             />
 
             <PanelRow>
               <Label className="mt0">{__("margin", "section-collection")}</Label>
               <Device />
             </PanelRow>
-            <BoxControl
+            <BControlPro
               className="mt5"
               values={layout.margin[device]}
               onChange={(value) => {
@@ -112,12 +117,21 @@ const General = ({ attributes, setAttributes, device }) => {
                   layout: updateData(layout, value, "margin", device),
                 });
               }}
+              Component={BoxControl}
+              {...premiumProps}
             />
 
 
-            <BButtonGroup value={styles?.textAlign} className="mt10" label="Text Align" options={textAlignOptions} onChange={(value) => setAttributes({ styles: updateData(styles, value, "textAlign") })} />
+            <BControlPro
+              value={styles?.textAlign}
+              className="mt10" label="Text Align"
+              options={textAlignOptions}
+              onChange={(value) => setAttributes({ styles: updateData(styles, value, "textAlign") })}
+              Component={BButtonGroup}
+              {...premiumProps}
+            />
 
-            <InputControl
+            <BControlPro
               placeholder={__("title...", "section-collection")}
               className="mt5"
               label={__("Title", "section-collection")}
@@ -127,8 +141,11 @@ const General = ({ attributes, setAttributes, device }) => {
                 })
               }
               value={contents.title.text}
+              Component={InputControl}
+              {...premiumProps}
             />
-            <TextareaControl
+
+            <BControlPro
               placeholder={__("description...", "section-collection")}
               className="mt5"
               label={__("Description", "section-collection")}
@@ -138,10 +155,12 @@ const General = ({ attributes, setAttributes, device }) => {
                   contents: updateData(contents, value, "description", "text"),
                 })
               }
+              Component={TextareaControl}
+              {...premiumProps}
             />
 
             <Flex justify="start" align="center" gap={2}>
-              <FormToggle
+              <BControlPro
                 checked={contents.btn.status}
                 onChange={() =>
                   setAttributes({
@@ -153,12 +172,14 @@ const General = ({ attributes, setAttributes, device }) => {
                     ),
                   })
                 }
+                Component={ToggleControl }
+                {...premiumProps}
               />
               <p className="mt10">Show Button</p>
             </Flex>
             {contents.btn.status && (
               <>
-                <InputControl
+                <BControlPro
                   placeholder={__("button text...", "section-collection")}
                   className="mt5"
                   label={__("Button Text", "section-collection")}
@@ -168,8 +189,10 @@ const General = ({ attributes, setAttributes, device }) => {
                     })
                   }
                   value={contents.btn.text}
+                  Component={InputControl}
+                  {...premiumProps}
                 />
-                <InputControl
+                <BControlPro
                   placeholder={__("link...", "section-collection")}
                   className="mt5"
                   label={__("Button Link", "section-collection")}
@@ -179,15 +202,19 @@ const General = ({ attributes, setAttributes, device }) => {
                     })
                   }
                   value={contents.btn.link}
+                  Component={InputControl}
+                  {...premiumProps}
                 />
                 <Flex justify="start" align="center" gap={2}>
-                  <FormToggle
+                  <BControlPro
                     checked={options.isNewTab}
                     onChange={() =>
                       setAttributes({
                         options: updateData(options, !options.isNewTab, "isNewTab"),
                       })
                     }
+                    Component={ToggleControl }
+                    {...premiumProps}
                   />
                   <p className="mt10">Open in new tab</p>
                 </Flex>
