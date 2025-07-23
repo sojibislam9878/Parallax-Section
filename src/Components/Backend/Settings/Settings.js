@@ -56,13 +56,37 @@ const Settings = ({ attributes, setAttributes, device, isPremium}) => {
 		<AboutProModal
 			isProModalOpen={isProModalOpen}
 			setIsProModalOpen={setIsProModalOpen}
-			link="tools.php?page=parallax-section-dashboard-pricing"
+			link="tools.php?page=parallax-section-dashboard#/upgrade-to-pro"
 		>
 			<li>
 				<strong>
-					{__("Color: ", "mp3player-block")}
+					{__("Pro: ", "parallax-section")}
 				</strong>
-				{__("Add this block anywhere with shortcode.", "mp3player-block")}
+				{__("Everything in free", "parallax-section")}
+			</li>
+			<li>
+				<strong>
+					{__("Themes: ", "parallax-section")}
+				</strong>
+				{__("2 built-in design themes with 1 click.", "parallax-section")}
+			</li>
+			{/* <li>
+				<strong>
+					{__("Animated Cards: ", "parallax-section")}
+				</strong>
+				{__("Eye-catching 3D and animated card styles for an interactive user experience.", "parallax-section")}
+			</li> */}
+			<li>
+				<strong>
+					{__("Motion: ", "parallax-section")}
+				</strong>
+				{__("Advanced mouse movement animation for Parallax.", "parallax-section")}
+			</li>
+			<li>
+				<strong>
+					{__("Customization: ", "parallax-section")}
+				</strong>
+				{__("Easily customize color, font, spacing, and card behavior directly from the block editor.", "parallax-section")}
 			</li>
 		</AboutProModal>
 	</>;

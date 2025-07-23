@@ -6,9 +6,10 @@ const Layout = ({ children, isPremium }) => {
 
   const navigation = [
     { name: 'Welcome', href: '/welcome' },
-    { name: 'Our Other Popular Plugins', href: '/most-popular' },
     // { name: 'Demo', href: '/demo' },
-    !isPremium && { name: 'Free vs Pro', href: '/free-vs-pro' },
+    // !isPremium && { name: 'Free vs Pro', href: '/free-vs-pro' },
+    !isPremium && { name: 'Upgrade Now', href: '/upgrade-to-pro' },
+    { name: 'Our Other Popular Plugins', href: '/most-popular' },
   ]
 
   return (

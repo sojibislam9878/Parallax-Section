@@ -26,18 +26,18 @@ const Welcome = ({ isPremium }) => {
                         <div className="bblocks_welcome_container">
                             <div className="bblocks_left_area">
                                 <div className="bblocks_left">
-                                    <h1>Welcome to Info Cards</h1>
-                                    <p>The Info Cards Block Plugin for WordPress allows you to create beautifully designed and informative cards within your content. With this plugin, you can present your content interactively and engagingly, making it easier for your audience to consume and understand your message.</p>
+                                    <h1>Welcome to Parallax Section Block</h1>
+                                    <p>The parallax effect is a modern web design technique where the background element scrolls slower than the foreground content. The parallax effect can be used on landing pages, long-form content, sales pages, or the homepage of a business website. </p>
                                     <div className="img">
-                                        <img src="https://ps.w.org/info-cards/assets/banner-1544x500.png?rev=3190158" alt="image" />
+                                        <img src="https://ps.w.org/parallax-section/assets/banner-772x250.png?rev=2665497" alt="image" />
                                     </div>
                                     <div className="logo_title">
 
                                         <div className="logo">
-                                            <img src="https://ps.w.org/info-cards/assets/icon-128x128.png?rev=2881794" alt="logo_image" />
+                                            <img src="https://ps.w.org/parallax-section/assets/icon-128x128.png?rev=2665497" alt="logo_image" />
                                         </div>
                                         <div className="title">
-                                            <h3>Info Cards – Gutenberg block for creating Beautiful Cards</h3>
+                                            <h3>Parallax Section block – Parallax scrolling effects in section.</h3>
                                             <span>by</span>
                                             <a href="https://bplugins.com" target="_blank" rel="noopener noreferrer">
                                                 bPlugins

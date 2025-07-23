@@ -64,6 +64,7 @@ define( 'PARALLAX_HAS_PRO', file_exists( dirname(__FILE__) . '/freemius/start.ph
                 ),
                 'menu'                => array(
                     'slug'           => 'parallax-section-dashboard',
+                    'first-path'     => 'tools.php?page=parallax-section-dashboard#/welcome',
                     'support'        => false,
                     'parent'         => array(
                         'slug' => 'tools.php',
