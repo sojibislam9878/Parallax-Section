@@ -190,6 +190,7 @@
   },
   "editorScript": [
     "file:./index.js",
+    "file:./admin/admin.js",
     "wp-api"
   ],
   "editorStyle": "file:./index.css",

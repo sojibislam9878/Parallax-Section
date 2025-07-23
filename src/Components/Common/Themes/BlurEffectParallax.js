@@ -87,7 +87,7 @@ const BlurEffectParallax = ({ form, setAttributes, attributes }) => {
               <RichText
                 tagName="h1"
                 className="title"
-                placeholder={__("title...", "section-collection")}
+                placeholder={__("title...", "parallax-section")}
                 value={title.text}
                 onChange={(value) =>
                   setAttributes({
@@ -98,7 +98,7 @@ const BlurEffectParallax = ({ form, setAttributes, attributes }) => {
               <RichText
                 tagName="p"
                 className="description"
-                placeholder={__("description...", "section-collection")}
+                placeholder={__("description...", "parallax-section")}
                 value={description.text}
                 onChange={(value) =>
                   setAttributes({

@@ -8,8 +8,8 @@ $primaryColor: #4527a4;
 $scroll-factor: 1;
 
 .wp-block-psb-parallax {
-	position: relative;
-	overflow: hidden;
+	// position: relative;
+	// overflow: hidden;
   // .BPDefaultParallx {
     * {
       box-sizing: border-box;
@@ -111,11 +111,11 @@ $scroll-factor: 1;
 
     .hero p {
       // font-size: clamp(1rem, 2vw, 1.25rem);
-      margin-bottom: 30px;
       // text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+      // color: white;
+      margin-bottom: 30px;
       animation: fadeInUp 1s ease-out 0.2s forwards;
       opacity: 0;
-      // color: white;
     }
 
     .btn {
@@ -199,16 +199,15 @@ $scroll-factor: 1;
       box-shadow: none;
     }
     .parallax-item {
-      // background: url("https://templates.bplugins.com/wp-content/uploads/2025/05/Screenshot-2025-05-17-105053.png")
-      //   no-repeat center center;
-      // background-size: cover;
-      background-attachment: fixed; /* You can change to 'fixed' for parallax feel */
-      background-position: center center;
-      background-repeat: repeat-y;
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: bold;
+      // background: url("https://templates.bplugins.com/wp-content/uploads/2025/05/Screenshot-2025-05-17-105053.png")
+      // background-size: cover;
+      // background-attachment: fixed; /* You can change to 'fixed' for parallax feel */
+      // background-position: center center;
+      // background-repeat: repeat-y;
       // font-family: Montserrat, sans-serif;
       // width: 100%;
       // min-height: 100vh;

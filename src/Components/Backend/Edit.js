@@ -1,15 +1,13 @@
+import Style from '../Common/Style';
+import BlurEffectParallax from '../Common/Themes/BlurEffectParallax';
+import VerticalParallax from "../Common/Themes/VerticalParallax";
+import DefultParallax from "../Common/Themes/DefultParallax";
+import Settings from './Settings/Settings';
 import { useBlockProps } from "@wordpress/block-editor";
 import { useEffect, useRef } from 'react';
 import { withSelect } from "@wordpress/data";
-
 import { tabController } from '../../../../bpl-tools/utils/functions';
-
 import { parallaxInit } from '../../utils/functions';
-import Style from '../Common/Style';
-import BlurEffectParallax from '../Common/Themes/BlurEffectParallax';
-import Settings from './Settings/Settings';
-import VerticalParallax from "../Common/Themes/VerticalParallax";
-import DefultParallax from "../Common/Themes/DefultParallax";
 import { usePremiumInEditor } from "../../../../bpl-tools/hooks";
 
 const Edit = props => {
@@ -17,41 +15,34 @@ const Edit = props => {
 	const { speed, selectedTheme = "default" } = attributes;
 	const blockProps = useBlockProps();
 	const { isPremium } = usePremiumInEditor("ssbUtils", "ssbPremiumChecker");
-	console.log(isPremium);
 	
-
 	useEffect(() => tabController(), [isSelected]);
 
 	const parallaxImgEl = useRef(null);
 	useEffect(() => {
 		if (parallaxImgEl?.current) {
-			parallaxInit(parallaxImgEl.current, parallaxImgEl.current.parentElement);
-
-			document.addEventListener('scroll', () => {
 				parallaxInit(parallaxImgEl.current, parallaxImgEl.current.parentElement);
-			});
+				document.addEventListener('scroll', () => {
+				parallaxInit(parallaxImgEl.current, parallaxImgEl.current.parentElement);
+				});
 		}
 	}, [parallaxImgEl?.current, speed]);
 
 	// =============================================================== //
 
 	const form = "server"
-
 	return (
 		<>
-			<Settings attributes={attributes} setAttributes={setAttributes} device={device} isPremium={ isPremium} />
-
+			<Settings {...{attributes, setAttributes, device, isPremium}} />
+			
 			<div {...blockProps}>
+
 				<Style attributes={attributes} id={blockProps.id} />
 
-				{/*  */}
-				
-				{
-					selectedTheme === "default" ? <DefultParallax speed={speed} parallaxImgEl={parallaxImgEl} /> : selectedTheme === "theme1" ? <BlurEffectParallax {...{ form, attributes, setAttributes }} /> : selectedTheme === "theme2" ? <VerticalParallax {...{ form, attributes, setAttributes }} /> : ""
-				}
-
+					{
+						selectedTheme === "default" ? <DefultParallax speed={speed} parallaxImgEl={parallaxImgEl} /> : selectedTheme === "theme1" ? <BlurEffectParallax {...{ form, attributes, setAttributes }} /> : selectedTheme === "theme2" ? <VerticalParallax {...{ form, attributes, setAttributes }} /> : ""
+					}
 			</div >
-
 		</>
 	);
 };

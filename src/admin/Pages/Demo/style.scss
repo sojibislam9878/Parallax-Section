@@ -1,0 +1,288 @@
+$containerWidth: 70%;
+$adds: "admin-dashboard";
+$addsM: "admin-dashboard-image-modal";
+$demoCol: var(--bpl-admin-demo-col, 2);
+$itemHeight: var(--bpl-admin-demo-item-height, 270px);
+
+
+@mixin bpl-admin-btn {
+  padding: 7px 12px;
+  border-radius: 5px;
+  background: #fff;
+  color: #007aff;
+  border: 1px solid #007aff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  z-index: 1;
+  position: relative;
+  overflow: hidden;
+  font-weight: 400;
+  font-family: inherit;
+
+  &:hover {
+    background-color: #007aff;
+    color: #fff;
+  }
+
+  svg {
+    font-size: 22px;
+  }
+}
+
+
+.#{$adds}-demo-wrapper {
+  width: $containerWidth;
+  margin: 0 auto;
+
+  .#{$adds}-navigation-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 200px;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    background: #fff;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.1882352941);
+
+    .bpl-button {
+      font-size: 16px;
+      border: none;
+      border-bottom-width: medium;
+      border-bottom-style: none;
+      border-bottom-color: currentcolor;
+      background: transparent;
+      font-weight: 400;
+      color: #000;
+      margin-right: 5px;
+      padding: 2px 4px;
+      cursor: pointer;
+
+      &.bpl-button-active {
+        // border-bottom: 1px solid #007aff;
+        // color: #007aff;
+        border-bottom: 2px solid #1f2a38;
+        color: #1f2a38;
+      }
+    }
+  }
+
+  .#{$adds}-upgrade-btn {
+    @include bpl-admin-btn;
+
+    svg {
+      font-size: 22px;
+    }
+  }
+
+  .#{$adds}-demo-items-container {
+    display: grid;
+    grid-template-columns: repeat($demoCol, 1fr);
+    gap: 10px;
+
+    .#{$adds}-demo-item {
+
+      border: 1px solid #c6c1c178;
+      // padding: 2px;
+      // border-radius: 3px;
+
+      .img {}
+
+      .#{$adds}-demo-item-img {
+        position: relative;
+        height: $itemHeight;
+        width: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+      .btn_overly {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #0000006b;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+
+        p {
+          background: #fff;
+          padding: 1px 5px;
+          font-size: 14px;
+          font-weight: 500;
+          color: #000;
+        }
+      }
+
+      &:hover .btn_overly {
+        visibility: visible;
+        opacity: 1;
+      }
+
+      .button_area {
+        display: flex;
+        align-content: center;
+        justify-content: space-between;
+        padding: 10px 5px;
+
+        a {
+          @include bpl-admin-btn;
+
+        }
+      }
+    }
+  }
+}
+
+// .#{$addsM}-wrapper {
+//     position: fixed;
+//     inset: 0;
+//     background-color: #c9c9c92b;
+//     backdrop-filter: blur(3px);
+//     z-index: 9999999;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+
+//     .#{$addsM}-img-container {
+//         position: relative;
+//         svg {
+//             height: 24px;
+//             width: 24px;
+//             fill: #3b3b3b;
+//             cursor: pointer;
+//             position: absolute;
+//             top: 20px;
+//             right: 20px;
+//         }
+//         width: 60%;
+//         height: 80%;
+
+//         img {
+//             width: 100%;
+//             height: 100%;
+//         }
+//     }
+// }
+
+.#{$addsM}-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+
+  .#{$addsM}-img-container {
+    position: relative;
+    width: 60%;
+    height: 80%;
+
+    .#{$addsM}-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 30px;
+      height: 30px;
+      fill: white;
+      cursor: pointer;
+      z-index: 10;
+      transition: transform 0.2s;
+      filter: drop-shadow(0px 0px 6px black);
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+
+    .#{$addsM}-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      font-size: 2rem;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 10;
+      transition: background 0.2s;
+
+      &:hover {
+        background: rgba(0, 0, 0, 0.8);
+      }
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      svg {
+        height: 20px;
+        width: 20px;
+        fill: #fff;
+      }
+    }
+
+    .#{$addsM}-prev {
+      left: 20px;
+    }
+
+    .#{$addsM}-next {
+      right: 20px;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .#{$addsM}-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      text-align: center;
+      color: white;
+      padding: 10px;
+      // background: rgb(0 0 0 / 32%);
+      // backdrop-filter: blur(3px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(90deg,
+          rgba(39, 39, 140, 1) 0%,
+          rgba(9, 9, 121, 1) 5%,
+          rgba(0, 212, 255, 1) 79%,
+          rgba(0, 212, 255, 1) 88%,
+          rgba(0, 212, 255, 1) 91%);
+
+      p {
+        color: #fff;
+        font-size: 14px;
+      }
+    }
+
+    .#{$addsM}-upgrade-btn {
+      @include bpl-admin-btn;
+
+      svg {
+        font-size: 22px;
+      }
+    }
+  }
+}

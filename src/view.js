@@ -1,10 +1,10 @@
 import { createRoot } from 'react-dom/client';
-
 import Style from './Components/Common/Style';
 import BlurEffectParallax from './Components/Common/Themes/BlurEffectParallax';
 import './style.scss';
 import { parallaxInit } from './utils/functions';
 import VerticalParallax from './Components/Common/Themes/VerticalParallax';
+import { useState } from 'react';
 
 document.addEventListener('DOMContentLoaded', () => {
 	const parallaxEls = document.querySelectorAll('.wp-block-psb-parallax');
@@ -14,32 +14,35 @@ document.addEventListener('DOMContentLoaded', () => {
 		const attributes = JSON.parse(parallaxEl.dataset.attributes);
 		const { selectedTheme } = attributes;
 		const className = parallaxEl.className;
-		// const clientId = parallaxEl.id;
-		console.log(selectedTheme);
-
-
-
 
 
 		if (selectedTheme === "default") {
+			const styleRoot = document.createElement('div');
+			parallaxEl.insertBefore(styleRoot, parallaxEl.firstChild);
+			createRoot(styleRoot).render(
+				<Style {...{ attributes, id: parallaxEl.id }} />
+			);
+
 			if (parallaxImgEl) {
 				parallaxInit(parallaxImgEl, parallaxImgEl.parentElement);
-
 				document.addEventListener('scroll', () => {
 					parallaxInit(parallaxImgEl, parallaxImgEl.parentElement);
 				});
 			}
-		} else {
-			createRoot(parallaxEl).render(<>
+		}
+		
+		
+		else {
+			createRoot(parallaxEl).render(
 				<div className={className} id={parallaxEl.id}>
 					<Style {...{ attributes, id: parallaxEl.id }} />
 
 					{
-							selectedTheme === "theme1" ? <BlurEffectParallax {...{ attributes }} /> : selectedTheme === "theme2" ? <VerticalParallax {...{ attributes }} /> : ""
+						selectedTheme === "theme1" ? <BlurEffectParallax {...{ attributes }} /> : selectedTheme === "theme2" ? <VerticalParallax {...{ attributes }} /> : ""
 					}
 
 				</div>
-			</>)
+			)
 		}
 	});
 });

@@ -6,7 +6,6 @@ import { BControlPro } from "../../../../../../bpl-tools/ProControls";
 
 const Style = ({ attributes, setAttributes, premiumProps }) => {
   const { background, selectedTheme, contents, styles } = attributes;
-
   const { title, description, btn } = contents || {}
 
   return (
@@ -38,6 +37,7 @@ const Style = ({ attributes, setAttributes, premiumProps }) => {
               Component={ColorControl}
               {...premiumProps}
             />
+
             <BControlPro
               label="Header Typo"
               value={title.typo}
@@ -78,7 +78,6 @@ const Style = ({ attributes, setAttributes, premiumProps }) => {
             />
           </>
         }
-
       </PanelBody>
     </>
   );

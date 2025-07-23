@@ -49,23 +49,26 @@ define( 'PARALLAX_HAS_PRO', file_exists( dirname(__FILE__) . '/freemius/start.ph
 				}
 				$apbConfig =  array(
 						'id'                  => '19833',
-						'slug'                => 'parallax-section',
-						'type'                => 'plugin',
-						'public_key'          => 'pk_b230abfa498765ac9fd6a75cdfde2',
-						'is_premium'          => true,
-						'premium_suffix'      => 'Pro',
-						// If your plugin is a serviceware, set this option to false.
-						'has_premium_version' => true,
-						'has_addons'          => false,
-						'has_paid_plans'      => true,
-						'trial'               => array(
-								'days'               => 7,
-								'is_require_payment' => false,
-						),
-						'menu'                => array(
-								'first-path'     => 'plugins.php',
-								'support'        => false,
-						),
+                'slug'                => 'parallax-section',
+                'type'                => 'plugin',
+                'public_key'          => 'pk_b230abfa498765ac9fd6a75cdfde2',
+                'is_premium'          => true,
+                'premium_suffix'      => 'Pro',
+                // If your plugin is a serviceware, set this option to false.
+                'has_premium_version' => true,
+                'has_addons'          => false,
+                'has_paid_plans'      => true,
+                'trial'               => array(
+                    'days'               => 7,
+                    'is_require_payment' => false,
+                ),
+                'menu'                => array(
+                    'slug'           => 'parallax-section-dashboard',
+                    'support'        => false,
+                    'parent'         => array(
+                        'slug' => 'tools.php',
+                    ),
+                ),
 				);
 				$ps_fs = PARALLAX_HAS_PRO ? fs_dynamic_init( $apbConfig ) : fs_lite_dynamic_init( $apbConfig );
 			}
@@ -130,6 +133,8 @@ if( !class_exists( 'PSBPlugin' ) ){
 	new PSBPlugin();
 }
 }
+
+require_once PSB_DIR_PATH . '/includes/adminMenu.php';
 
 // Constant
 

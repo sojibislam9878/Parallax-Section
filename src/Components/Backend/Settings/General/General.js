@@ -42,12 +42,11 @@ const General = ({ attributes, setAttributes, device, premiumProps }) => {
               onChange={(value) =>
                 setAttributes(themeChanger(value, attributes, device))
               }
-              // onChange={(value) => setAttributes({ selectedTheme: updateData(selectedTheme, value) })}
             />
           </FlexBlock>
         </Flex>
 
-        {/* for default theme  */}
+                         {/* for default theme  */}
         {selectedTheme === "default" && <>
           <UnitControl
             className='mt20'
@@ -68,11 +67,11 @@ const General = ({ attributes, setAttributes, device, premiumProps }) => {
         </>
         }
 
-        {/* common for theme 1 & 2 */}
+                          {/* common for theme 1 & 2 */}
         {
           selectedTheme != "default" && <>
             <PanelRow>
-              <Label className="mt0">{__("Min Height", "section-collection")}</Label>
+              <Label className="mt0">{__("Min Height", "parallax-section")}</Label>
               <Device />
             </PanelRow>
             <BControlPro
@@ -87,8 +86,9 @@ const General = ({ attributes, setAttributes, device, premiumProps }) => {
               Component={UnitControl}
               {...premiumProps}
             />
+
             <PanelRow>
-              <Label className="mt0">{__("Width", "section-collection")}</Label>
+              <Label className="mt0">{__("Width", "parallax-section")}</Label>
               <Device />
             </PanelRow>
             <BControlPro
@@ -106,7 +106,7 @@ const General = ({ attributes, setAttributes, device, premiumProps }) => {
             />
 
             <PanelRow>
-              <Label className="mt0">{__("margin", "section-collection")}</Label>
+              <Label className="mt0">{__("margin", "parallax-section")}</Label>
               <Device />
             </PanelRow>
             <BControlPro
@@ -121,7 +121,6 @@ const General = ({ attributes, setAttributes, device, premiumProps }) => {
               {...premiumProps}
             />
 
-
             <BControlPro
               value={styles?.textAlign}
               className="mt10" label="Text Align"
@@ -132,9 +131,9 @@ const General = ({ attributes, setAttributes, device, premiumProps }) => {
             />
 
             <BControlPro
-              placeholder={__("title...", "section-collection")}
+              placeholder={__("title...", "parallax-section")}
               className="mt5"
-              label={__("Title", "section-collection")}
+              label={__("Title", "parallax-section")}
               onChange={(value) =>
                 setAttributes({
                   contents: updateData(contents, value, "title", "text"),
@@ -146,9 +145,9 @@ const General = ({ attributes, setAttributes, device, premiumProps }) => {
             />
 
             <BControlPro
-              placeholder={__("description...", "section-collection")}
+              placeholder={__("description...", "parallax-section")}
               className="mt5"
-              label={__("Description", "section-collection")}
+              label={__("Description", "parallax-section")}
               value={contents.description.text}
               onChange={(value) =>
                 setAttributes({
@@ -177,12 +176,13 @@ const General = ({ attributes, setAttributes, device, premiumProps }) => {
               />
               <p className="mt10">Show Button</p>
             </Flex>
+
             {contents.btn.status && (
               <>
                 <BControlPro
-                  placeholder={__("button text...", "section-collection")}
+                  placeholder={__("button text...", "parallax-section")}
                   className="mt5"
-                  label={__("Button Text", "section-collection")}
+                  label={__("Button Text", "parallax-section")}
                   onChange={(value) =>
                     setAttributes({
                       contents: updateData(contents, value, "btn", "text"),
@@ -192,10 +192,11 @@ const General = ({ attributes, setAttributes, device, premiumProps }) => {
                   Component={InputControl}
                   {...premiumProps}
                 />
+
                 <BControlPro
-                  placeholder={__("link...", "section-collection")}
+                  placeholder={__("link...", "parallax-section")}
                   className="mt5"
-                  label={__("Button Link", "section-collection")}
+                  label={__("Button Link", "parallax-section")}
                   onChange={(value) =>
                     setAttributes({
                       contents: updateData(contents, value, "btn", "link"),
@@ -205,6 +206,7 @@ const General = ({ attributes, setAttributes, device, premiumProps }) => {
                   Component={InputControl}
                   {...premiumProps}
                 />
+
                 <Flex justify="start" align="center" gap={2}>
                   <BControlPro
                     checked={options.isNewTab}

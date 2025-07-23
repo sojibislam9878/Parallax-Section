@@ -2,12 +2,12 @@ import { getSpaceCSS } from '../../../../bpl-tools/utils/getCSS';
 import { getBackgroundCSS, getBoxCSS, getColorsCSS, getTypoCSS } from '../../../../bpl-tools/utils/getCSS';
 
 const Style = ({ attributes, id }) => {
-	const { verticalAlign, textAlign, background, minHeight, padding, layout, styles, contents } = attributes;
+	const { verticalAlign, textAlign, background, minHeight, padding, layout, styles, contents, selectedTheme } = attributes;
+
+	const mainBlk = `.wp-block-psb-parallax`;
 
 	const mainSl = `#${id}`;
 	// console.log(mainSl);
-
-	const theme1Sl = `${mainSl} .BPDefaultParallx`
 	
 
 
@@ -41,16 +41,25 @@ const Style = ({ attributes, id }) => {
     ${getTypoCSS(titleSL, contents?.title?.typo)?.styles}
     ${getTypoCSS(descriptionSL, contents?.description?.typo)?.styles}
 
-		${theme1Sl}{
+		${selectedTheme === "default" && `
+				${mainBlk}{
+					position: relative;
+					overflow: hidden;
+				}
+		`}
+		
+
+		${mainSl}{
 			min-height: ${minHeight};
 		}
-		${theme1Sl} .psbParallaxSection{
+
+		${mainSl} .psbParallaxSection{
 			justify-content: ${verticalAlign};
 			text-align: ${textAlign};
 			min-height: ${minHeight};
 			padding: ${getSpaceCSS(padding)};
 		}
-		${theme1Sl} .psbParallaxImg{
+		${mainSl} .psbParallaxImg{
 			${getBackgroundCSS(background)}
 		}
 
@@ -83,8 +92,6 @@ const Style = ({ attributes, id }) => {
 					}
 				}
 	
-	
-	
 			@media  (min-width:641px) and (max-width: 1024px){
 					${sectionSl}{
 					width:${layout.width.tablet};
@@ -102,12 +109,6 @@ const Style = ({ attributes, id }) => {
 					margin:${getBoxCSS(layout.margin.mobile)};
 					}
 				}
-
-
-
-
-
-
 
 				${parallaxItemSL}{
 					${getBackgroundCSS(styles.background)}
