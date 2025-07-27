@@ -12,10 +12,11 @@ const ParticleParallax = () => {
 
     let particlesArray = [];
     let scrollY = 0;
+    let initialTop = 0;
 
     function setCanvasSize() {
       canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight + 200;
+      canvas.height = window.innerHeight + 500;
     }
 
     function createParticles() {
@@ -33,7 +34,12 @@ const ParticleParallax = () => {
     }
 
     const component = document.getElementById("main-container");
-    const initialTop = component.getBoundingClientRect().top + window.scrollY;
+    if (component) {
+      const rect = component.getBoundingClientRect();
+      initialTop = rect.top + window.scrollY;
+    } else {
+      console.warn("main-container not found — maybe not rendered in this view");
+    }
 
     const onScroll = () => {
       scrollY = window.scrollY - initialTop;
@@ -81,15 +87,14 @@ const ParticleParallax = () => {
         text.style.transform = `translateY(${scrollY * 0.1}px)`;
       }
 
-      const parallaxParticle = canvas;
-      if (parallaxParticle) {
-        parallaxParticle.style.transform = `translateY(${-scrollY * 0.3}px)`;
+      if (canvas) {
+        canvas.style.transform = `translateY(${-scrollY * 0.3}px)`;
       }
 
       const cube = document.getElementById("cube");
       if (cube) {
-        const rotateX = 45 + scrollY * 0.1;
-        const rotateY = 45 + scrollY * 0.06;
+        const rotateX = 13 + scrollY * 0.1;
+        const rotateY = 35 + scrollY * 0.06;
         cube.style.transform = `translateY(${scrollY * 0.1}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
       }
 
@@ -115,7 +120,6 @@ const ParticleParallax = () => {
 
   return (
     <div className="bpParticleParallax">
-      {/* <div style={{ minHeight: "500px", backgroundColor: "aqua" }}></div> */}
       <div className="hero-container" id="main-container">
         <canvas ref={canvasRef} id="particles-canvas"></canvas>
 
@@ -144,7 +148,6 @@ const ParticleParallax = () => {
           <div className="face right"></div>
         </div>
       </div>
-      {/* <div style={{ minHeight: "500px", backgroundColor: "aqua" }}></div> */}
     </div>
   );
 };
