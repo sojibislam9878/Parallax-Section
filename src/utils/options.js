@@ -10,7 +10,8 @@ export const generalStyleTabs = [
 export const themeOptions = [
   { label: 'Default', value: 'default' },
   { label: 'Style 1', value: 'theme1' },
-  { label: 'Style 2', value: 'theme2' }
+  { label: 'Style 2', value: 'theme2' },
+  { label: 'Style 3', value: 'theme3' }
 ]
 
 export const textAlignOptions = [

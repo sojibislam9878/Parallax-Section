@@ -8,8 +8,12 @@ import Style from './Style/Style';
 import General from './General/General';
 import { generalStyleTabs } from '../../../utils/options';
 import { AboutProModal } from "../../../../../bpl-tools/ProControls";
+import { BplBlockPreview } from '../../../../../bpl-tools/Components';
+import themes from './Style/themes.json'
+import { updateData } from '../../../utils/functions';
 
-const Settings = ({ attributes, setAttributes, device, isPremium}) => {
+const Settings = ({ attributes, setAttributes, device, isPremium, clientId}) => {
+	
 	const { verticalAlign, textAlign } = attributes;
 	const [isProModalOpen, setIsProModalOpen] = useState(false);
 	const premiumProps = { isPremium, setIsProModalOpen };
@@ -51,6 +55,10 @@ const Settings = ({ attributes, setAttributes, device, isPremium}) => {
 				]}
 			/>
 			<AlignmentToolbar value={textAlign} onChange={val => setAttributes({ textAlign: val })} />
+			
+			<BplBlockPreview isPremium={isPremium} blocks={themes} clientId={clientId} value={attributes.selectedTheme} onChange={(value) => setAttributes({ selectedTheme: updateData(attributes, value, "selectedTheme"), })
+			} />
+
 		</BlockControls>
 
 		<AboutProModal

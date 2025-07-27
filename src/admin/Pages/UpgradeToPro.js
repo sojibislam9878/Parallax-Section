@@ -1,5 +1,4 @@
 import Layout from "../Layout/Layout"
-import Header from "../Parts/Header"
 
 const UpgradeToPro = ({ isPremium }) => {
   return (

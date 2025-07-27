@@ -4,7 +4,7 @@ import BlurEffectParallax from './Components/Common/Themes/BlurEffectParallax';
 import './style.scss';
 import { parallaxInit } from './utils/functions';
 import VerticalParallax from './Components/Common/Themes/VerticalParallax';
-import { useState } from 'react';
+import ParticleParallax from './Components/Common/Themes/ParticleParallax';
 
 document.addEventListener('DOMContentLoaded', () => {
 	const parallaxEls = document.querySelectorAll('.wp-block-psb-parallax');
@@ -37,9 +37,18 @@ document.addEventListener('DOMContentLoaded', () => {
 				<div className={className} id={parallaxEl.id}>
 					<Style {...{ attributes, id: parallaxEl.id }} />
 
-					{
-						selectedTheme === "theme1" ? <BlurEffectParallax {...{ attributes }} /> : selectedTheme === "theme2" ? <VerticalParallax {...{ attributes }} /> : ""
-					}
+					{(() => {
+						switch (selectedTheme) {
+							case "theme1":
+								return <BlurEffectParallax {...{ attributes }} />;
+							case "theme2":
+								return <VerticalParallax {...{ attributes }} />;
+							case "theme3":
+								return <ParticleParallax {...{ attributes }} />;
+							default:
+								return null;
+						}
+					})()}
 
 				</div>
 			)

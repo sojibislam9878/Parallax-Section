@@ -2451,6 +2451,162 @@ const BlurEffectParallax = ({
 
 /***/ }),
 
+/***/ "./src/Components/Common/Themes/ParticleParallax.js":
+/*!**********************************************************!*\
+  !*** ./src/Components/Common/Themes/ParticleParallax.js ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+const ParticleParallax = () => {
+  const canvasRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+    let particlesArray = [];
+    let scrollY = 0;
+    function setCanvasSize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight + 200;
+    }
+    function createParticles() {
+      const count = Math.floor(window.innerWidth / 5);
+      particlesArray = [];
+      for (let i = 0; i < count; i++) {
+        const size = Math.random() * 5 + 1;
+        const x = Math.random() * canvas.width;
+        const y = Math.random() * canvas.height;
+        const speedX = Math.random() * 0.5 - 0.25;
+        const speedY = Math.random() * 0.5 - 0.25;
+        const color = `rgba(255, 255, 255, ${Math.random() * 0.3})`;
+        particlesArray.push({
+          x,
+          y,
+          size,
+          speedX,
+          speedY,
+          color
+        });
+      }
+    }
+    const component = document.getElementById("main-container");
+    const initialTop = component.getBoundingClientRect().top + window.scrollY;
+    const onScroll = () => {
+      scrollY = window.scrollY - initialTop;
+      if (scrollY < 0) scrollY = 0;
+    };
+    window.addEventListener("scroll", onScroll);
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particlesArray.forEach(p => {
+        p.x += p.speedX;
+        p.y += p.speedY + scrollY * 0.0002;
+        if (p.x < 0) p.x = canvas.width;
+        if (p.x > canvas.width) p.x = 0;
+        if (p.y < 0) p.y = canvas.height;
+        if (p.y > canvas.height) p.y = 0;
+        ctx.fillStyle = p.color;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+      });
+      for (let i = 0; i < particlesArray.length; i++) {
+        for (let j = i + 1; j < particlesArray.length; j++) {
+          const dx = particlesArray[i].x - particlesArray[j].x;
+          const dy = particlesArray[i].y - particlesArray[j].y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          if (distance < 100) {
+            ctx.beginPath();
+            ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
+            ctx.lineTo(particlesArray[j].x, particlesArray[j].y);
+            ctx.strokeStyle = `rgba(255,255,255,${0.1 * (1 - distance / 100)})`;
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+          }
+        }
+      }
+      const text = document.getElementById("parallax-text");
+      if (text) {
+        text.style.transform = `translateY(${scrollY * 0.1}px)`;
+      }
+      const parallaxParticle = canvas;
+      if (parallaxParticle) {
+        parallaxParticle.style.transform = `translateY(${-scrollY * 0.3}px)`;
+      }
+      const cube = document.getElementById("cube");
+      if (cube) {
+        const rotateX = 45 + scrollY * 0.1;
+        const rotateY = 45 + scrollY * 0.06;
+        cube.style.transform = `translateY(${scrollY * 0.1}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      }
+      requestAnimationFrame(animate);
+    }
+    const onResize = () => {
+      setCanvasSize();
+      createParticles();
+    };
+    window.addEventListener("resize", onResize);
+    setCanvasSize();
+    createParticles();
+    animate();
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onResize);
+    };
+  }, []);
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "bpParticleParallax"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "hero-container",
+    id: "main-container"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("canvas", {
+    ref: canvasRef,
+    id: "particles-canvas"
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "hero-content"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "text-content",
+    id: "parallax-text"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h1", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "gradient-text"
+  }, "Connect"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "block"
+  }, "The Digital World")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "Building the infrastructure for the next generation of the internet. Secure, scalable, and decentralized."), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "buttons"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    className: "btn gradient-btn"
+  }, "Join Network \u279C"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    className: "btn outline-btn"
+  }, "Learn More")))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "floating-cube",
+    id: "cube"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "face front"
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "face back"
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "face top"
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "face bottom"
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "face left"
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "face right"
+  }))));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ParticleParallax);
+
+/***/ }),
+
 /***/ "./src/Components/Common/Themes/VerticalParallax.js":
 /*!**********************************************************!*\
   !*** ./src/Components/Common/Themes/VerticalParallax.js ***!
@@ -2748,6 +2904,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./style.scss */ "./src/style.scss");
 /* harmony import */ var _utils_functions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./utils/functions */ "./src/utils/functions.js");
 /* harmony import */ var _Components_Common_Themes_VerticalParallax__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Components/Common/Themes/VerticalParallax */ "./src/Components/Common/Themes/VerticalParallax.js");
+/* harmony import */ var _Components_Common_Themes_ParticleParallax__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Components/Common/Themes/ParticleParallax */ "./src/Components/Common/Themes/ParticleParallax.js");
 
 
 
@@ -2785,11 +2942,24 @@ document.addEventListener('DOMContentLoaded', () => {
       }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components_Common_Style__WEBPACK_IMPORTED_MODULE_2__["default"], {
         attributes,
         id: parallaxEl.id
-      }), selectedTheme === "theme1" ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components_Common_Themes_BlurEffectParallax__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        attributes
-      }) : selectedTheme === "theme2" ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components_Common_Themes_VerticalParallax__WEBPACK_IMPORTED_MODULE_6__["default"], {
-        attributes
-      }) : ""));
+      }), (() => {
+        switch (selectedTheme) {
+          case "theme1":
+            return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components_Common_Themes_BlurEffectParallax__WEBPACK_IMPORTED_MODULE_3__["default"], {
+              attributes
+            });
+          case "theme2":
+            return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components_Common_Themes_VerticalParallax__WEBPACK_IMPORTED_MODULE_6__["default"], {
+              attributes
+            });
+          case "theme3":
+            return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components_Common_Themes_ParticleParallax__WEBPACK_IMPORTED_MODULE_7__["default"], {
+              attributes
+            });
+          default:
+            return null;
+        }
+      })()));
     }
   });
 });

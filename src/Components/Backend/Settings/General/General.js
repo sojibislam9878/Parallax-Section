@@ -21,6 +21,7 @@ import { BControlPro } from "../../../../../../bpl-tools/ProControls";
 
 const General = ({ attributes, setAttributes, device, premiumProps }) => {
   const { minHeight, padding, speed, selectedTheme = "default", contents, layout, styles, options } = attributes;
+  
 
   return (
     <>

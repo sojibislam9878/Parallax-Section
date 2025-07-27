@@ -9,9 +9,10 @@ import { withSelect } from "@wordpress/data";
 import { tabController } from '../../../../bpl-tools/utils/functions';
 import { parallaxInit } from '../../utils/functions';
 import { usePremiumInEditor } from "../../../../bpl-tools/hooks";
+import ParticleParallax from '../Common/Themes/ParticleParallax';
 
 const Edit = props => {
-	const {attributes, setAttributes, isSelected, device} = props;
+	const {attributes, setAttributes, isSelected, device, clientId} = props;
 	const { speed, selectedTheme = "default" } = attributes;
 	const blockProps = useBlockProps();
 	const { isPremium } = usePremiumInEditor("ssbUtils", "ssbPremiumChecker");
@@ -33,15 +34,31 @@ const Edit = props => {
 	const form = "server"
 	return (
 		<>
-			<Settings {...{attributes, setAttributes, device, isPremium}} />
+			<Settings {...{ attributes, setAttributes, device, isPremium, clientId }} />
 			
 			<div {...blockProps}>
 
 				<Style attributes={attributes} id={blockProps.id} />
 
-					{
+					{/* {
 						selectedTheme === "default" ? <DefultParallax speed={speed} parallaxImgEl={parallaxImgEl} /> : selectedTheme === "theme1" ? <BlurEffectParallax {...{ form, attributes, setAttributes }} /> : selectedTheme === "theme2" ? <VerticalParallax {...{ form, attributes, setAttributes }} /> : ""
+					} */}
+				
+				{(() => {
+					switch (selectedTheme) {
+						case "default":
+							return <DefultParallax speed={speed} parallaxImgEl={parallaxImgEl} />;
+						case "theme1":
+							return <BlurEffectParallax {...{ form, attributes, setAttributes }} />;
+						case "theme2":
+							return <VerticalParallax {...{ form, attributes, setAttributes }} />;
+						case "theme3":
+							return <ParticleParallax {...{ form, attributes, setAttributes }} />;
+						default:
+							return null;
 					}
+				})()}
+
 			</div >
 		</>
 	);

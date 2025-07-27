@@ -1,5 +1,5 @@
 import { __ } from '@wordpress/i18n';
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import Layout from "../Layout/Layout";
 import { loadingIcon } from '../utils/icons';
 
@@ -90,8 +90,13 @@ const PopularPlugin = ({ isPremium }) => {
                         {!loading ? <div className="pluginArea">
                             {popularPlugins?.map((singlePlugin, index) => {
                                 const isInstalled = installedPlugins.some(
-                                    (pluginSlug) =>
-                                        pluginSlug === `${singlePlugin?.slug}/${singlePlugin?.slug}.php`
+                                    (pluginSlug) => {
+                                        if (singlePlugin?.slug === "advanced-post-block") {
+                                            return pluginSlug === "advanced-post-block/plugin.php";
+                                        }
+                                        return pluginSlug === `${singlePlugin?.slug}/${singlePlugin?.slug}.php`;
+                                    }
+
                                 );
                                 return (
                                     <div className="item" key={index}>

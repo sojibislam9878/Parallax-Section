@@ -17,8 +17,8 @@ if(!class_exists('bsbAdminMenu')) {
 
         public function adminEnqueueScripts($hook) {
             if ('tools_page_parallax-section-dashboard' === $hook) {
-                wp_enqueue_style( 'icb-admin-style', PSB_DIR_URL . 'build/admin/admin.css', false, PSB_VERSION );
-                wp_enqueue_script( 'icb-admin-script', PSB_DIR_URL . 'build/admin/admin.js', ['react', 'react-dom', 'wp-data', "wp-api", "wp-util", "wp-i18n"], PSB_VERSION, true );
+                wp_enqueue_style( 'icb-admin-style', PSB_DIR_URL . 'build/admin.css', false, PSB_VERSION );
+                wp_enqueue_script( 'icb-admin-script', PSB_DIR_URL . 'build/admin.js', ['react', 'react-dom', 'wp-data', "wp-api", "wp-util", "wp-i18n"], PSB_VERSION, true );
 
                  wp_localize_script('icb-admin-script', 'pluginAction', [
                     'ajaxUrl' => admin_url('admin-ajax.php'),
