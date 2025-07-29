@@ -3,6 +3,7 @@ import { getBackgroundCSS, getBoxCSS, getColorsCSS, getTypoCSS } from '../../../
 
 const Style = ({ attributes, id }) => {
 	const { verticalAlign, textAlign, background, minHeight, padding, layout, styles, contents, selectedTheme } = attributes;
+	
 
 	const mainBlk = `.wp-block-psb-parallax`;
 
@@ -11,7 +12,7 @@ const Style = ({ attributes, id }) => {
 	
 
 
-	// ================== theme 2 ========================= //
+	// ================== theme 1 ========================= //
 	const theme2Sl = `${mainSl} .BPBlurEffectParallax`
 	const sectionSl = `${theme2Sl} .hero`;
 	const bgSl = `${theme2Sl} .hero-bg`;
@@ -20,7 +21,7 @@ const Style = ({ attributes, id }) => {
 	const descriptionSl = `${theme2Sl} p`
 	const btnSl = `${theme2Sl} .btn`
 
-	// =================== theme 3 ======================= //
+	// =================== theme 2 ======================= //
 	const theme3Sl = `${mainSl} .BPVerticalParallax`
 	const parallaxItemSL = `${theme3Sl} .parallax-item`;
 	const textContSL = `${parallaxItemSL} .text-cont`;
@@ -28,9 +29,15 @@ const Style = ({ attributes, id }) => {
 	const descriptionSL = `${textContSL} .description`;
 	const btnSL = `${textContSL} .btn`;
 
+	// ============== theme 3 ========================= //
+	const theme4Sl = `${mainSl} .bpParticleParallax`
+	const particleParallaxSl = `${theme4Sl} .hero-container`
 
-	return <style dangerouslySetInnerHTML={{
-		__html: `
+
+	return (
+    <style
+      dangerouslySetInnerHTML={{
+        __html: `
 		${getTypoCSS("", contents?.title?.typo)?.googleFontLink}
 		${getTypoCSS("", contents?.description?.typo)?.googleFontLink}
 		${getTypoCSS("", contents?.title?.typo)?.googleFontLink}
@@ -41,12 +48,15 @@ const Style = ({ attributes, id }) => {
     ${getTypoCSS(titleSL, contents?.title?.typo)?.styles}
     ${getTypoCSS(descriptionSL, contents?.description?.typo)?.styles}
 
-		${selectedTheme === "default" && `
+		${
+      selectedTheme === "default" &&
+      `
 				${mainBlk}{
 					position: relative;
 					overflow: hidden;
 				}
-		`}
+		`
+    }
 		
 
 		${mainSl}{
@@ -85,10 +95,10 @@ const Style = ({ attributes, id }) => {
 			}
 	
 			${btnSl}{
-				${getColorsCSS(contents.btn.colors)}
+				${getColorsCSS(contents.btns?.btn1.colors)}
 	
 					&:hover{
-					${getColorsCSS(contents.btn.hoverColors)}
+					${getColorsCSS(contents.btns?.btn1.hoverColors)}
 					}
 				}
 	
@@ -129,10 +139,10 @@ const Style = ({ attributes, id }) => {
 				}
 	
 				${btnSL}{
-				${getColorsCSS(contents.btn.colors)}
+				${getColorsCSS(contents.btns?.btn1.colors)}
 	
 					&:hover{
-					${getColorsCSS(contents.btn.hoverColors)}
+					${getColorsCSS(contents.btns?.btn1.hoverColors)}
 					}
 				}
 	
@@ -156,6 +166,14 @@ const Style = ({ attributes, id }) => {
 				}
 
 
+				${particleParallaxSl}{
+					${getBackgroundCSS(styles.background)}
+					width:${layout.width.desktop};
+					height:${layout.height.desktop};
+					margin:${getBoxCSS(layout.margin.desktop)};
+					padding:${getBoxCSS(layout.padding.desktop)};
+					text-align: ${styles.textAlign};
+				}
 
 
 
@@ -163,7 +181,11 @@ const Style = ({ attributes, id }) => {
 
 
 
-		`.replace(/\s+/g, ' ')
-	}} />
+
+
+		`.replace(/\s+/g, " "),
+      }}
+    />
+  );
 }
 export default Style;

@@ -59,6 +59,18 @@
             "fontWeight": 800
           }
         },
+        "subTitle": {
+          "text": "The Digital World",
+          "color": "#2d2d2d",
+          "typo": {
+            "fontSize": {
+              "desktop": 64,
+              "tablet": 54,
+              "mobile": 26
+            },
+            "fontWeight": 800
+          }
+        },
         "description": {
           "text": "Explore the world with our unique adventures and create memories that last a lifetime",
           "color": "white",
@@ -72,17 +84,32 @@
           }
         },
 
-        "btn": {
-          "status": true,
-          "text": "Get Started",
-          "link": "#",
-          "colors": {
-            "color": "white",
-            "bg": "#ff4757"
+        "btns": {
+          "btn1":{
+            "status": true,
+            "text": "Get Started",
+            "link": "#",
+            "colors": {
+              "color": "white",
+              "bg": "#ff4757"
+            },
+            "hoverColors": {
+              "color": "white",
+              "bg": "#ff6b81"
+            }
           },
-          "hoverColors": {
-            "color": "white",
-            "bg": "#ff6b81"
+          "btn2":{
+            "status": true,
+            "text": "Learn More",
+            "link": "#",
+            "colors": {
+              "color": "white",
+              "bg": "#ff4757"
+            },
+            "hoverColors": {
+              "color": "white",
+              "bg": "#ff6b81"
+            }
           }
         }
       }
@@ -125,7 +152,7 @@
             "top": "0px",
             "right": "0px",
             "bottom": "0px",
-            "left": "0px"
+            "left": "250px"
           },
           "tablet": {
             "top": "0px",
@@ -156,7 +183,16 @@
           "position": "center right",
           "size": "cover"
         },
-        "textAlign": "left"
+        "textAlign": "left",
+        "particles":{
+          "color":{
+            "r":255,
+            "g":255,
+            "b":255
+          },
+          "movingSpeed":0.5,
+          "density":20
+        }
       }
     },
     "options": {

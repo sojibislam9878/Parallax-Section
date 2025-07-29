@@ -1,6 +1,11 @@
 import { useEffect, useRef } from "react";
 
-const ParticleParallax = () => {
+const ParticleParallax = ({ attributes, setAttributes }) => {
+  const { contents, options, styles } = attributes || {};
+  const { title, description, btns, subTitle } = contents || {};
+  const { particles } = styles || {};
+  const { btn1, btn2 } = btns || {};
+
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -20,15 +25,17 @@ const ParticleParallax = () => {
     }
 
     function createParticles() {
-      const count = Math.floor(window.innerWidth / 5);
+      const count = Math.floor(window.innerWidth / particles.density);
       particlesArray = [];
       for (let i = 0; i < count; i++) {
         const size = Math.random() * 5 + 1;
         const x = Math.random() * canvas.width;
         const y = Math.random() * canvas.height;
-        const speedX = Math.random() * 0.5 - 0.25;
-        const speedY = Math.random() * 0.5 - 0.25;
-        const color = `rgba(255, 255, 255, ${Math.random() * 0.3})`;
+        const speedX = Math.random() * `${particles.movingSpeed}` - 0.25;
+        const speedY = Math.random() * `${particles.movingSpeed}` - 0.25;
+        const color = `rgba(${particles.color.r}, ${particles.color.g}, ${
+          particles.color.b
+        }, ${Math.random() * 0.5})`;
         particlesArray.push({ x, y, size, speedX, speedY, color });
       }
     }
@@ -38,7 +45,9 @@ const ParticleParallax = () => {
       const rect = component.getBoundingClientRect();
       initialTop = rect.top + window.scrollY;
     } else {
-      console.warn("main-container not found — maybe not rendered in this view");
+      console.warn(
+        "main-container not found — maybe not rendered in this view"
+      );
     }
 
     const onScroll = () => {
@@ -51,7 +60,7 @@ const ParticleParallax = () => {
     function animate() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      particlesArray.forEach(p => {
+      particlesArray.forEach((p) => {
         p.x += p.speedX;
         p.y += p.speedY + scrollY * 0.0002;
 
@@ -75,8 +84,10 @@ const ParticleParallax = () => {
             ctx.beginPath();
             ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
             ctx.lineTo(particlesArray[j].x, particlesArray[j].y);
-            ctx.strokeStyle = `rgba(255,255,255,${0.1 * (1 - distance / 100)})`;
-            ctx.lineWidth = 0.5;
+            ctx.strokeStyle = `rgba(${particles.color.r}, ${
+              particles.color.g
+            }, ${particles.color.b},${0.3 * (1 - distance / 100)})`;
+            ctx.lineWidth = 1;
             ctx.stroke();
           }
         }
@@ -95,7 +106,9 @@ const ParticleParallax = () => {
       if (cube) {
         const rotateX = 13 + scrollY * 0.1;
         const rotateY = 35 + scrollY * 0.06;
-        cube.style.transform = `translateY(${scrollY * 0.1}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        cube.style.transform = `translateY(${
+          scrollY * 0.1
+        }px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
       }
 
       requestAnimationFrame(animate);
@@ -116,7 +129,7 @@ const ParticleParallax = () => {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onResize);
     };
-  }, []);
+  }, [particles]);
 
   return (
     <div className="bpParticleParallax">
@@ -126,15 +139,31 @@ const ParticleParallax = () => {
         <div className="hero-content">
           <div className="text-content" id="parallax-text">
             <h1>
-              <span className="gradient-text">Connect</span>
-              <span className="block">The Digital World</span>
+              <span className="gradient-text">{title.text}</span>
+              <span className="block">{subTitle.text}</span>
             </h1>
-            <p>
-              Building the infrastructure for the next generation of the internet. Secure, scalable, and decentralized.
-            </p>
+            <p> {description.text} </p>
             <div className="buttons">
-              <button className="btn gradient-btn">Join Network ➜</button>
-              <button className="btn outline-btn">Learn More</button>
+              {btn1.status && (
+                <a
+                  target={options.isNewTab ? "_blank" : "_self"}
+                  rel="noreferrer"
+                  href={btn1.link}
+                >
+                  <button className="btn gradient-btn">{btn1.text}</button>
+                </a>
+              )}
+              {btn2.status && (
+                <a
+                  target={options.isNewTab ? "_blank" : "_self"}
+                  rel="noreferrer"
+                  href={btn2.link}
+                >
+                  <button className="btn outline-btn">{btn2.text}</button>
+                </a>
+              )}
+              {/* <button className="btn gradient-btn">Join Network ➜</button> */}
+              {/* <button className="btn outline-btn">Learn More</button> */}
             </div>
           </div>
         </div>
@@ -146,6 +175,11 @@ const ParticleParallax = () => {
           <div className="face bottom"></div>
           <div className="face left"></div>
           <div className="face right"></div>
+          {/* <img
+            style={{height:"300px", width:"300px"}}
+            src="https://templates.bplugins.com/wp-content/uploads/2025/07/h124-scaled.jpg"
+            alt=""
+          /> */}
         </div>
       </div>
     </div>

@@ -55,7 +55,7 @@ export const themeChanger = (theme = "theme1", attributes) =>
 		switch (theme) {
 			//======================= case for theme 1 ========================//
 			case "theme1":
-				draft["styles"]["background"]["image"]["url"] ="https://templates.bplugins.com/wp-content/uploads/2025/05/blureffectparallax-scaled.jpeg",
+				// draft["styles"]["background"]["image"]["url"] ="https://templates.bplugins.com/wp-content/uploads/2025/05/blureffectparallax-scaled.jpeg",
 				draft["contents"]["title"]["color"] ="#2d2d2d",
 				draft["styles"]["textAlign"] ="left"
 				break;
@@ -63,7 +63,7 @@ export const themeChanger = (theme = "theme1", attributes) =>
 			//====================== case for theme 2 ===============================//
 
 			case "theme2":
-				draft["styles"]["background"]["image"]["url"] = "https://templates.bplugins.com/wp-content/uploads/2025/05/Screenshot-2025-05-17-105053.png",
+				// draft["styles"]["background"]["image"]["url"] = "https://templates.bplugins.com/wp-content/uploads/2025/05/Screenshot-2025-05-17-105053.png",
 				draft["contents"]["title"]["color"] = "#fff",
 				draft["styles"]["textAlign"] = "center"
 				break;

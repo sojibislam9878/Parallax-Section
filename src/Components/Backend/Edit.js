@@ -39,10 +39,6 @@ const Edit = props => {
 			<div {...blockProps}>
 
 				<Style attributes={attributes} id={blockProps.id} />
-
-					{/* {
-						selectedTheme === "default" ? <DefultParallax speed={speed} parallaxImgEl={parallaxImgEl} /> : selectedTheme === "theme1" ? <BlurEffectParallax {...{ form, attributes, setAttributes }} /> : selectedTheme === "theme2" ? <VerticalParallax {...{ form, attributes, setAttributes }} /> : ""
-					} */}
 				
 				{(() => {
 					switch (selectedTheme) {

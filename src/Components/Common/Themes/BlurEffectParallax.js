@@ -7,11 +7,10 @@ import { updateData } from "../../../utils/functions";
 const BlurEffectParallax = ({ form, setAttributes, attributes }) => {
 
   const { contents, options } = attributes || {};
-  const { title, description, btn } = contents || {};
+  const { title, description, btns } = contents || {};
+  const { btn1} = btns || {};
 
-  // console.log(attributes.styles.background);
-
-
+  console.log(contents, "blur");
 
   const parallaxBgRef = useRef(null);
   const heroContentRef = useRef(null);
@@ -115,7 +114,7 @@ const BlurEffectParallax = ({ form, setAttributes, attributes }) => {
           )}
 
           {
-            btn.status && <a target={options.isNewTab ? "_blank" : "_self"} rel="noreferrer" href={btn.link}><button className="btn">{btn.text}</button></a>
+            btn1.status && <a target={options.isNewTab ? "_blank" : "_self"} rel="noreferrer" href={btn1.link}><button className="btn">{btn1.text}</button></a>
           }
         </div>
       </section>

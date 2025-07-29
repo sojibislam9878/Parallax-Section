@@ -1,4 +1,4 @@
-import { __ } from '@wordpress/i18n';
+import { __ } from "@wordpress/i18n";
 import {
   PanelBody,
   RangeControl,
@@ -8,20 +8,36 @@ import {
   __experimentalUnitControl as UnitControl,
   __experimentalInputControl as InputControl,
   TextareaControl,
-  ToggleControl ,
+  ToggleControl,
   PanelRow,
-} from '@wordpress/components';
-import { pxUnit, emUnit, vhUnit } from '../../../../../../bpl-tools/utils/options';
-import { SpaceControl } from '../../../../../../bpl-tools/Components/Deprecated';
-import { BButtonGroup, BoxControl, Device, Label } from '../../../../../../bpl-tools/Components';
-import { textAlignOptions, themeOptions } from '../../../../utils/options';
-import { themeChanger, updateData } from '../../../../utils/functions';
+} from "@wordpress/components";
+import {
+  pxUnit,
+  emUnit,
+  vhUnit,
+} from "../../../../../../bpl-tools/utils/options";
+import { SpaceControl } from "../../../../../../bpl-tools/Components/Deprecated";
+import {
+  BButtonGroup,
+  BoxControl,
+  Device,
+  Label,
+} from "../../../../../../bpl-tools/Components";
+import { textAlignOptions, themeOptions } from "../../../../utils/options";
+import { themeChanger, updateData } from "../../../../utils/functions";
 import { BControlPro } from "../../../../../../bpl-tools/ProControls";
 
-
 const General = ({ attributes, setAttributes, device, premiumProps }) => {
-  const { minHeight, padding, speed, selectedTheme = "default", contents, layout, styles, options } = attributes;
-  
+  const {
+    minHeight,
+    padding,
+    speed,
+    selectedTheme = "default",
+    contents,
+    layout,
+    styles,
+    options,
+  } = attributes;
 
   return (
     <>
@@ -47,32 +63,36 @@ const General = ({ attributes, setAttributes, device, premiumProps }) => {
           </FlexBlock>
         </Flex>
 
-                         {/* for default theme  */}
-        {selectedTheme === "default" && <>
-          <UnitControl
-            className='mt20'
-            label={__('Min Height:', 'parallax-section')}
-            labelPosition='left' value={minHeight}
-            onChange={val => setAttributes({ minHeight: val })}
-            units={[pxUnit(700), emUnit(45), vhUnit(100)]}
-            isResetValueOnUnitChange={true}
-          />
+        {/* for default theme  */}
+        {selectedTheme === "default" && (
+          <>
+            <UnitControl
+              className="mt20"
+              label={__("Min Height:", "parallax-section")}
+              labelPosition="left"
+              value={minHeight}
+              onChange={(val) => setAttributes({ minHeight: val })}
+              units={[pxUnit(700), emUnit(45), vhUnit(100)]}
+              isResetValueOnUnitChange={true}
+            />
 
-          <SpaceControl
-            className='mt20'
-            label={__('Padding:', 'parallax-section')}
-            value={padding}
-            onChange={val => setAttributes({ padding: val })}
-            defaults={{ vertical: '20px', horizontal: '30px' }}
-          />
-        </>
-        }
+            <SpaceControl
+              className="mt20"
+              label={__("Padding:", "parallax-section")}
+              value={padding}
+              onChange={(val) => setAttributes({ padding: val })}
+              defaults={{ vertical: "20px", horizontal: "30px" }}
+            />
+          </>
+        )}
 
-                          {/* common for theme 1 & 2 */}
-        {
-          selectedTheme != "default" && <>
+        {/* common for theme 1, 2 & 3 */}
+        {selectedTheme != "default" && (
+          <>
             <PanelRow>
-              <Label className="mt0">{__("Min Height", "parallax-section")}</Label>
+              <Label className="mt0">
+                {__("Min Height", "parallax-section")}
+              </Label>
               <Device />
             </PanelRow>
             <BControlPro
@@ -81,7 +101,9 @@ const General = ({ attributes, setAttributes, device, premiumProps }) => {
               max={layout.height[device].includes("%") ? 100 : undefined}
               min={1}
               onChange={(value) =>
-                setAttributes({ layout: updateData(layout, value, "height", device) })
+                setAttributes({
+                  layout: updateData(layout, value, "height", device),
+                })
               }
               value={layout.height[device]}
               Component={UnitControl}
@@ -99,7 +121,9 @@ const General = ({ attributes, setAttributes, device, premiumProps }) => {
               max={layout.width[device].includes("%") ? 100 : undefined}
               min={1}
               onChange={(value) =>
-                setAttributes({ layout: updateData(layout, value, "width", device) })
+                setAttributes({
+                  layout: updateData(layout, value, "width", device),
+                })
               }
               value={layout.width[device]}
               Component={UnitControl}
@@ -122,132 +146,276 @@ const General = ({ attributes, setAttributes, device, premiumProps }) => {
               {...premiumProps}
             />
 
-            <BControlPro
-              value={styles?.textAlign}
-              className="mt10" label="Text Align"
-              options={textAlignOptions}
-              onChange={(value) => setAttributes({ styles: updateData(styles, value, "textAlign") })}
-              Component={BButtonGroup}
-              {...premiumProps}
-            />
+            {/* only for theme 3 */}
+            {selectedTheme === "theme3" && (
+              <>
+                <PanelRow>
+                  <Label className="mt0">
+                    {__("padding", "parallax-section")}
+                  </Label>
+                  <Device />
+                </PanelRow>
+                <BControlPro
+                  className="mt5"
+                  values={layout.padding[device]}
+                  onChange={(value) => {
+                    setAttributes({
+                      layout: updateData(layout, value, "padding", device),
+                    });
+                  }}
+                  Component={BoxControl}
+                  {...premiumProps}
+                />
+              </>
+            )}
 
+            {/* only for theme 1 & theme 2 */}
+            {(selectedTheme === "theme1" || selectedTheme === "theme2") && (
+              <BControlPro
+                value={styles?.textAlign}
+                className="mt10"
+                label="Text Align"
+                options={textAlignOptions}
+                onChange={(value) =>
+                  setAttributes({
+                    styles: updateData(styles, value, "textAlign"),
+                  })
+                }
+                Component={BButtonGroup}
+                {...premiumProps}
+              />
+            )}
+          </>
+        )}
+      </PanelBody>
+
+      {/* Contents for theme 1, 2, 3 */}
+      {selectedTheme != "default" && (
+        <PanelBody
+          className="bPlPanelBody"
+          title={__("Contents", "parallax-section")}
+          initialOpen={false}
+        >
+          <BControlPro
+            placeholder={__("title...", "parallax-section")}
+            className="mt5"
+            label={__("Title", "parallax-section")}
+            onChange={(value) =>
+              setAttributes({
+                contents: updateData(contents, value, "title", "text"),
+              })
+            }
+            value={contents.title.text}
+            Component={InputControl}
+            {...premiumProps}
+          />
+
+          {selectedTheme === "theme3" && (
             <BControlPro
-              placeholder={__("title...", "parallax-section")}
+              placeholder={__("sub title...", "parallax-section")}
               className="mt5"
-              label={__("Title", "parallax-section")}
+              label={__("Sub Title", "parallax-section")}
               onChange={(value) =>
                 setAttributes({
-                  contents: updateData(contents, value, "title", "text"),
+                  contents: updateData(contents, value, "subTitle", "text"),
                 })
               }
-              value={contents.title.text}
+              value={contents.subTitle.text}
               Component={InputControl}
               {...premiumProps}
             />
+          )}
 
+          <BControlPro
+            placeholder={__("description...", "parallax-section")}
+            className="mt5"
+            label={__("Description", "parallax-section")}
+            value={contents.description.text}
+            onChange={(value) =>
+              setAttributes({
+                contents: updateData(contents, value, "description", "text"),
+              })
+            }
+            Component={TextareaControl}
+            {...premiumProps}
+          />
+
+          <Flex justify="start" align="center" gap={2}>
             <BControlPro
-              placeholder={__("description...", "parallax-section")}
-              className="mt5"
-              label={__("Description", "parallax-section")}
-              value={contents.description.text}
-              onChange={(value) =>
+              checked={contents?.btns?.btn1?.status}
+              onChange={() =>
                 setAttributes({
-                  contents: updateData(contents, value, "description", "text"),
+                  contents: updateData(
+                    contents,
+                    !contents.btns.btn1.status,
+                    "btns",
+                    "btn1",
+                    "status"
+                  ),
                 })
               }
-              Component={TextareaControl}
+              Component={ToggleControl}
               {...premiumProps}
             />
+            <p className="mt10">{ selectedTheme === "theme3" ? "Show Button 1" : "Show Button"}</p>
+          </Flex>
 
-            <Flex justify="start" align="center" gap={2}>
+          {contents?.btns?.btn1.status && (
+            <>
               <BControlPro
-                checked={contents.btn.status}
-                onChange={() =>
+                placeholder={__("button text...", "parallax-section")}
+                className="mt5"
+                label={__("Button Text", "parallax-section")}
+                onChange={(value) =>
                   setAttributes({
-                    contents: updateData(
-                      contents,
-                      !contents.btn.status,
-                      "btn",
-                      "status"
-                    ),
+                    contents: updateData(contents, value, "btns", "btn1", "text"),
                   })
                 }
-                Component={ToggleControl }
+                value={contents.btns.btn1.text}
+                Component={InputControl}
                 {...premiumProps}
               />
-              <p className="mt10">Show Button</p>
-            </Flex>
 
-            {contents.btn.status && (
-              <>
+              <BControlPro
+                placeholder={__("link...", "parallax-section")}
+                className="mt5"
+                label={__("Button Link", "parallax-section")}
+                onChange={(value) =>
+                  setAttributes({
+                    contents: updateData(contents, value, "btns", "btn1", "link"),
+                  })
+                }
+                value={contents.btns.btn1.link}
+                Component={InputControl}
+                {...premiumProps}
+              />
+
+              <Flex justify="start" align="center" gap={2}>
                 <BControlPro
-                  placeholder={__("button text...", "parallax-section")}
-                  className="mt5"
-                  label={__("Button Text", "parallax-section")}
-                  onChange={(value) =>
+                  checked={options.isNewTab}
+                  onChange={() =>
                     setAttributes({
-                      contents: updateData(contents, value, "btn", "text"),
+                      options: updateData(
+                        options,
+                        !options.isNewTab,
+                        "isNewTab"
+                      ),
                     })
                   }
-                  value={contents.btn.text}
-                  Component={InputControl}
+                  Component={ToggleControl}
                   {...premiumProps}
                 />
+                <p className="mt10">Open in new tab</p>
+              </Flex>
+            </>
+          )}
 
+          {/* only for theme 3 (btn2) */}
+          {selectedTheme === "theme3" && (
+            <>
+              <Flex justify="start" align="center" gap={2}>
                 <BControlPro
-                  placeholder={__("link...", "parallax-section")}
-                  className="mt5"
-                  label={__("Button Link", "parallax-section")}
-                  onChange={(value) =>
+                  checked={contents?.btns?.btn2.status}
+                  onChange={() =>
                     setAttributes({
-                      contents: updateData(contents, value, "btn", "link"),
+                      contents: updateData(
+                        contents,
+                        !contents.btns.btn2.status,
+                        "btns",
+                        "btn2",
+                        "status"
+                      ),
                     })
                   }
-                  value={contents.btn.link}
-                  Component={InputControl}
+                  Component={ToggleControl}
                   {...premiumProps}
                 />
+                <p className="mt10">Show Button 2</p>
+              </Flex>
 
-                <Flex justify="start" align="center" gap={2}>
+              {contents?.btns?.btn2.status && (
+                <>
                   <BControlPro
-                    checked={options.isNewTab}
-                    onChange={() =>
+                    placeholder={__("button text...", "parallax-section")}
+                    className="mt5"
+                    label={__("Button Text", "parallax-section")}
+                    onChange={(value) =>
                       setAttributes({
-                        options: updateData(options, !options.isNewTab, "isNewTab"),
+                        contents: updateData(
+                          contents,
+                          value,
+                          "btns",
+                          "btn2",
+                          "text"
+                        ),
                       })
                     }
-                    Component={ToggleControl }
+                    value={contents.btns.btn2.text}
+                    Component={InputControl}
                     {...premiumProps}
                   />
-                  <p className="mt10">Open in new tab</p>
-                </Flex>
-              </>
-            )}
-          </>
-        }
 
-      </PanelBody>
+                  <BControlPro
+                    placeholder={__("link...", "parallax-section")}
+                    className="mt5"
+                    label={__("Button Link", "parallax-section")}
+                    onChange={(value) =>
+                      setAttributes({
+                        contents: updateData(
+                          contents,
+                          value,
+                          "btns",
+                          "btn2",
+                          "link"
+                        ),
+                      })
+                    }
+                    value={contents.btns.btn2.link}
+                    Component={InputControl}
+                    {...premiumProps}
+                  />
 
-      {
-        selectedTheme === "default" && <PanelBody
+                  <Flex justify="start" align="center" gap={2}>
+                    <BControlPro
+                      checked={options.isNewTab}
+                      onChange={() =>
+                        setAttributes({
+                          options: updateData(
+                            options,
+                            !options.isNewTab,
+                            "isNewTab"
+                          ),
+                        })
+                      }
+                      Component={ToggleControl}
+                      {...premiumProps}
+                    />
+                    <p className="mt10">Open in new tab</p>
+                  </Flex>
+                </>
+              )}
+            </>
+          )}
+        </PanelBody>
+      )}
+
+      {selectedTheme === "default" && (
+        <PanelBody
           className="bPlPanelBody"
-          title={__("Options", "b-blocks")}
+          title={__("Options", "parallax-section")}
           initialOpen={false}
         >
-          <Label
-            className='mb5'>{__('Speed:', 'parallax-section')}
-          </Label>
+          <Label className="mb5">{__("Speed:", "parallax-section")}</Label>
           <RangeControl
             value={speed}
-            onChange={val => setAttributes({ speed: val })}
+            onChange={(val) => setAttributes({ speed: val })}
             min={-1}
             max={1}
-            step={.01} />
-          <small>{__('0 will not perform parallax', 'parallax-section')}</small>
-
-
+            step={0.01}
+          />
+          <small>{__("0 will not perform parallax", "parallax-section")}</small>
         </PanelBody>
-      }
+      )}
     </>
   );
 };

@@ -6,7 +6,10 @@ import { updateData } from "../../../utils/functions";
 const VerticalParallax = ({ form = "", attributes, setAttributes }) => {
   const parallaxRef = useRef(null);
   const { contents, options } = attributes || {};
-  const { title, description, btn } = contents || {};
+  const { title, description, btns } = contents || {};
+  const { btn1} = btns || {};
+  
+
 
 
   useEffect(() => {
@@ -54,18 +57,32 @@ const VerticalParallax = ({ form = "", attributes, setAttributes }) => {
             </>
           ) : (
             <>
-              <RichText.Content tagName="h2" className="title" value={title.text} />
-              <RichText.Content tagName="p" className="description" value={description.text} />
+              <RichText.Content
+                tagName="h2"
+                className="title"
+                value={title.text}
+              />
+              <RichText.Content
+                tagName="p"
+                className="description"
+                value={description.text}
+              />
             </>
           )}
 
-          {
-            btn.status && <a target={options.isNewTab ? "_blank" : "_self"} rel="noreferrer" href={btn.link}><button className="btn">{btn.text}</button></a>
-          }
+          {btn1?.status && (
+            <a
+              target={options.isNewTab ? "_blank" : "_self"}
+              rel="noreferrer"
+              href={btn1?.link}
+            >
+              <button className="btn">{btn1?.text}</button>
+            </a>
+          )}
         </div>
       </div>
     </section>
-  )
+  );
 }
 
 export default VerticalParallax

@@ -2148,7 +2148,7 @@ const Style = ({
   const mainSl = `#${id}`;
   // console.log(mainSl);
 
-  // ================== theme 2 ========================= //
+  // ================== theme 1 ========================= //
   const theme2Sl = `${mainSl} .BPBlurEffectParallax`;
   const sectionSl = `${theme2Sl} .hero`;
   const bgSl = `${theme2Sl} .hero-bg`;
@@ -2157,13 +2157,17 @@ const Style = ({
   const descriptionSl = `${theme2Sl} p`;
   const btnSl = `${theme2Sl} .btn`;
 
-  // =================== theme 3 ======================= //
+  // =================== theme 2 ======================= //
   const theme3Sl = `${mainSl} .BPVerticalParallax`;
   const parallaxItemSL = `${theme3Sl} .parallax-item`;
   const textContSL = `${parallaxItemSL} .text-cont`;
   const titleSL = `${textContSL} .title`;
   const descriptionSL = `${textContSL} .description`;
   const btnSL = `${textContSL} .btn`;
+
+  // ============== theme 3 ========================= //
+  const theme4Sl = `${mainSl} .bpParticleParallax`;
+  const particleParallaxSl = `${theme4Sl} .hero-container`;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
     dangerouslySetInnerHTML: {
       __html: `
@@ -2221,10 +2225,10 @@ const Style = ({
 			}
 	
 			${btnSl}{
-				${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getColorsCSS)(contents.btn.colors)}
+				${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getColorsCSS)(contents.btns?.btn1.colors)}
 	
 					&:hover{
-					${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getColorsCSS)(contents.btn.hoverColors)}
+					${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getColorsCSS)(contents.btns?.btn1.hoverColors)}
 					}
 				}
 	
@@ -2265,10 +2269,10 @@ const Style = ({
 				}
 	
 				${btnSL}{
-				${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getColorsCSS)(contents.btn.colors)}
+				${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getColorsCSS)(contents.btns?.btn1.colors)}
 	
 					&:hover{
-					${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getColorsCSS)(contents.btn.hoverColors)}
+					${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getColorsCSS)(contents.btns?.btn1.hoverColors)}
 					}
 				}
 	
@@ -2292,6 +2296,14 @@ const Style = ({
 				}
 
 
+				${particleParallaxSl}{
+					${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getBackgroundCSS)(styles.background)}
+					width:${layout.width.desktop};
+					height:${layout.height.desktop};
+					margin:${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(layout.margin.desktop)};
+					padding:${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(layout.padding.desktop)};
+					text-align: ${styles.textAlign};
+				}
 
 
 
@@ -2299,7 +2311,9 @@ const Style = ({
 
 
 
-		`.replace(/\s+/g, ' ')
+
+
+		`.replace(/\s+/g, " ")
     }
   });
 };
@@ -2343,11 +2357,12 @@ const BlurEffectParallax = ({
   const {
     title,
     description,
-    btn
+    btns
   } = contents || {};
-
-  // console.log(attributes.styles.background);
-
+  const {
+    btn1
+  } = btns || {};
+  console.log(contents, "blur");
   const parallaxBgRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   const heroContentRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   const heroSectionRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
@@ -2439,13 +2454,13 @@ const BlurEffectParallax = ({
     tagName: "p",
     className: "description",
     value: description.text
-  })), btn.status && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+  })), btn1.status && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     target: options.isNewTab ? "_blank" : "_self",
     rel: "noreferrer",
-    href: btn.link
+    href: btn1.link
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     className: "btn"
-  }, btn.text)))));
+  }, btn1.text)))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (BlurEffectParallax);
 
@@ -2465,7 +2480,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
 
-const ParticleParallax = () => {
+const ParticleParallax = ({
+  attributes,
+  setAttributes
+}) => {
+  const {
+    contents,
+    options,
+    styles
+  } = attributes || {};
+  const {
+    title,
+    description,
+    btns,
+    subTitle
+  } = contents || {};
+  const {
+    particles
+  } = styles || {};
+  const {
+    btn1,
+    btn2
+  } = btns || {};
   const canvasRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     const canvas = canvasRef.current;
@@ -2480,15 +2516,15 @@ const ParticleParallax = () => {
       canvas.height = window.innerHeight + 500;
     }
     function createParticles() {
-      const count = Math.floor(window.innerWidth / 5);
+      const count = Math.floor(window.innerWidth / particles.density);
       particlesArray = [];
       for (let i = 0; i < count; i++) {
         const size = Math.random() * 5 + 1;
         const x = Math.random() * canvas.width;
         const y = Math.random() * canvas.height;
-        const speedX = Math.random() * 0.5 - 0.25;
-        const speedY = Math.random() * 0.5 - 0.25;
-        const color = `rgba(255, 255, 255, ${Math.random() * 0.3})`;
+        const speedX = Math.random() * `${particles.movingSpeed}` - 0.25;
+        const speedY = Math.random() * `${particles.movingSpeed}` - 0.25;
+        const color = `rgba(${particles.color.r}, ${particles.color.g}, ${particles.color.b}, ${Math.random() * 0.5})`;
         particlesArray.push({
           x,
           y,
@@ -2534,8 +2570,8 @@ const ParticleParallax = () => {
             ctx.beginPath();
             ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
             ctx.lineTo(particlesArray[j].x, particlesArray[j].y);
-            ctx.strokeStyle = `rgba(255,255,255,${0.1 * (1 - distance / 100)})`;
-            ctx.lineWidth = 0.5;
+            ctx.strokeStyle = `rgba(${particles.color.r}, ${particles.color.g}, ${particles.color.b},${0.3 * (1 - distance / 100)})`;
+            ctx.lineWidth = 1;
             ctx.stroke();
           }
         }
@@ -2567,7 +2603,7 @@ const ParticleParallax = () => {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onResize);
     };
-  }, []);
+  }, [particles]);
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "bpParticleParallax"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -2583,15 +2619,23 @@ const ParticleParallax = () => {
     id: "parallax-text"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h1", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "gradient-text"
-  }, "Connect"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+  }, title.text), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "block"
-  }, "The Digital World")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "Building the infrastructure for the next generation of the internet. Secure, scalable, and decentralized."), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, subTitle.text)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, " ", description.text, " "), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "buttons"
+  }, btn1.status && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    target: options.isNewTab ? "_blank" : "_self",
+    rel: "noreferrer",
+    href: btn1.link
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     className: "btn gradient-btn"
-  }, "Join Network \u279C"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+  }, btn1.text)), btn2.status && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    target: options.isNewTab ? "_blank" : "_self",
+    rel: "noreferrer",
+    href: btn2.link
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     className: "btn outline-btn"
-  }, "Learn More")))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, btn2.text))))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "floating-cube",
     id: "cube"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -2647,8 +2691,11 @@ const VerticalParallax = ({
   const {
     title,
     description,
-    btn
+    btns
   } = contents || {};
+  const {
+    btn1
+  } = btns || {};
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     const handleScroll = () => {
       const offset = window.pageYOffset;
@@ -2690,13 +2737,13 @@ const VerticalParallax = ({
     tagName: "p",
     className: "description",
     value: description.text
-  })), btn.status && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+  })), btn1?.status && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     target: options.isNewTab ? "_blank" : "_self",
     rel: "noreferrer",
-    href: btn.link
+    href: btn1?.link
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     className: "btn"
-  }, btn.text)))));
+  }, btn1?.text)))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (VerticalParallax);
 
@@ -2771,13 +2818,15 @@ const themeChanger = (theme = "theme1", attributes) => (0,immer__WEBPACK_IMPORTE
   switch (theme) {
     //======================= case for theme 1 ========================//
     case "theme1":
-      draft["styles"]["background"]["image"]["url"] = "https://templates.bplugins.com/wp-content/uploads/2025/05/blureffectparallax-scaled.jpeg", draft["contents"]["title"]["color"] = "#2d2d2d", draft["styles"]["textAlign"] = "left";
+      // draft["styles"]["background"]["image"]["url"] ="https://templates.bplugins.com/wp-content/uploads/2025/05/blureffectparallax-scaled.jpeg",
+      draft["contents"]["title"]["color"] = "#2d2d2d", draft["styles"]["textAlign"] = "left";
       break;
 
     //====================== case for theme 2 ===============================//
 
     case "theme2":
-      draft["styles"]["background"]["image"]["url"] = "https://templates.bplugins.com/wp-content/uploads/2025/05/Screenshot-2025-05-17-105053.png", draft["contents"]["title"]["color"] = "#fff", draft["styles"]["textAlign"] = "center";
+      // draft["styles"]["background"]["image"]["url"] = "https://templates.bplugins.com/wp-content/uploads/2025/05/Screenshot-2025-05-17-105053.png",
+      draft["contents"]["title"]["color"] = "#fff", draft["styles"]["textAlign"] = "center";
       break;
     default:
       break;
