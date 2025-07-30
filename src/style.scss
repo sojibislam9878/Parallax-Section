@@ -377,32 +377,32 @@ $scroll-factor: 1;
           position: absolute;
           width: 150px;
           height: 150px;
-          border: 1px solid rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(255, 255, 255, 0.11);
           background: rgba(34, 211, 238, 0.05);
           backdrop-filter: blur(2px);
         }
     
         .front  {
            transform: translateZ(75px); 
-          background: rgba(56, 189, 248, 0.1);
+          background: #60caf81a;
           }
         .back   {
            transform: rotateY(180deg) translateZ(75px); 
-          background: rgba(16, 185, 129, 0.1);
+          background: rgba(0, 136, 91, 0.1);
           }
         .right  {
-           transform: rotateY(90deg) translateZ(75px); background: rgba(16, 185, 129, 0.1);
+           transform: rotateY(90deg) translateZ(75px); background: rgba(47, 255, 186, 0.1);
           }
         .left   { 
           transform: rotateY(-90deg) translateZ(75px); 
           background: rgba(56, 189, 248, 0.1);
         }
         .top    { 
-          transform: rotateX(90deg) translateZ(75px); background: rgba(56, 189, 248, 0.1);
+          transform: rotateX(90deg) translateZ(75px); background: rgba(7, 181, 255, 0.1);
         }
         .bottom { 
           transform: rotateX(-90deg) translateZ(75px); 
-          background: rgba(16, 185, 129, 0.1);
+          background: rgba(0, 241, 161, 0.1);
         }
   }
 }
