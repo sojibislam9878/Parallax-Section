@@ -1,11 +1,13 @@
 import { useEffect, useRef } from "react";
+import { __ } from "@wordpress/i18n";
+import { RichText } from "@wordpress/block-editor";
+import { updateData } from "../../../utils/functions";
 
-const ParticleParallax = ({ attributes, setAttributes }) => {
+const ParticleParallax = ({ attributes, setAttributes, isBackend = false }) => {
   const { contents, options, styles } = attributes || {};
   const { title, description, btns, subTitle } = contents || {};
   const { particles } = styles || {};
   const { btn1, btn2 } = btns || {};
-
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -95,7 +97,7 @@ const ParticleParallax = ({ attributes, setAttributes }) => {
 
       const text = document.getElementById("parallax-text");
       if (text) {
-        text.style.transform = `translateY(${scrollY * 0.1}px)`;
+        text.style.transform = `translateY(${scrollY * 0.3}px)`;
       }
 
       if (canvas) {
@@ -104,11 +106,13 @@ const ParticleParallax = ({ attributes, setAttributes }) => {
 
       const cube = document.getElementById("cube");
       if (cube) {
-        const rotateX = 13 + scrollY * 0.1;
-        const rotateY = 35 + scrollY * 0.06;
+        const rotateX = 11 + scrollY * 0.4;
+        const rotateY = 23 + scrollY * 0.2;
+        // const rotateX = 13 + scrollY * 0.1;
+        // const rotateY = 35 + scrollY * 0.06;
         cube.style.transform = `translateY(${
-          scrollY * 0.1
-        }px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+          -scrollY * 0.5
+        }px) rotateX(${-rotateX}deg) rotateY(${-rotateY}deg)`;
       }
 
       requestAnimationFrame(animate);
@@ -139,8 +143,53 @@ const ParticleParallax = ({ attributes, setAttributes }) => {
         <div className="hero-content">
           <div className="text-content" id="parallax-text">
             <h1>
-              <span className="gradient-text">{title.text}</span>
-              <span className="block">{subTitle.text}</span>
+              {isBackend ? (
+                <>
+                  <RichText
+                    tagName="span"
+                    className="gradient-text"
+                    placeholder={__("title...", "parallax-section")}
+                    value={title.text}
+                    onChange={(value) =>
+                      setAttributes({
+                        contents: updateData(contents, value, "title", "text"),
+                      })
+                    }
+                  />
+                  <RichText
+                    tagName="span"
+                    className="block"
+                    placeholder={__("sub title...", "parallax-section")}
+                    value={subTitle.text}
+                    onChange={(value) =>
+                      setAttributes({
+                        contents: updateData(
+                          contents,
+                          value,
+                          "subTitle",
+                          "text"
+                        ),
+                      })
+                    }
+                  />
+                </>
+              ) : (
+                <>
+                  <span
+                    className="gradient-text"
+                    dangerouslySetInnerHTML={{
+                      __html: title.text,
+                    }}
+                  />
+                  <RichText.Content
+                    tagName="span"
+                    className="block"
+                    value={subTitle.text}
+                  />
+                  {/* <span className="gradient-text">{title.text}</span> */}
+                  {/* <span className="block">{subTitle.text}</span> */}
+                </>
+              )}
             </h1>
             <p> {description.text} </p>
             <div className="buttons">

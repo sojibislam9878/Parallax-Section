@@ -30,8 +30,8 @@ const Edit = props => {
 	}, [parallaxImgEl?.current, speed]);
 
 	// =============================================================== //
+	const isBackend = true;
 
-	const form = "server"
 	return (
 		<>
 			<Settings {...{ attributes, setAttributes, device, isPremium, clientId }} />
@@ -45,11 +45,23 @@ const Edit = props => {
 						case "default":
 							return <DefultParallax speed={speed} parallaxImgEl={parallaxImgEl} />;
 						case "theme1":
-							return <BlurEffectParallax {...{ form, attributes, setAttributes }} />;
+							return (
+                <BlurEffectParallax
+                  {...{ isBackend, attributes, setAttributes }}
+                />
+              );
 						case "theme2":
-							return <VerticalParallax {...{ form, attributes, setAttributes }} />;
+							return (
+                <VerticalParallax
+                  {...{ isBackend, attributes, setAttributes }}
+                />
+              );
 						case "theme3":
-							return <ParticleParallax {...{ form, attributes, setAttributes }} />;
+							return (
+                <ParticleParallax
+                  {...{ isBackend, attributes, setAttributes }}
+                />
+              );
 						default:
 							return null;
 					}
