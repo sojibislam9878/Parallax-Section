@@ -2346,7 +2346,7 @@ __webpack_require__.r(__webpack_exports__);
 // import './BlurEffectParallax.css'; // Or move styles to a styled-component or CSS module
 
 const BlurEffectParallax = ({
-  form,
+  isBackend = false,
   setAttributes,
   attributes
 }) => {
@@ -2362,7 +2362,6 @@ const BlurEffectParallax = ({
   const {
     btn1
   } = btns || {};
-  console.log(contents, "blur");
   const parallaxBgRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   const heroContentRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   const heroSectionRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
@@ -2383,8 +2382,8 @@ const BlurEffectParallax = ({
       if (scrollFromSectionTop < 0) {
         parallaxBg.style.transform = `translateY(0px)`;
         parallaxBg.style.filter = `blur(0px) brightness(1)`;
-        heroContent.style.opacity = '1';
-        heroContent.style.transform = 'translateY(0px)';
+        heroContent.style.opacity = "1";
+        heroContent.style.transform = "translateY(0px)";
         return;
       }
 
@@ -2402,21 +2401,21 @@ const BlurEffectParallax = ({
       heroContent.style.opacity = 1 - scrollProgress * 0.7;
       heroContent.style.transform = `translateY(${scrollProgress * 50}px)`;
     };
-    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (mediaQuery.matches) {
-      parallaxBg.style.transform = 'none';
-      parallaxBg.style.filter = 'none';
-      heroContent.style.opacity = '1';
-      heroContent.style.transform = 'none';
+      parallaxBg.style.transform = "none";
+      parallaxBg.style.filter = "none";
+      heroContent.style.opacity = "1";
+      heroContent.style.transform = "none";
       return;
     }
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('resize', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleScroll);
     handleScroll(); // Initial run
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
     };
   }, []);
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -2430,7 +2429,7 @@ const BlurEffectParallax = ({
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "hero-content",
     ref: heroContentRef
-  }, form === "server" ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+  }, isBackend ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     tagName: "h1",
     className: "title",
     placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("title...", "parallax-section"),
@@ -2478,11 +2477,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _utils_functions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../utils/functions */ "./src/utils/functions.js");
+
+
+
 
 
 const ParticleParallax = ({
   attributes,
-  setAttributes
+  setAttributes,
+  isBackend = false
 }) => {
   const {
     contents,
@@ -2578,16 +2586,18 @@ const ParticleParallax = ({
       }
       const text = document.getElementById("parallax-text");
       if (text) {
-        text.style.transform = `translateY(${scrollY * 0.1}px)`;
+        text.style.transform = `translateY(${scrollY * 0.3}px)`;
       }
       if (canvas) {
         canvas.style.transform = `translateY(${-scrollY * 0.3}px)`;
       }
       const cube = document.getElementById("cube");
       if (cube) {
-        const rotateX = 13 + scrollY * 0.1;
-        const rotateY = 35 + scrollY * 0.06;
-        cube.style.transform = `translateY(${scrollY * 0.1}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        const rotateX = 11 + scrollY * 0.4;
+        const rotateY = 23 + scrollY * 0.2;
+        // const rotateX = 13 + scrollY * 0.1;
+        // const rotateY = 35 + scrollY * 0.06;
+        cube.style.transform = `translateY(${-scrollY * 0.5}px) rotateX(${-rotateX}deg) rotateY(${-rotateY}deg)`;
       }
       requestAnimationFrame(animate);
     }
@@ -2617,11 +2627,32 @@ const ParticleParallax = ({
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "text-content",
     id: "parallax-text"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h1", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    className: "gradient-text"
-  }, title.text), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    className: "block"
-  }, subTitle.text)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, " ", description.text, " "), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h1", null, isBackend ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    tagName: "span",
+    className: "gradient-text",
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("title...", "parallax-section"),
+    value: title.text,
+    onChange: value => setAttributes({
+      contents: (0,_utils_functions__WEBPACK_IMPORTED_MODULE_3__.updateData)(contents, value, "title", "text")
+    })
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    tagName: "span",
+    className: "block",
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("sub title...", "parallax-section"),
+    value: subTitle.text,
+    onChange: value => setAttributes({
+      contents: (0,_utils_functions__WEBPACK_IMPORTED_MODULE_3__.updateData)(contents, value, "subTitle", "text")
+    })
+  })) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "gradient-text",
+    dangerouslySetInnerHTML: {
+      __html: title.text
+    }
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, {
+    tagName: "span",
+    className: "block",
+    value: subTitle.text
+  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, " ", description.text, " "), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "buttons"
   }, btn1.status && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     target: options.isNewTab ? "_blank" : "_self",
@@ -2679,7 +2710,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const VerticalParallax = ({
-  form = "",
+  isBackend = false,
   attributes,
   setAttributes
 }) => {
@@ -2713,7 +2744,7 @@ const VerticalParallax = ({
     className: "parallax-item"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "text-cont"
-  }, form === "server" ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+  }, isBackend ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     tagName: "h2",
     className: "title",
     placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("title...", "parallax-section"),

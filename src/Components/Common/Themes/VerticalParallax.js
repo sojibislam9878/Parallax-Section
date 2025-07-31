@@ -3,14 +3,11 @@ import { __ } from "@wordpress/i18n";
 import { RichText } from "@wordpress/block-editor";
 import { updateData } from "../../../utils/functions";
 
-const VerticalParallax = ({ form = "", attributes, setAttributes }) => {
+const VerticalParallax = ({ isBackend = false, attributes, setAttributes }) => {
   const parallaxRef = useRef(null);
   const { contents, options } = attributes || {};
   const { title, description, btns } = contents || {};
-  const { btn1} = btns || {};
-  
-
-
+  const { btn1 } = btns || {};
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,13 +21,11 @@ const VerticalParallax = ({ form = "", attributes, setAttributes }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-
-
   return (
     <section className="BPVerticalParallax">
       <div ref={parallaxRef} className="parallax-item">
         <div className="text-cont">
-          {form === "server" ? (
+          {isBackend ? (
             <>
               <RichText
                 tagName="h2"
@@ -83,6 +78,6 @@ const VerticalParallax = ({ form = "", attributes, setAttributes }) => {
       </div>
     </section>
   );
-}
+};
 
 export default VerticalParallax
