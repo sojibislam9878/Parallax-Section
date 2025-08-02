@@ -217,19 +217,21 @@ const ParticleParallax = ({ attributes, setAttributes, isBackend = false }) => {
           </div>
         </div>
 
-        <div className="floating-cube" id="cube">
-          <div className="face front"></div>
-          <div className="face back"></div>
-          <div className="face top"></div>
-          <div className="face bottom"></div>
-          <div className="face left"></div>
-          <div className="face right"></div>
-          {/* <img
+        {options?.isCube && (
+          <div className="floating-cube" id="cube">
+            <div className="face front"></div>
+            <div className="face back"></div>
+            <div className="face top"></div>
+            <div className="face bottom"></div>
+            <div className="face left"></div>
+            <div className="face right"></div>
+            {/* <img
             style={{height:"300px", width:"300px"}}
             src="https://templates.bplugins.com/wp-content/uploads/2025/07/h124-scaled.jpg"
             alt=""
           /> */}
-        </div>
+          </div>
+        )}
       </div>
     </div>
   );

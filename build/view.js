@@ -2168,18 +2168,27 @@ const Style = ({
   // ============== theme 3 ========================= //
   const theme4Sl = `${mainSl} .bpParticleParallax`;
   const particleParallaxSl = `${theme4Sl} .hero-container`;
+  const cubeSl = `${particleParallaxSl} .floating-cube`;
+  const heroContentSl = `${particleParallaxSl} .hero-content`;
+  const textContentSl = `${heroContentSl} .text-content`;
+  const gradientTextSl = `${textContentSl} .gradient-text`;
+  const subTitleSl = `${textContentSl} .block`;
+
+  // console.log(contents?.title?.typo);
+
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
     dangerouslySetInnerHTML: {
       __html: `
 		${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)("", contents?.title?.typo)?.googleFontLink}
 		${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)("", contents?.description?.typo)?.googleFontLink}
-		${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)("", contents?.title?.typo)?.googleFontLink}
-		${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)("", contents?.description?.typo)?.googleFontLink}
+		${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)("", contents?.subTitle?.typo)?.googleFontLink}
 
     ${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)(titleSl, contents?.title?.typo)?.styles}
     ${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)(descriptionSl, contents?.description?.typo)?.styles}
     ${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)(titleSL, contents?.title?.typo)?.styles}
     ${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)(descriptionSL, contents?.description?.typo)?.styles}
+    ${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)(gradientTextSl, contents?.title?.typo)?.styles}
+    ${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)(subTitleSl, contents?.subTitle?.typo)?.styles}
 
 		${selectedTheme === "default" && `
 				${mainBlk}{
@@ -2305,6 +2314,63 @@ const Style = ({
 					text-align: ${styles.textAlign};
 				}
 
+				${cubeSl}{
+						top: ${styles?.cube?.position?.x?.desktop};
+						right: ${styles?.cube?.position?.y?.desktop};;
+				}
+
+				${cubeSl} .front {
+					background: ${styles?.cube?.front};
+				}
+				${cubeSl} .back {
+					background: ${styles?.cube?.back};
+				}
+				${cubeSl} .top {
+					background: ${styles?.cube?.top};
+				}
+				${cubeSl} .bottom {
+					background: ${styles?.cube?.bottom};
+				}
+				${cubeSl} .left {
+					background: ${styles?.cube?.left};
+				}
+				${cubeSl} .right {
+					background: ${styles?.cube?.right};
+				}
+
+				${gradientTextSl}{
+      			background: ${contents.title.color};
+      			-webkit-background-clip: text;
+      			-webkit-text-fill-color: transparent;
+				}
+
+				${subTitleSl}{
+				color:${contents.subTitle.color};
+				}
+
+				@media  (min-width:641px) and (max-width: 1024px){
+					${particleParallaxSl}{
+					padding:${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(layout.padding.tablet)};
+					}
+
+					${cubeSl}{
+						top: ${styles?.cube?.position?.x?.tablet};
+						right: ${styles?.cube?.position?.y?.tablet};;
+					}
+				}
+		
+	
+	
+				@media (max-width: 480px){
+					${particleParallaxSl}{
+						padding:${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(layout.padding.mobile)};
+						}
+
+						${cubeSl}{
+							top: ${styles?.cube?.position?.x?.mobile};
+							right: ${styles?.cube?.position?.y?.mobile};;
+						}
+				}
 
 
 
@@ -2666,7 +2732,7 @@ const ParticleParallax = ({
     href: btn2.link
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     className: "btn outline-btn"
-  }, btn2.text))))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, btn2.text))))), options?.isCube && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "floating-cube",
     id: "cube"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -2858,6 +2924,13 @@ const themeChanger = (theme = "theme1", attributes) => (0,immer__WEBPACK_IMPORTE
     case "theme2":
       // draft["styles"]["background"]["image"]["url"] = "https://templates.bplugins.com/wp-content/uploads/2025/05/Screenshot-2025-05-17-105053.png",
       draft["contents"]["title"]["color"] = "#fff", draft["styles"]["textAlign"] = "center";
+      break;
+
+    //====================== case for theme 3 ===============================//
+
+    case "theme3":
+      // draft["styles"]["background"]["image"]["url"] = "https://templates.bplugins.com/wp-content/uploads/2025/05/Screenshot-2025-05-17-105053.png",
+      draft["contents"]["title"]["color"] = "linear-gradient(to right, #38bdf8, #34d399)";
       break;
     default:
       break;

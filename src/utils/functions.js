@@ -68,6 +68,13 @@ export const themeChanger = (theme = "theme1", attributes) =>
 				draft["styles"]["textAlign"] = "center"
 				break;
 
+			//====================== case for theme 3 ===============================//
+
+			case "theme3":
+				// draft["styles"]["background"]["image"]["url"] = "https://templates.bplugins.com/wp-content/uploads/2025/05/Screenshot-2025-05-17-105053.png",
+				draft["contents"]["title"]["color"] ="linear-gradient(to right, #38bdf8, #34d399)";
+				break;
+
 			default:
 				break;
 		}

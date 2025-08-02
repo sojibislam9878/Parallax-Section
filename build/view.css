@@ -229,10 +229,6 @@
   transition: transform 0.2s ease;
 }
 .wp-block-psb-parallax .bpParticleParallax .gradient-text {
-  background: linear-gradient(to right, #38bdf8, #34d399);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-size: 60px;
   font-weight: 600;
 }
 .wp-block-psb-parallax .bpParticleParallax .text-content h1 span.block {
@@ -280,8 +276,6 @@
   position: absolute;
   width: 400px;
   height: 400px;
-  top: 47%;
-  right: 5%;
   transform-style: preserve-3d;
   z-index: 2;
 }
@@ -296,27 +290,21 @@
 }
 .wp-block-psb-parallax .bpParticleParallax .front {
   transform: translateZ(75px);
-  background: rgba(96, 202, 248, 0.1019607843);
 }
 .wp-block-psb-parallax .bpParticleParallax .back {
   transform: rotateY(180deg) translateZ(75px);
-  background: rgba(0, 136, 91, 0.1);
 }
 .wp-block-psb-parallax .bpParticleParallax .right {
   transform: rotateY(90deg) translateZ(75px);
-  background: rgba(47, 255, 186, 0.1);
 }
 .wp-block-psb-parallax .bpParticleParallax .left {
   transform: rotateY(-90deg) translateZ(75px);
-  background: rgba(56, 189, 248, 0.1);
 }
 .wp-block-psb-parallax .bpParticleParallax .top {
   transform: rotateX(90deg) translateZ(75px);
-  background: rgba(7, 181, 255, 0.1);
 }
 .wp-block-psb-parallax .bpParticleParallax .bottom {
   transform: rotateX(-90deg) translateZ(75px);
-  background: rgba(0, 241, 161, 0.1);
 }
 
 /*# sourceMappingURL=view.css.map*/

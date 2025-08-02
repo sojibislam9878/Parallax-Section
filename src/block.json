@@ -61,7 +61,7 @@
         },
         "subTitle": {
           "text": "The Digital World",
-          "color": "#2d2d2d",
+          "color": "#fff",
           "typo": {
             "fontSize": {
               "desktop": 64,
@@ -158,13 +158,13 @@
             "top": "0px",
             "right": "0px",
             "bottom": "0px",
-            "left": "0px"
+            "left": "16px"
           },
           "mobile": {
             "top": "0px",
             "right": "0px",
             "bottom": "0px",
-            "left": "0px"
+            "left": "6px"
           }
         }
       }
@@ -192,13 +192,39 @@
           },
           "movingSpeed":0.5,
           "density":20
+        },
+        "cube":{
+          "position":{
+            "x":{
+              "desktop":"47%",
+              "tablet":"40%",
+              "mobile":"72%"
+            },
+            "y":{
+              "desktop": "15%",
+              "tablet": "2%",
+              "mobile": "28%"
+            }
+          },
+          "front":"#60caf81a",
+          "back":"rgba(0, 136, 91, 0.1)",
+          "top":"rgba(7, 181, 255, 0.1)",
+          "bottom":"rgba(0, 241, 161, 0.1)",
+          "left":"rgba(56, 189, 248, 0.1)",
+          "right":"rgba(47, 255, 186, 0.1)",
+          "border":{
+            "width":"1px",
+            "type":"solid",
+            "color":""
+          }
         }
       }
     },
     "options": {
       "type": "object",
       "default": {
-        "isNewTab": true
+        "isNewTab": true,
+        "isCube": true
       }
     },
     "selectedTheme": {
