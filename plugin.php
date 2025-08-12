@@ -111,8 +111,8 @@ if( !class_exists( 'PSBPlugin' ) ){
 			}
 
 			wp_send_json_success([
-				// 'isPipe' => psIsPremium()
-				 'isPipe' => true
+				'isPipe' => psIsPremium()
+				//  'isPipe' => true
 				
 			]);
 		}

@@ -89,6 +89,37 @@
             "fontWeight": 400
           }
         },
+        "badge": {
+          "status": true,
+          "text": "Eco-Friendly Solutions",
+          "color": "#065f46",
+          "bgColor": "#d1fae5",
+          "typo": {
+            "fontSize": {
+              "desktop": 18,
+              "tablet": 18,
+              "mobile": 14
+            },
+            "fontWeight": 400
+          }
+        },
+        "products": {
+          "fristProduct": {
+            "image": "https://templates.bplugins.com/wp-content/uploads/2025/08/parallax_theme4_banner.webp"
+          },
+          "secondProduct": {
+            "status": true,
+            "image": "https://templates.bplugins.com/wp-content/uploads/2025/08/parallaxTheme4_2.jpg",
+            "title": "Eco-friendly",
+            "subTitle": "Bamboo Utensils"
+          },
+          "thirdProduct": {
+            "status": true,
+            "image": "https://templates.bplugins.com/wp-content/uploads/2025/08/parallaxTheme4.jpg",
+            "title": "Plastic-free",
+            "subTitle": "Reusable Bags"
+          }
+        },
         "btns": {
           "btn1": {
             "status": true,
@@ -203,7 +234,7 @@
             "x": {
               "desktop": "47%",
               "tablet": "40%",
-              "mobile": "72%"
+              "mobile": "42%"
             },
             "y": {
               "desktop": "15%",

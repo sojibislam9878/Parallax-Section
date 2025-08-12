@@ -201,6 +201,7 @@ const Style = ({ attributes, setAttributes, premiumProps, device }) => {
               Component={ColorsControl}
               {...premiumProps}
             />
+
             {selectedTheme === "theme3" && (
               <>
                 <BControlPro
@@ -243,6 +244,7 @@ const Style = ({ attributes, setAttributes, premiumProps, device }) => {
           </>
         )}
       </PanelBody>
+
       {selectedTheme === "theme3" && (
         <>
           <PanelBody
@@ -254,7 +256,7 @@ const Style = ({ attributes, setAttributes, premiumProps, device }) => {
             <Flex>
               <FlexBlock>R :</FlexBlock>
               <FlexBlock>
-                <NumberControl
+                <BControlPro
                   value={particles.color.r}
                   max={255}
                   min={0}
@@ -269,6 +271,8 @@ const Style = ({ attributes, setAttributes, premiumProps, device }) => {
                       ),
                     })
                   }
+                  Component={NumberControl}
+                  {...premiumProps}
                 />
               </FlexBlock>
             </Flex>
@@ -375,28 +379,11 @@ const Style = ({ attributes, setAttributes, premiumProps, device }) => {
               <p className="mt10">Show Cube</p>
             </Flex>
 
-            {/* <Flex>
-              <FlexBlock>Position X</FlexBlock>
-              <FlexBlock>
-                <BControlPro
-                  value={cube.position.x[device]}
-                  onChange={(value) =>
-                    setAttributes({
-                      styles: updateData(styles, value, "cube", "position", "x", device),
-                    })
-                  }
-                  Component={UnitControl}
-                  {...premiumProps}
-                />
-              </FlexBlock>
-            </Flex> */}
-
             <PanelRow>
               <Label className="mt0">Position X</Label>
               <Device />
             </PanelRow>
             <BControlPro
-              
               step={1}
               shiftStep={10}
               min={1}
@@ -417,6 +404,7 @@ const Style = ({ attributes, setAttributes, premiumProps, device }) => {
               Component={UnitControl}
               {...premiumProps}
             />
+
             <PanelRow>
               <Label className="mt0">Position Y</Label>
               <Device />
@@ -454,6 +442,7 @@ const Style = ({ attributes, setAttributes, premiumProps, device }) => {
               Component={ColorControl}
               {...premiumProps}
             />
+            
             <BControlPro
               label="Back Color"
               value={cube.back}
@@ -465,6 +454,7 @@ const Style = ({ attributes, setAttributes, premiumProps, device }) => {
               Component={ColorControl}
               {...premiumProps}
             />
+            
             <BControlPro
               label="Top Color"
               value={cube.top}
@@ -476,6 +466,7 @@ const Style = ({ attributes, setAttributes, premiumProps, device }) => {
               Component={ColorControl}
               {...premiumProps}
             />
+
             <BControlPro
               label="Bottom Color"
               value={cube.bottom}
@@ -487,6 +478,7 @@ const Style = ({ attributes, setAttributes, premiumProps, device }) => {
               Component={ColorControl}
               {...premiumProps}
             />
+
             <BControlPro
               label="Left Color"
               value={cube.left}
@@ -498,6 +490,7 @@ const Style = ({ attributes, setAttributes, premiumProps, device }) => {
               Component={ColorControl}
               {...premiumProps}
             />
+            
             <BControlPro
               label="Right Color"
               value={cube.right}

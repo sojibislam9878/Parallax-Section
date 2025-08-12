@@ -8,9 +8,9 @@ $primaryColor: #4527a4;
 $scroll-factor: 1;
 
 .wp-block-psb-parallax {
-  // position: relative;
-  // overflow: hidden;
-  // .BPDefaultParallx {
+  a{
+    text-decoration: none;
+  }
   * {
     box-sizing: border-box;
   }
@@ -49,7 +49,6 @@ $scroll-factor: 1;
       }
     }
   }
-  // }
   .BPBlurEffectParallax {
     box-sizing: border-box;
     a {
@@ -59,8 +58,6 @@ $scroll-factor: 1;
     box-sizing: border-box;
     .hero {
       position: relative;
-      // height: 100vh;
-      // width: 100%;
       overflow: hidden;
       display: flex;
       align-items: center;
@@ -203,6 +200,7 @@ $scroll-factor: 1;
       align-items: center;
       justify-content: center;
       font-weight: bold;
+      background-attachment: fixed !important;
       // background: url("https://templates.bplugins.com/wp-content/uploads/2025/05/Screenshot-2025-05-17-105053.png")
       // background-size: cover;
       // background-attachment: fixed; /* You can change to 'fixed' for parallax feel */
@@ -365,12 +363,12 @@ $scroll-factor: 1;
 
     .floating-cube {
       position: absolute;
-      width: 400px;
-      height: 400px;
+      width: 150px;
+      height: 150px;
       // top: 47%;
       // right: 5%;
       transform-style: preserve-3d;
-      z-index: 2;
+      // z-index: 2;
     }
 
     .face {
@@ -405,6 +403,245 @@ $scroll-factor: 1;
     .bottom {
       transform: rotateX(-90deg) translateZ(75px);
       // background: rgba(0, 241, 161, 0.1);
+    }
+  }
+
+  .bplThreeImageParallax{
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body,
+    html {
+      height: 100%;
+      font-family: sans-serif;
+    }
+    
+    .parallax-hero {
+      position: relative;
+      height: 100vh;
+      width: 100%;
+      overflow: hidden;
+      background: white;
+    }
+    
+    /* Background layers */
+    .bg-layer {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    
+    .bg-top {
+      background-color: #f0fdf4;
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 70%);
+    }
+    
+    .bg-bottom {
+      background-color: #dcfce7;
+      clip-path: polygon(0 65%, 100% 95%, 100% 100%, 0 100%);
+    }
+    
+    /* Content */
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+    }
+    
+    .container {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: 1fr 1fr;
+      padding: 0 1rem;
+    }
+    
+    .text-section {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    .badge {
+      background-color: #d1fae5;
+      color: #065f46;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+      display: inline-block;
+    }
+    
+    h1 {
+      font-size: 3rem;
+      color: #111827;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+    
+    .sub-title {
+      font-size: 2.6rem;
+      display: block;
+      color: #16a34a;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+    
+    p {
+      font-size: 1.125rem;
+      color: #4b5563;
+      margin-bottom: 2rem;
+    }
+    
+    .buttons {
+      display: flex;
+      gap: 1rem;
+    }
+    
+    .btn {
+      padding: 12px 20px;
+      font-size: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+    }
+    
+    .btn.primary {
+      background-color: #16a34a;
+      color: white;
+    }
+    
+    .btn.primary:hover {
+      background-color: #15803d;
+    }
+    
+    .btn.outline {
+      border: 2px solid #bbf7d0;
+      color: #16a34a;
+      background: transparent;
+    }
+    
+    .btn.outline:hover {
+      background-color: #f0fdf4;
+    }
+    
+    /* Images */
+    .image-section {
+      position: relative;
+      display: none;
+    }
+    
+    @media (min-width: 768px) {
+      .image-section {
+        display: block;
+      }
+    }
+    
+    .main-image {
+      position: relative;
+      height: 500px;
+      width: 100%;
+      overflow: hidden;
+      border-radius: 16px;
+    }
+    
+    .main-image img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+    
+    .product-card {
+      position: absolute;
+      width: 180px;
+      height: 120px;
+      background-color: white;
+      border-radius: 12px;
+      padding: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .left-card {
+      top: 20%;
+      left: -10%;
+      transform: rotate(-5deg);
+    }
+    
+    .right-card {
+      bottom: 15%;
+      right: -5%;
+      transform: rotate(8deg);
+    }
+    
+    .product-image {
+      height: 60px;
+      width: 100%;
+      overflow: hidden;
+      border-radius: 6px;
+    }
+    
+    .product-image img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+    
+    .product-text {
+      margin-top: 8px;
+    }
+    
+    .product-text .label {
+      font-size: 12px;
+      color: #16a34a;
+      font-weight: 500;
+    }
+    
+    .product-text .title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #111827;
+    }
+    
+    /* Scroll indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: bounce 1.5s infinite;
+      z-index: 20;
+    }
+    
+    @keyframes bounce {
+    
+      0%,
+      100% {
+        transform: translateX(-50%) translateY(0);
+      }
+    
+      50% {
+        transform: translateX(-50%) translateY(-10px);
+      }
+    }
+    
+    .chevron-down {
+      stroke: #16a34a;
+    }
+    
+    /* Leaves */
+    #leaves-container svg {
+      position: absolute;
+      z-index: 0;
     }
   }
 }

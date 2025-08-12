@@ -1,4 +1,4 @@
-=== Parallax Section block - Parallax scrolling effects in section. ===
+=== Parallax Section Block – Add Parallax Scrolling Effects to Sections. ===
 Contributors: bplugins, abuhayat, charlescormier
 Donate link: https://www.buymeacoffee.com/abuhayat
 Tags: block, parallax scroll, parallax effect, background effect, Gutenberg block

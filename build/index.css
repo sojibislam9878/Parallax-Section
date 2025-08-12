@@ -1,6 +1,15 @@
 /*!*********************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!../bpl-tools/Components/style.scss ***!
   \*********************************************************************************************************************************************************************************************************************************************************/
+svg.bPlBlockIcon {
+  fill: #146EF5 !important;
+}
+
+.block-editor-autocompleters__block.is-selected svg.bPlBlockIcon,
+.block-editor-list-view-leaf.is-selected svg.bPlBlockIcon {
+  fill: #fff !important;
+}
+
 .edit-post-visual-editor .editor-styles-wrapper {
   max-width: inherit !important;
 }
@@ -103,7 +112,7 @@
 }
 
 .bPlNowEditing {
-  outline: 2px solid #4527a4;
+  outline: 2px solid #146EF5;
 }
 
 .bPlInspectorInfo {
@@ -130,18 +139,18 @@
   justify-content: space-between;
 }
 .bPlTabPanel .components-tab-panel__tabs button {
-  color: #4527a4;
+  color: #146EF5;
   width: 50%;
   border-bottom: 3px solid rgba(0, 0, 0, 0);
 }
-.bPlTabPanel .components-tab-panel__tabs button:focus {
-  color: #4527a4;
+.bPlTabPanel .components-tab-panel__tabs button:hover, .bPlTabPanel .components-tab-panel__tabs button:focus {
+  color: #146EF5;
   box-shadow: none;
 }
 .bPlTabPanel .components-tab-panel__tabs .activeTab {
-  border-bottom: 3px solid #4527a4;
   font-weight: bold;
-  background-color: rgba(69, 39, 164, 0.15);
+  background-color: rgba(20, 110, 245, 0.15);
+  border-bottom: 3px solid #FF7A00;
 }
 .bPlTabPanel.bPlAutoTab .components-tab-panel__tabs button {
   width: auto;
@@ -151,22 +160,22 @@
   text-transform: capitalize;
   justify-content: center;
   border-bottom: 0px;
-  border: 1px solid #4527a4;
+  border: 1px solid #146EF5;
   white-space: nowrap;
 }
 .bPlTabPanel.small .components-tab-panel__tabs button:hover, .bPlTabPanel.mini .components-tab-panel__tabs button:hover {
-  background-color: #774cff;
+  background-color: #FF7A00;
   color: #fff;
 }
 .bPlTabPanel.small .components-tab-panel__tabs button:focus, .bPlTabPanel.mini .components-tab-panel__tabs button:focus {
-  color: #4527a4;
-  background-color: rgba(69, 39, 164, 0.15);
+  color: #146EF5;
+  background-color: rgba(20, 110, 245, 0.15);
 }
 .bPlTabPanel.small .components-tab-panel__tabs .activeTab,
 .bPlTabPanel.small .components-tab-panel__tabs .activeTab:focus, .bPlTabPanel.mini .components-tab-panel__tabs .activeTab,
 .bPlTabPanel.mini .components-tab-panel__tabs .activeTab:focus {
   color: #fff;
-  background-color: #4527a4;
+  background-color: #146EF5;
 }
 .bPlTabPanel.mini .components-tab-panel__tabs button {
   height: 25px;
@@ -198,7 +207,7 @@
   margin-top: -8px;
   border: none;
   box-sizing: border-box;
-  box-shadow: 0 3px 15px 0 rgba(69, 39, 164, 0.5019607843);
+  box-shadow: 0 3px 15px 0 #5495f8;
   border-radius: 5px;
 }
 .bPlDropdownPopover .dashicon {
@@ -248,7 +257,7 @@
   font-size: 11px !important;
   width: 25px !important;
   color: #fff !important;
-  background-color: #4527a4 !important;
+  background-color: #146EF5 !important;
   height: 100%;
   display: inline-flex;
   align-items: center;
@@ -261,16 +270,16 @@
 .bPlPanelBody .components-checkbox-control .components-base-control__field .components-checkbox-control__input[type=checkbox],
 .bPlDropdownPopover .components-popover__content .components-checkbox-control .components-base-control__field .components-checkbox-control__input[type=checkbox] {
   border-radius: 4px;
-  border-color: #4527a4;
+  border-color: #146EF5;
 }
 .bPlPanelBody .components-checkbox-control .components-base-control__field .components-checkbox-control__input[type=checkbox]:checked,
 .bPlDropdownPopover .components-popover__content .components-checkbox-control .components-base-control__field .components-checkbox-control__input[type=checkbox]:checked {
-  background-color: #8344c5;
-  border-color: #4527a4;
+  background-color: #FF7A00;
+  border-color: #146EF5;
 }
 .bPlPanelBody .components-checkbox-control .components-base-control__field .components-checkbox-control__input[type=checkbox]:focus,
 .bPlDropdownPopover .components-popover__content .components-checkbox-control .components-base-control__field .components-checkbox-control__input[type=checkbox]:focus {
-  box-shadow: 0 0 0 2px #fff, 0 0 0 3.5px #4527a4;
+  box-shadow: 0 0 0 2px #fff, 0 0 0 3.5px #146EF5;
 }
 .bPlPanelBody .components-checkbox-control .components-base-control__field label,
 .bPlDropdownPopover .components-popover__content .components-checkbox-control .components-base-control__field label {
@@ -286,20 +295,20 @@
 }
 .bPlPanelBody .components-form-toggle .components-form-toggle__track,
 .bPlDropdownPopover .components-popover__content .components-form-toggle .components-form-toggle__track {
-  border: 1px solid #4527a4;
+  border: 1px solid #0749ab;
 }
 .bPlPanelBody .components-form-toggle.is-checked .components-form-toggle__track,
 .bPlDropdownPopover .components-popover__content .components-form-toggle.is-checked .components-form-toggle__track {
-  background-color: #8344c5;
+  background-color: #146EF5;
 }
 .bPlPanelBody .components-form-toggle .components-form-toggle__input:focus + .components-form-toggle__track,
 .bPlDropdownPopover .components-popover__content .components-form-toggle .components-form-toggle__input:focus + .components-form-toggle__track {
-  box-shadow: 0 0 0 2px #fff, 0 0 0 3.5px #4527a4;
+  box-shadow: 0 0 0 2px #fff, 0 0 0 3.5px #05347a;
 }
 .bPlPanelBody .components-form-toggle .components-form-toggle__thumb,
 .bPlDropdownPopover .components-popover__content .components-form-toggle .components-form-toggle__thumb {
-  background-color: #4527a4;
-  border-color: #4527a4;
+  background-color: #146EF5;
+  border-color: #146EF5;
 }
 .bPlPanelBody .components-form-toggle.is-checked .components-form-toggle__thumb,
 .bPlDropdownPopover .components-popover__content .components-form-toggle.is-checked .components-form-toggle__thumb {
@@ -319,7 +328,7 @@
 }
 .bPlPanelBody .components-range-control__wrapper .components-range-control__track,
 .bPlDropdownPopover .components-popover__content .components-range-control__wrapper .components-range-control__track {
-  background-color: #8344c5;
+  background-color: #146EF5;
 }
 .bPlPanelBody .components-range-control__wrapper .css-5p7d2w-ThumbWrapper,
 .bPlPanelBody .components-range-control__wrapper .components-range-control__thumb-wrapper,
@@ -333,12 +342,18 @@
 .bPlPanelBody .components-range-control__wrapper .components-range-control__thumb-wrapper > *,
 .bPlDropdownPopover .components-popover__content .components-range-control__wrapper .css-5p7d2w-ThumbWrapper > *,
 .bPlDropdownPopover .components-popover__content .components-range-control__wrapper .components-range-control__thumb-wrapper > * {
-  background-color: #4527a4;
-  border: 1px solid #4527a4;
+  background-color: #FF7A00;
+  border: 1px solid #FF7A00;
+}
+.bPlPanelBody .components-range-control__wrapper .css-5p7d2w-ThumbWrapper > *::before,
+.bPlPanelBody .components-range-control__wrapper .components-range-control__thumb-wrapper > *::before,
+.bPlDropdownPopover .components-popover__content .components-range-control__wrapper .css-5p7d2w-ThumbWrapper > *::before,
+.bPlDropdownPopover .components-popover__content .components-range-control__wrapper .components-range-control__thumb-wrapper > *::before {
+  background-color: #FF7A00;
 }
 .bPlPanelBody .components-range-control__wrapper .components-range-control__tooltip,
 .bPlDropdownPopover .components-popover__content .components-range-control__wrapper .components-range-control__tooltip {
-  background-color: #4527a4;
+  background-color: #146EF5;
 }
 .bPlPanelBody .components-radio-control__option,
 .bPlDropdownPopover .components-popover__content .components-radio-control__option {
@@ -351,16 +366,16 @@
 }
 .bPlPanelBody .components-radio-control__option .components-radio-control__input[type=radio],
 .bPlDropdownPopover .components-popover__content .components-radio-control__option .components-radio-control__input[type=radio] {
-  border: 1px solid #4527a4;
+  border: 1px solid #146EF5;
 }
 .bPlPanelBody .components-radio-control__option .components-radio-control__input[type=radio]:checked,
 .bPlDropdownPopover .components-popover__content .components-radio-control__option .components-radio-control__input[type=radio]:checked {
-  background-color: #4527a4;
-  border-color: #4527a4;
+  background-color: #146EF5;
+  border-color: #146EF5;
 }
 .bPlPanelBody .components-radio-control__option .components-radio-control__input[type=radio]:focus,
 .bPlDropdownPopover .components-popover__content .components-radio-control__option .components-radio-control__input[type=radio]:focus {
-  box-shadow: 0 0 0 2px #fff, 0 0 0 3.5px #4527a4;
+  box-shadow: 0 0 0 2px #fff, 0 0 0 3.5px #146EF5;
 }
 .bPlPanelBody .components-radio-control__option label,
 .bPlDropdownPopover .components-popover__content .components-radio-control__option label {
@@ -395,37 +410,37 @@
 .bPlPanelBody .components-datetime .components-datetime__time-field select:focus,
 .bPlDropdownPopover .components-popover__content .components-datetime .components-datetime__time-field input:focus,
 .bPlDropdownPopover .components-popover__content .components-datetime .components-datetime__time-field select:focus {
-  border-color: #4527a4;
+  border-color: #146EF5;
   box-shadow: none;
-  outline: 1px solid #8344c5 !important;
+  outline: 1px solid #FF7A00 !important;
 }
 .bPlPanelBody .components-datetime .components-datetime__time-field select:hover,
 .bPlDropdownPopover .components-popover__content .components-datetime .components-datetime__time-field select:hover {
-  color: #4527a4;
+  color: #146EF5;
 }
 .bPlPanelBody .components-datetime .components-button,
 .bPlDropdownPopover .components-popover__content .components-datetime .components-button {
-  color: #4527a4;
-  border: 1px solid #8344c5;
+  color: #146EF5;
+  border: 1px solid #FF7A00;
   box-shadow: none;
   padding: 6px 10.5px;
 }
 .bPlPanelBody .components-datetime .components-button:hover,
 .bPlDropdownPopover .components-popover__content .components-datetime .components-button:hover {
-  color: #4527a4;
+  color: #146EF5;
 }
 .bPlPanelBody .components-datetime .components-button.is-primary,
 .bPlDropdownPopover .components-popover__content .components-datetime .components-button.is-primary {
   color: #fff;
-  background-color: #4527a4;
+  background-color: #146EF5;
 }
 .bPlPanelBody .components-datetime .components-button.is-primary:hover,
 .bPlDropdownPopover .components-popover__content .components-datetime .components-button.is-primary:hover {
-  background-color: #8344c5 !important;
+  background-color: #FF7A00 !important;
 }
 .bPlPanelBody .components-datetime .components-button.is-primary:focus,
 .bPlDropdownPopover .components-popover__content .components-datetime .components-button.is-primary:focus {
-  outline: 1px solid #8344c5 !important;
+  outline: 1px solid #FF7A00 !important;
 }
 .bPlPanelBody .components-datetime .components-datetime__timezone,
 .bPlDropdownPopover .components-popover__content .components-datetime .components-datetime__timezone {
@@ -433,24 +448,24 @@
 }
 .bPlPanelBody .components-datetime .components-datetime__date .DayPickerNavigation_button__horizontalDefault:focus,
 .bPlDropdownPopover .components-popover__content .components-datetime .components-datetime__date .DayPickerNavigation_button__horizontalDefault:focus {
-  border-color: #4527a4;
-  box-shadow: 0 0 0 1px #4527a4;
+  border-color: #146EF5;
+  box-shadow: 0 0 0 1px #146EF5;
 }
 .bPlPanelBody .components-datetime .components-datetime__date .CalendarDay__default:hover,
 .bPlDropdownPopover .components-popover__content .components-datetime .components-datetime__date .CalendarDay__default:hover {
-  background-color: rgba(69, 39, 164, 0.15);
+  background-color: rgba(20, 110, 245, 0.15);
 }
 .bPlPanelBody .components-datetime .components-datetime__date .CalendarDay:focus,
 .bPlDropdownPopover .components-popover__content .components-datetime .components-datetime__date .CalendarDay:focus {
-  box-shadow: inset 0 0 0 2px #4527a4, inset 0 0 0 3px #fff;
+  box-shadow: inset 0 0 0 2px #146EF5, inset 0 0 0 3px #fff;
 }
 .bPlPanelBody .components-datetime .components-datetime__date .CalendarDay__selected,
 .bPlDropdownPopover .components-popover__content .components-datetime .components-datetime__date .CalendarDay__selected {
-  background-color: #4527a4;
+  background-color: #146EF5;
 }
 .bPlPanelBody .components-datetime .components-datetime__date .CalendarDay__selected:hover,
 .bPlDropdownPopover .components-popover__content .components-datetime .components-datetime__date .CalendarDay__selected:hover {
-  background-color: #4527a4;
+  background-color: #146EF5;
 }
 .bPlPanelBody .components-datetime .components-datetime__buttons button,
 .bPlDropdownPopover .components-popover__content .components-datetime .components-datetime__buttons button {
@@ -491,7 +506,7 @@
 .bPlPanelBody .bPlBtnGroup .is-primary,
 .bPlDropdownPopover .components-popover__content .bPlBtnGroup .components-button,
 .bPlDropdownPopover .components-popover__content .bPlBtnGroup .is-primary {
-  border: 1px solid #8344c5;
+  border: 1px solid #05347a;
   box-shadow: none;
   padding: 6px 10.5px;
 }
@@ -506,7 +521,7 @@
 .bPlDropdownPopover .components-popover__content .bPlBtnGroup .components-button:hover,
 .bPlDropdownPopover .components-popover__content .bPlBtnGroup .is-primary:hover {
   color: #fff;
-  background-color: #8344c5;
+  background-color: #FF7A00;
 }
 .bPlPanelBody .bPlBtnGroup .components-button .dashicon,
 .bPlPanelBody .bPlBtnGroup .is-primary .dashicon,
@@ -530,15 +545,15 @@
 .bPlPanelBody .bPlBtnGroup .is-primary,
 .bPlDropdownPopover .components-popover__content .bPlBtnGroup .is-primary {
   color: #fff;
-  background-color: #4527a4;
+  background-color: #146EF5;
 }
 .bPlPanelBody .bPlBtnGroup .is-primary:hover,
 .bPlDropdownPopover .components-popover__content .bPlBtnGroup .is-primary:hover {
-  background-color: #4527a4 !important;
+  background-color: #146EF5 !important;
 }
 .bPlPanelBody .bPlBtnGroup .is-primary:focus,
 .bPlDropdownPopover .components-popover__content .bPlBtnGroup .is-primary:focus {
-  outline: 2px solid #4527a4 !important;
+  outline: 2px solid #146EF5 !important;
 }
 .bPlPanelBody .bPlBtnGroup svg,
 .bPlDropdownPopover .components-popover__content .bPlBtnGroup svg {
@@ -554,7 +569,7 @@
 .bPlPanelBody .addItem,
 .bPlDropdownPopover .components-popover__content .addItem {
   text-align: center;
-  background: #4527a4;
+  background: #146EF5;
 }
 .bPlPanelBody .addItem button,
 .bPlDropdownPopover .components-popover__content .addItem button {
@@ -562,12 +577,12 @@
   display: flex;
   justify-content: center;
   color: #fff;
-  background: #4527a4;
+  background: #146EF5;
 }
 .bPlPanelBody .addItem button:hover,
 .bPlDropdownPopover .components-popover__content .addItem button:hover {
   color: #fff;
-  background: #4527a4 !important;
+  background: #146EF5 !important;
 }
 .bPlPanelBody .addItem button:focus,
 .bPlDropdownPopover .components-popover__content .addItem button:focus {
@@ -615,12 +630,12 @@
 }
 .bPlPanelBody .itemAction .duplicateItem,
 .bPlDropdownPopover .components-popover__content .itemAction .duplicateItem {
-  background-color: #4527a4;
+  background-color: #146EF5;
 }
 .bPlPanelBody.help .helpItem,
 .bPlDropdownPopover .components-popover__content.help .helpItem {
   text-align: center;
-  background: #4527a4;
+  background: #146EF5;
   padding: 12px 0;
 }
 .bPlPanelBody.help .helpItem:not(:first-child),
@@ -724,7 +739,7 @@
   cursor: pointer;
 }
 .bPlBoxControl .bplBoxControlLinkButton.activeLink {
-  background-color: #4527a4;
+  background-color: #146EF5;
 }
 .bPlBoxControl .bplBoxControlLinkButton.activeLink .dashicons {
   color: #fff;
@@ -749,8 +764,8 @@
   align-items: center;
 }
 .bPlBlockPreviewWrapper .bPl-previewBtn.bPl-activeBtn {
-  background: #4527a4;
   color: #fff;
+  background: #146EF5;
 }
 /*!*****************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!../bpl-tools/Components/ColorControl/ColorControl.scss ***!
@@ -813,17 +828,17 @@
   font-size: 13px;
 }
 .bPlDeviceControl button.active {
-  border-color: #4527a4;
+  border-color: #146EF5;
 }
 .bPlDeviceControl button.active .dashicons {
-  color: #4527a4;
+  color: #146EF5;
 }
 /*!*********************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!../bpl-tools/Components/Gradient/Gradient.scss ***!
   \*********************************************************************************************************************************************************************************************************************************************************************/
 .bplAdvRangeColor .components-base-control.components-range-control .components-base-control__field .components-range-control__root .components-range-control__wrapper .components-range-control__track,
 .bplAdvRangeColor .components-base-control.components-range-control .components-base-control__field .components-range-control__root .components-range-control__wrapper .components-range-control__thumb-wrapper span {
-  background: #4527a4 !important;
+  background: #146EF5 !important;
 }
 /*!***********************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!../bpl-tools/Components/HelpPanel/HelpPanel.scss ***!
@@ -845,7 +860,7 @@
   text-align: center;
   display: inline-flex;
   color: #fff;
-  background-color: #4527a4;
+  background-color: #146EF5;
   border-radius: 4px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
   transition: all 0.3s ease-in-out;
@@ -893,7 +908,7 @@
   overflow-y: scroll;
   z-index: 99;
   margin: 0;
-  box-shadow: 0 4px 15px 0 rgba(69, 39, 164, 0.5019607843);
+  box-shadow: 0 4px 15px 0 #5495f8;
   border-radius: 8px;
 }
 .bPlIconSelect .bPlIconLists i {
@@ -905,7 +920,7 @@
   margin: 0;
 }
 .bPlIconSelect .bPlIconLists i:hover {
-  background-color: rgba(69, 39, 164, 0.0588235294);
+  background-color: #85b4fa;
   cursor: pointer;
 }
 .bPlIconSelect .dashicon {
@@ -1012,7 +1027,7 @@
 }
 .bPlIconLibrary .bPlIconLibraryModalWrapper .bPlIconLibraryModal .bPlIconLibraryBody .bPlIconLibrarySidebar .bPlIconLibrarySidebarMenu li.active {
   background: #efebfa;
-  border-left: 3px solid #4527a4;
+  border-left: 3px solid #146EF5;
   color: #000;
 }
 .bPlIconLibrary .bPlIconLibraryModalWrapper .bPlIconLibraryModal .bPlIconLibraryBody .bPlIconLibraryMain {
@@ -1041,8 +1056,8 @@
 .bPlIconLibrary .bPlIconLibraryModalWrapper .bPlIconLibraryModal .bPlIconLibraryBody .bPlIconLibraryMain .bPlIconLibrarySearch .bPlIconLibrarySearchInput:focus {
   outline: none;
   box-shadow: none;
-  box-shadow: 0px 0px 0px 1px #4527a4;
-  border-color: #4527a4;
+  box-shadow: 0px 0px 0px 1px #146EF5;
+  border-color: #146EF5;
 }
 .bPlIconLibrary .bPlIconLibraryModalWrapper .bPlIconLibraryModal .bPlIconLibraryBody .bPlIconLibraryMain .bPlIconLibrarySearch .bPlIconLibrarySearchIcon {
   position: absolute;
@@ -1068,7 +1083,7 @@
   display: flex;
   align-items: center;
   gap: 2px;
-  background-color: #4527a4;
+  background-color: #146EF5;
   color: #fff;
   text-transform: capitalize;
   font-size: 10px;
@@ -1105,12 +1120,12 @@
   cursor: pointer;
 }
 .bPlIconLibrary .bPlIconLibraryModalWrapper .bPlIconLibraryModal .bPlIconLibraryBody .bPlIconLibraryMain .bPlIconLibraryIconsWrapper .bPlIconLibraryIcons .bPlIconLibraryIcon.isActive {
-  background: #4527a4;
+  background: #146EF5;
   color: #fff;
   fill: #fff;
 }
 .bPlIconLibrary .bPlIconLibraryModalWrapper .bPlIconLibraryModal .bPlIconLibraryBody .bPlIconLibraryMain .bPlIconLibraryIconsWrapper .bPlIconLibraryIcons .bPlIconLibraryIcon.isActive:hover {
-  background: #4527a4;
+  background: #146EF5;
 }
 .bPlIconLibrary .bPlIconLibraryModalWrapper .bPlIconLibraryModal .bPlIconLibraryBody .bPlIconLibraryMain .bPlIconLibraryIconsWrapper .bPlIconLibraryIcons .bPlIconLibraryIcon:hover {
   background: #f3f0ff;
@@ -1136,7 +1151,7 @@
 }
 .bPlIconLibrary .bPlIconLibraryModalWrapper .bPlIconLibraryModal .bPlIconLibraryFooter .bPlIconLibraryFooterInsert {
   all: unset;
-  background: #4527a4;
+  background: #146EF5;
   padding: 6px 12px;
   font-size: 13px;
   color: #fff;
@@ -1233,13 +1248,13 @@
   height: 31px;
   padding: 3px !important;
   color: #fff !important;
-  background-color: #4527a4 !important;
+  background-color: #146EF5 !important;
   border: none !important;
   outline: 0;
 }
 .bPlInlineMediaUpload button:focus {
   outline: 0;
-  box-shadow: 0 0 0 0px #4527a4 !important;
+  box-shadow: 0 0 0 0px #146EF5 !important;
 }
 
 .bPlMediaPlaceholder .components-placeholder__fieldset {
@@ -1247,7 +1262,7 @@
 }
 .bPlMediaPlaceholder button {
   color: #fff !important;
-  background-color: #4527a4 !important;
+  background-color: #146EF5 !important;
 }
 .bPlMediaPlaceholder .components-button {
   width: -moz-fit-content;
@@ -1509,7 +1524,7 @@
 .bplSelectPure .selectSelectedLabel {
   font-size: 14px;
   color: #fff;
-  background-color: #4527a4;
+  background-color: #146EF5;
   display: inline-flex;
   border-radius: 3px;
   padding: 4px 5px;
@@ -1546,13 +1561,13 @@
   display: none;
   width: 100%;
   max-height: 220px;
-  color: #4527a4;
+  color: #146EF5;
   background-color: #fff;
   position: absolute;
   left: 0;
   top: 100% !important;
   border-radius: 4px;
-  box-shadow: 0 4px 15px 0 rgba(69, 39, 164, 0.5019607843);
+  box-shadow: 0 4px 15px 0 #5495f8;
   overflow: hidden;
   overflow-y: scroll;
   z-index: 99;
@@ -1566,22 +1581,22 @@
   background-color: #f9f9f8;
   padding: 5px 10px;
   border: none;
-  border-bottom: 1px solid #4527a4;
+  border-bottom: 1px solid #146EF5;
   border-radius: 0;
   outline: none;
 }
 .bplSelectPure .selectAutocomplete:focus {
-  border-color: #4527a4;
+  border-color: #146EF5;
   box-shadow: none;
 }
 .bplSelectPure .selectOption {
   line-height: 24px;
   height: 44px;
   padding: 10px;
-  border-bottom: 1px solid #4527a4;
+  border-bottom: 1px solid #146EF5;
 }
 .bplSelectPure .selectOptionSelected {
-  color: rgba(69, 39, 164, 0.3137254902);
+  color: #5495f8;
   cursor: initial;
   pointer-events: none;
 }
@@ -1682,7 +1697,7 @@
   overflow: hidden;
 }
 .bPl-token-field-main-wrapper .bPl-single-token-field-wrapper .bPl-token-multiple-filed-wrapper .bPl-token-multiple-filed-wrapper-item:focus {
-  border-color: #4527a4;
+  border-color: #146EF5;
 }
 .bPl-token-field-main-wrapper .bPl-single-token-field-wrapper .bPl-token-multiple-filed-wrapper .bPl-token-multiple-filed-wrapper-item .bPl-multiple-search {
   border: none;
@@ -1732,7 +1747,7 @@
   padding-left: 10px;
 }
 .bPl-token-field-main-wrapper .bPl-single-token-field-wrapper .bPl-token-multiple-filed-wrapper .focusItem {
-  border-color: #4527a4;
+  border-color: #146EF5;
   box-shadow: 0px 0px 2px #6b59a5;
 }
 /*!*****************************************************************************************************************************************************************************************************!*\
@@ -1781,7 +1796,7 @@
 .bplSortableListItem {
   list-style-type: none;
   color: #fff;
-  background-color: #4527a4;
+  background-color: #146EF5;
   padding: 8px 12px;
   border-radius: 4px;
   margin: 0;
@@ -1819,14 +1834,14 @@
   z-index: 99;
   margin: 0;
   border-radius: 8px;
-  box-shadow: 0 4px 15px 0 rgba(69, 39, 164, 0.5019607843);
+  box-shadow: 0 4px 15px 0 #5495f8;
 }
 .bPlDropdownPopover .bPlTypoFont .bPlTypoFontSelect .bPlTypoFontLists li {
   margin: 0;
   padding: 3px 10px;
 }
 .bPlDropdownPopover .bPlTypoFont .bPlTypoFontSelect .bPlTypoFontLists li:hover {
-  background-color: rgba(69, 39, 164, 0.0588235294);
+  background-color: #85b4fa;
   cursor: pointer;
 }
 .bPlDropdownPopover .bPlTypoFont .bPlTypoFontSelect .dashicon {
@@ -1871,7 +1886,7 @@
 .bPlPanelBody .iconButton,
 .bPlDropdownPopover .components-popover__content .iconButton {
   background: #ffffff;
-  border: 1px solid #4527a4;
+  border: 1px solid #146EF5;
   display: inline-flex;
   align-items: center;
   padding: 0 !important;
@@ -1926,7 +1941,7 @@
   width: max-content;
 }
 .editImageHolder .mediaControl .btnControl button {
-  color: #4527a4;
+  color: #146EF5;
   font-weight: bold;
 }
 .editImageHolder .mediaControl .btnControl button.btnRed {
@@ -2003,15 +2018,16 @@
   font-size: 16px;
   font-weight: 500;
   color: #fff;
-  background-color: #4527a4;
+  background-color: #146EF5;
   text-decoration: none;
   padding: 12px 20px;
   margin-top: 20px;
   border-radius: 50px;
+  transition: all 0.3s ease;
 }
 .bplAboutProModal .upgradeNow:hover, .bplAboutProModal .upgradeNow:focus {
   color: #fff;
-  background-color: #8344c5;
+  background-color: #FF7A00;
 }
 /*!****************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!../bpl-tools/ProControls/BControlPro/BControlPro.scss ***!
@@ -2020,7 +2036,7 @@
   padding: 0px 5px;
   border-radius: 5px;
   color: #fff;
-  background-color: #4527a4;
+  background-color: #146EF5;
 }
 .bplProIdentifier .components-input-control__container {
   opacity: 0.75;
@@ -2040,7 +2056,7 @@
   \**************************************************************************************************************************************************************************************************************************************************************************************/
 .bplPorSelect .proOption {
   color: #fff;
-  background-color: #4527a4;
+  background-color: #146EF5;
 }
 /*!****************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!../bpl-tools/ProControls/BtnGroupPro/BtnGroupPro.scss ***!
@@ -2055,7 +2071,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   color: #fff;
-  background: #4527a4;
+  background: #146EF5;
   padding: 2px 8px;
   border-radius: 50px;
   z-index: 10;
@@ -2089,7 +2105,7 @@
   text-align: center;
   border: none;
   outline: none;
-  background-color: #4527a4;
+  background-color: #146EF5;
   color: #fff;
   padding: 4px 10px;
   border-radius: 3px;

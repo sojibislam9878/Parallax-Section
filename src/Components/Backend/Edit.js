@@ -10,6 +10,7 @@ import { tabController } from '../../../../bpl-tools/utils/functions';
 import { parallaxInit } from '../../utils/functions';
 import { usePremiumInEditor } from "../../../../bpl-tools/hooks";
 import ParticleParallax from '../Common/Themes/ParticleParallax';
+import ThreeImageParallax from '../Common/Themes/ThreeImageParallax';
 
 const Edit = props => {
 	const {attributes, setAttributes, isSelected, device, clientId} = props;
@@ -60,6 +61,12 @@ const Edit = props => {
 						case "theme3":
 							return (
                 <ParticleParallax
+                  {...{ isBackend, attributes, setAttributes }}
+                />
+              );
+						case "theme4":
+							return (
+                <ThreeImageParallax
                   {...{ isBackend, attributes, setAttributes }}
                 />
               );

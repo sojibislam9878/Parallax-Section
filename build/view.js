@@ -281,8 +281,8 @@ const sanitizeHTML = input => {
         node.removeAttribute(attr.name);
       }
 
-      // if (attr.name === "href" && attr.value.trim().toLowerCase().startsWith("javascript:")) {
-      // 	node.removeAttribute("href");
+      // if (attr.name === 'href' && attr.value.trim().toLowerCase().startsWith('javascript:')) {
+      // 	node.removeAttribute('href');
       // }
 
       if (attr.name === 'href') {
@@ -308,13 +308,43 @@ const sanitizeHTML = input => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   contentColor: () => (/* binding */ contentColor),
 /* harmony export */   deskBreakpoint: () => (/* binding */ deskBreakpoint),
+/* harmony export */   gradient: () => (/* binding */ gradient),
 /* harmony export */   mobileBreakpoint: () => (/* binding */ mobileBreakpoint),
-/* harmony export */   tabBreakpoint: () => (/* binding */ tabBreakpoint)
+/* harmony export */   primaryColor: () => (/* binding */ primaryColor),
+/* harmony export */   primaryColor100: () => (/* binding */ primaryColor100),
+/* harmony export */   primaryColor1000: () => (/* binding */ primaryColor1000),
+/* harmony export */   primaryColor200: () => (/* binding */ primaryColor200),
+/* harmony export */   primaryColor300: () => (/* binding */ primaryColor300),
+/* harmony export */   primaryColor400: () => (/* binding */ primaryColor400),
+/* harmony export */   primaryColor500: () => (/* binding */ primaryColor500),
+/* harmony export */   primaryColor600: () => (/* binding */ primaryColor600),
+/* harmony export */   primaryColor700: () => (/* binding */ primaryColor700),
+/* harmony export */   primaryColor800: () => (/* binding */ primaryColor800),
+/* harmony export */   primaryColor900: () => (/* binding */ primaryColor900),
+/* harmony export */   secondaryColor: () => (/* binding */ secondaryColor),
+/* harmony export */   tabBreakpoint: () => (/* binding */ tabBreakpoint),
+/* harmony export */   titleColor: () => (/* binding */ titleColor)
 /* harmony export */ });
 const deskBreakpoint = '@media only screen and (min-width: 1025px)';
 const tabBreakpoint = '@media only screen and (max-width: 1024px)';
 const mobileBreakpoint = '@media only screen and (max-width: 640px)';
+const primaryColor = '#146EF5';
+const primaryColor100 = '#e7f0fe';
+const primaryColor200 = '#b6d2fc';
+const primaryColor300 = '#85b4fa';
+const primaryColor400 = '#5495f8';
+const primaryColor500 = '#2377f6';
+const primaryColor600 = '#095edc';
+const primaryColor700 = '#0749ab';
+const primaryColor800 = '#05347a';
+const primaryColor900 = '#031f49';
+const primaryColor1000 = '#010a18';
+const secondaryColor = '#FF7A00';
+const titleColor = '#070127';
+const contentColor = '#485781';
+const gradient = 'linear-gradient(135deg, #0040E3, #18D4FD)';
 
 /***/ }),
 
@@ -360,14 +390,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const isValidCSS = (p, v, i) => (0,_common__WEBPACK_IMPORTED_MODULE_7__.isExist)(v) ? `${p}: ${v};` : '';
+
+const isValidCSS = (p, v) => (0,_common__WEBPACK_IMPORTED_MODULE_7__.isExist)(v) ? `${p}: ${v};` : '';
 const getBackgroundCSS = (bg, isSolid = true, isGradient = true, isImage = true) => {
   const {
     type = 'solid',
     color = '',
-    gradient = '',
+    gradient = _data__WEBPACK_IMPORTED_MODULE_6__.gradient,
     image = {},
-    position = '',
+    position = 'center center',
     attachment = '',
     repeat = '',
     size = '',
@@ -382,8 +413,7 @@ const getBackgroundCSS = (bg, isSolid = true, isGradient = true, isImage = true)
 				${isValidCSS('background-repeat', repeat)}
 				background-blend-mode: overlay;` : isSolid && isValidCSS('background', color);
   return styles;
-}; // PHP version in Stepped Content
-
+};
 const getBorderCSS = border => {
   const {
     width = '0px',
@@ -426,13 +456,13 @@ const getBorderBoxCSS = border => {
 };
 const getColorsCSS = colors => {
   const {
-    color = '#333',
+    color = '',
     bgType = 'solid',
     bg = '',
-    gradient = 'linear-gradient(135deg, #4527a4, #8344c5)'
+    gradient = _data__WEBPACK_IMPORTED_MODULE_6__.gradient
   } = colors || {};
   const styles = `
-		${color ? `color: ${color};` : ''}
+		${isValidCSS('color', color)}
 		${gradient || bg ? isValidCSS('background', 'gradient' === bgType ? gradient : bg) : ''}
 	`;
   return styles;
@@ -442,7 +472,7 @@ const getIconCSS = (icon, isSize = true, isColor = true) => {
     fontSize = 16,
     colorType = 'solid',
     color = 'inherit',
-    gradient = 'linear-gradient(135deg, #4527a4, #8344c5)'
+    gradient = _data__WEBPACK_IMPORTED_MODULE_6__.gradient
   } = icon || {};
   const colorCSS = 'gradient' === colorType ? `color: transparent; background-image: ${gradient}; -webkit-background-clip: text; background-clip: text;` : isValidCSS('color', color);
   const styles = `
@@ -459,7 +489,7 @@ const getMultiShadowCSS = (value, type = 'box') => {
       vOffset = '0px',
       blur = '0px',
       spreed = '0px',
-      color = '#7090b0',
+      color = '#e7f0fe',
       isInset = false
     } = item || {};
     const inset = isInset ? 'inset' : '';
@@ -467,18 +497,18 @@ const getMultiShadowCSS = (value, type = 'box') => {
     const isComa = index + 1 >= value.length ? '' : ', ';
     styles += 'text' === type ? `${offsetBlur} ${color}${isComa}` : `${offsetBlur} ${spreed} ${color} ${inset}${isComa}`;
   });
-  return styles || 'none';
+  return styles || '';
 };
 const getSeparatorCSS = separator => {
   const {
     width = '50%',
     height = '2px',
     style = 'solid',
-    color = '#bbb'
+    color = _data__WEBPACK_IMPORTED_MODULE_6__.primaryColor300
   } = separator || {};
   const styles = `
-		width: ${width};
-		${'0px' === height && '0em' === height && '0rem' === height ? '' : `border-top: ${height} ${style} ${color};`}
+		${isValidCSS('width', width)}
+		${0 === parseInt(height) ? '' : `border-top: ${height} ${style} ${color};`}
 	`;
   return styles;
 };
@@ -514,31 +544,32 @@ const getTypoCSS = (selector, typo, isFamily = true) => {
     fontFamily = 'Default',
     fontCategory = 'sans-serif',
     fontVariant = 400,
-    fontWeight = 400,
+    fontWeight,
     isUploadFont = true,
     fontSize = {
-      desktop: 15,
-      tablet: 15,
-      mobile: 15
+      desktop: null,
+      tablet: null,
+      mobile: null
     },
-    fontSizeUnit = 'px',
-    fontStyle = 'normal',
-    textTransform = 'none',
-    textDecoration = 'auto',
-    lineHeight = '135%',
-    letterSpace = '0px'
+    fontStyle,
+    textTransform,
+    textDecoration,
+    lineHeight,
+    letterSpace
   } = typo || {};
   const isEmptyFamily = !isFamily || !fontFamily || 'Default' === fontFamily;
   const desktopFontSize = fontSize?.desktop || fontSize;
   const tabletFontSize = fontSize?.tablet || desktopFontSize;
   const mobileFontSize = fontSize?.mobile || tabletFontSize;
-  const checkUnit = (size = 15) => {
+  const checkUnit = size => {
     const value = String(size);
     const units = ['px', 'em', 'rem', '%', 'vh', 'vw'];
     if (units.some(unit => value.endsWith(unit))) {
       return value;
+    } else if (typeof size === 'number') {
+      return `${value}px`;
     }
-    return `${value}px`;
+    return '';
   };
   const styles = `
 		${isEmptyFamily ? '' : `font-family: '${fontFamily}', ${fontCategory};`}
@@ -2663,7 +2694,7 @@ const ParticleParallax = ({
         const rotateY = 23 + scrollY * 0.2;
         // const rotateX = 13 + scrollY * 0.1;
         // const rotateY = 35 + scrollY * 0.06;
-        cube.style.transform = `translateY(${-scrollY * 0.5}px) rotateX(${-rotateX}deg) rotateY(${-rotateY}deg)`;
+        cube.style.transform = `translateY(${scrollY * 0.3}px) translateX(${-scrollY * 0.1}px) rotateX(${-rotateX}deg) rotateY(${-rotateY}deg)`;
       }
       requestAnimationFrame(animate);
     }
@@ -2753,6 +2784,239 @@ const ParticleParallax = ({
 
 /***/ }),
 
+/***/ "./src/Components/Common/Themes/ThreeImageParallax.js":
+/*!************************************************************!*\
+  !*** ./src/Components/Common/Themes/ThreeImageParallax.js ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _utils_functions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../utils/functions */ "./src/utils/functions.js");
+
+
+
+
+
+const ThreeImageParallax = ({
+  attributes,
+  setAttributes,
+  isBackend = false
+}) => {
+  const {
+    contents,
+    options
+  } = attributes || [];
+  const {
+    title,
+    subTitle,
+    badge,
+    products,
+    description,
+    btns
+  } = contents || {};
+
+  // console.log(badge.text);
+
+  const wrapperRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  const bgTopRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  const bgBottomRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  const contentRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  const imageSectionRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  const leftCardRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  const rightCardRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  const scrollIndicatorRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  const leavesContainerRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    const wrapper = wrapperRef.current;
+    const leavesContainer = leavesContainerRef.current;
+    if (!wrapper || !leavesContainer) return;
+
+    // Generate random leaf positions
+    const NUM_LEAVES = 20;
+    for (let i = 0; i < NUM_LEAVES; i++) {
+      const leaf = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      leaf.setAttribute("width", "40");
+      leaf.setAttribute("height", "40");
+      leaf.setAttribute("viewBox", "0 0 24 24");
+      leaf.innerHTML = `
+  <path d="M12 2C7 6 4 12 12 22C20 12 17 6 12 2Z" fill="#16a34a"/>
+  
+  <!-- Central vein -->
+  <path d="M12 2C12 8 12 16 12 22" stroke="#065f46" stroke-width="0.8" stroke-linecap="round"/>
+
+  <!-- Side veins (left) -->
+  <path d="M12 7 L9 8.5" stroke="#065f46" stroke-width="0.5" stroke-linecap="round"/>
+  <path d="M12 10 L8.5 12" stroke="#065f46" stroke-width="0.5" stroke-linecap="round"/>
+  <path d="M12 13 L9 15" stroke="#065f46" stroke-width="0.5" stroke-linecap="round"/>
+
+  <!-- Side veins (right) -->
+  <path d="M12 7 L15 8.5" stroke="#065f46" stroke-width="0.5" stroke-linecap="round"/>
+  <path d="M12 10 L15.5 12" stroke="#065f46" stroke-width="0.5" stroke-linecap="round"/>
+  <path d="M12 13 L15 15" stroke="#065f46" stroke-width="0.5" stroke-linecap="round"/>
+`;
+      leaf.style.position = "absolute";
+      leaf.style.left = `${Math.random() * 100}%`;
+      leaf.style.top = `${Math.random() * 100}%`;
+      leaf.dataset.speed = 0.1 + Math.random() * 0.2;
+      leaf.style.opacity = 0.2 + Math.random() * 0.3;
+      leaf.style.transform = `rotate(${Math.random() * 360}deg)`;
+      leavesContainer.appendChild(leaf);
+    }
+    const handleScroll = () => {
+      if (!wrapperRef.current) return;
+      const rect = wrapperRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+
+      // Run only if component is visible
+      if (rect.bottom > 0 && rect.top < windowHeight) {
+        // Distance scrolled since component entered viewport
+        const relativeScroll = window.scrollY - (wrapperRef.current.offsetTop - windowHeight);
+        if (bgTopRef.current) bgTopRef.current.style.transform = `translateY(${relativeScroll * 0.05}px)`;
+        if (bgBottomRef.current) bgBottomRef.current.style.transform = `translateY(${relativeScroll * 0.08}px)`;
+        if (contentRef.current) contentRef.current.style.transform = `translateY(${-relativeScroll * 0.1}px)`;
+        if (imageSectionRef.current) imageSectionRef.current.style.transform = `translateY(${relativeScroll * 0.05}px)`;
+        if (leftCardRef.current) leftCardRef.current.style.transform = `rotate(-5deg) translateY(${relativeScroll * 0.15}px)`;
+        if (rightCardRef.current) rightCardRef.current.style.transform = `rotate(8deg) translateY(${relativeScroll * 0.2}px)`;
+        if (scrollIndicatorRef.current) scrollIndicatorRef.current.style.opacity = Math.max(0, 1 - relativeScroll * 0.01);
+        Array.from(leavesContainer.children).forEach(leaf => {
+          const speed = parseFloat(leaf.dataset.speed);
+          leaf.style.transform = `translateY(${relativeScroll * speed}px) rotate(${Math.random() * 360}deg)`;
+        });
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "bplThreeImageParallax",
+    ref: wrapperRef
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "parallax-hero"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "bg-layer bg-top",
+    ref: bgTopRef
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "bg-layer bg-bottom",
+    ref: bgBottomRef
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    id: "leaves-container",
+    ref: leavesContainerRef
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "hero-content"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "container",
+    ref: contentRef
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "text-section"
+  }, isBackend && badge.status ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    tagName: "div",
+    className: "badge",
+    value: badge.text,
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("badge text...", "parallax-section"),
+    onChange: value => setAttributes({
+      contents: (0,_utils_functions__WEBPACK_IMPORTED_MODULE_3__.updateData)(contents, value, "badge", "text")
+    })
+  }) : badge.status && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "badge"
+  }, badge.text), isBackend ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    tagName: "h1",
+    value: title.text,
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("title...", "parallax-section"),
+    onChange: value => setAttributes({
+      contents: (0,_utils_functions__WEBPACK_IMPORTED_MODULE_3__.updateData)(contents, value, "title", "text")
+    })
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    tagName: "span",
+    className: "sub-title",
+    value: subTitle.text,
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("sub title...", "parallax-section"),
+    onChange: value => setAttributes({
+      contents: (0,_utils_functions__WEBPACK_IMPORTED_MODULE_3__.updateData)(contents, value, "subTitle", "text")
+    })
+  })) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h1", null, title.text, " ", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, subTitle.text)), isBackend ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    tagName: "p",
+    value: description.text,
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("description...", "parallax-section"),
+    onChange: value => setAttributes({
+      contents: (0,_utils_functions__WEBPACK_IMPORTED_MODULE_3__.updateData)(contents, value, "description", "text")
+    })
+  }) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, description.text), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "buttons"
+  }, btns.btn1.status && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    target: options.isNewTab ? "_blank" : "_self",
+    rel: "noreferrer",
+    href: btns?.btn1.link
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    className: "btn primary",
+    style: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center"
+    }
+  }, btns?.btn1.text, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "arrow",
+    style: {
+      marginLeft: "6px"
+    }
+  }, "\u2192"))), btns.btn2.status && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    target: options.isNewTab ? "_blank" : "_self",
+    rel: "noreferrer",
+    href: btns?.btn2.link
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    className: "btn outline"
+  }, btns.btn2.text)))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "image-section",
+    ref: imageSectionRef
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "main-image"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    src: products?.fristProduct?.image,
+    alt: "Sustainable products"
+  })), products?.secondProduct?.status && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "product-card left-card",
+    ref: leftCardRef
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "product-image"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    src: products?.secondProduct?.image,
+    alt: "Product"
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "product-text"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "label"
+  }, products?.secondProduct?.title), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "title"
+  }, products?.secondProduct?.subTitle))), products?.thirdProduct?.status && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "product-card right-card",
+    ref: rightCardRef
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "product-image"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    src: products?.thirdProduct?.image,
+    alt: "Product"
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "product-text"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "label"
+  }, products?.thirdProduct?.title), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "title"
+  }, products?.thirdProduct?.subTitle)))))))));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ThreeImageParallax);
+
+/***/ }),
+
 /***/ "./src/Components/Common/Themes/VerticalParallax.js":
 /*!**********************************************************!*\
   !*** ./src/Components/Common/Themes/VerticalParallax.js ***!
@@ -2793,16 +3057,19 @@ const VerticalParallax = ({
   const {
     btn1
   } = btns || {};
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    const handleScroll = () => {
-      const offset = window.pageYOffset;
-      if (parallaxRef.current) {
-        parallaxRef.current.style.backgroundPositionY = offset * 0.8 + "px";
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     const offset = window.pageYOffset;
+  //     if (parallaxRef.current) {
+  //       parallaxRef.current.style.backgroundPositionY = offset * 0.8 + "px";
+  //     }
+  //   };
+
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => window.removeEventListener("scroll", handleScroll);
+  // }, []);
+
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("section", {
     className: "BPVerticalParallax"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -3063,6 +3330,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_functions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./utils/functions */ "./src/utils/functions.js");
 /* harmony import */ var _Components_Common_Themes_VerticalParallax__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Components/Common/Themes/VerticalParallax */ "./src/Components/Common/Themes/VerticalParallax.js");
 /* harmony import */ var _Components_Common_Themes_ParticleParallax__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Components/Common/Themes/ParticleParallax */ "./src/Components/Common/Themes/ParticleParallax.js");
+/* harmony import */ var _Components_Common_Themes_ThreeImageParallax__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Components/Common/Themes/ThreeImageParallax */ "./src/Components/Common/Themes/ThreeImageParallax.js");
+
 
 
 
@@ -3112,6 +3381,10 @@ document.addEventListener('DOMContentLoaded', () => {
             });
           case "theme3":
             return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components_Common_Themes_ParticleParallax__WEBPACK_IMPORTED_MODULE_7__["default"], {
+              attributes
+            });
+          case "theme4":
+            return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components_Common_Themes_ThreeImageParallax__WEBPACK_IMPORTED_MODULE_8__["default"], {
               attributes
             });
           default:

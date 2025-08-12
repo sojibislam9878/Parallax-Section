@@ -189,13 +189,51 @@ const General = ({ attributes, setAttributes, device, premiumProps }) => {
         )}
       </PanelBody>
 
-      {/* Contents for theme 1, 2, 3 */}
+      {/* Contents for theme 1, 2, 3, 4 */}
       {selectedTheme != "default" && (
         <PanelBody
           className="bPlPanelBody"
           title={__("Contents", "parallax-section")}
           initialOpen={false}
         >
+          {selectedTheme === "theme4" && (
+            <>
+              <Flex justify="start" align="center" gap={2}>
+                <BControlPro
+                  checked={contents?.badge?.status}
+                  onChange={() =>
+                    setAttributes({
+                      contents: updateData(
+                        contents,
+                        !contents?.badge?.status,
+                        "badge",
+                        "status"
+                      ),
+                    })
+                  }
+                  Component={ToggleControl}
+                  {...premiumProps}
+                />
+                <p className="mt10">Show Badge</p>
+              </Flex>
+              {contents?.badge?.status && (
+                <BControlPro
+                  placeholder={__("badge text...", "parallax-section")}
+                  className="mt5"
+                  label={__("Badge Text", "parallax-section")}
+                  onChange={(value) =>
+                    setAttributes({
+                      contents: updateData(contents, value, "badge", "text"),
+                    })
+                  }
+                  value={contents?.badge?.text}
+                  Component={InputControl}
+                  {...premiumProps}
+                />
+              )}
+            </>
+          )}
+
           <BControlPro
             placeholder={__("title...", "parallax-section")}
             className="mt5"
@@ -210,7 +248,7 @@ const General = ({ attributes, setAttributes, device, premiumProps }) => {
             {...premiumProps}
           />
 
-          {selectedTheme === "theme3" && (
+          {(selectedTheme === "theme3" || selectedTheme === "theme4") && (
             <BControlPro
               placeholder={__("sub title...", "parallax-section")}
               className="mt5"
@@ -257,7 +295,9 @@ const General = ({ attributes, setAttributes, device, premiumProps }) => {
               Component={ToggleControl}
               {...premiumProps}
             />
-            <p className="mt10">{ selectedTheme === "theme3" ? "Show Button 1" : "Show Button"}</p>
+            <p className="mt10">
+              {selectedTheme === "theme3" ? "Show Button 1" : "Show Button"}
+            </p>
           </Flex>
 
           {contents?.btns?.btn1.status && (
@@ -268,7 +308,13 @@ const General = ({ attributes, setAttributes, device, premiumProps }) => {
                 label={__("Button Text", "parallax-section")}
                 onChange={(value) =>
                   setAttributes({
-                    contents: updateData(contents, value, "btns", "btn1", "text"),
+                    contents: updateData(
+                      contents,
+                      value,
+                      "btns",
+                      "btn1",
+                      "text"
+                    ),
                   })
                 }
                 value={contents.btns.btn1.text}
@@ -282,7 +328,13 @@ const General = ({ attributes, setAttributes, device, premiumProps }) => {
                 label={__("Button Link", "parallax-section")}
                 onChange={(value) =>
                   setAttributes({
-                    contents: updateData(contents, value, "btns", "btn1", "link"),
+                    contents: updateData(
+                      contents,
+                      value,
+                      "btns",
+                      "btn1",
+                      "link"
+                    ),
                   })
                 }
                 value={contents.btns.btn1.link}
@@ -311,7 +363,7 @@ const General = ({ attributes, setAttributes, device, premiumProps }) => {
           )}
 
           {/* only for theme 3 (btn2) */}
-          {selectedTheme === "theme3" && (
+          {(selectedTheme === "theme3" || selectedTheme === "theme4") && (
             <>
               <Flex justify="start" align="center" gap={2}>
                 <BControlPro
