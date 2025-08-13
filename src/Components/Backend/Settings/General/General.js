@@ -21,6 +21,7 @@ import {
   BButtonGroup,
   BoxControl,
   Device,
+  InlineMediaUpload,
   Label,
 } from "../../../../../../bpl-tools/Components";
 import { textAlignOptions, themeOptions } from "../../../../utils/options";
@@ -277,6 +278,178 @@ const General = ({ attributes, setAttributes, device, premiumProps }) => {
             Component={TextareaControl}
             {...premiumProps}
           />
+          {selectedTheme === "theme4" && (
+            <>
+              <InlineMediaUpload
+                label={__("Main Image", "parallax-section")}
+                value={contents?.products?.fristProduct?.image}
+                onChange={(value) =>
+                  setAttributes({
+                    contents: updateData(
+                      contents,
+                      value,
+                      "products",
+                      "fristProduct",
+                      "image"
+                    ),
+                  })
+                }
+              />
+              <Flex justify="start" align="center" gap={2}>
+                <BControlPro
+                  checked={contents?.products?.secondProduct?.status}
+                  onChange={() =>
+                    setAttributes({
+                      contents: updateData(
+                        contents,
+                        !contents?.products?.secondProduct?.status,
+                        "products",
+                        "secondProduct",
+                        "status"
+                      ),
+                    })
+                  }
+                  Component={ToggleControl}
+                  {...premiumProps}
+                />
+                <p className="mt10">Show left Product Card</p>
+              </Flex>
+              {contents?.products?.secondProduct?.status && (
+                <>
+                  <InlineMediaUpload
+                    label={__("Left Card Image", "parallax-section")}
+                    value={contents?.products?.secondProduct?.image}
+                    onChange={(value) =>
+                      setAttributes({
+                        contents: updateData(
+                          contents,
+                          value,
+                          "products",
+                          "secondProduct",
+                          "image"
+                        ),
+                      })
+                    }
+                  />
+                  <BControlPro
+                    placeholder={__("title...", "parallax-section")}
+                    className="mt5"
+                    label={__("Left card title", "parallax-section")}
+                    onChange={(value) =>
+                      setAttributes({
+                        contents: updateData(
+                          contents,
+                          value,
+                          "products",
+                          "secondProduct",
+                          "title"
+                        ),
+                      })
+                    }
+                    value={contents.products?.secondProduct.title}
+                    Component={InputControl}
+                    {...premiumProps}
+                  />
+                  <BControlPro
+                    placeholder={__("sub title...", "parallax-section")}
+                    className="mt5"
+                    label={__("Left card sub title", "parallax-section")}
+                    onChange={(value) =>
+                      setAttributes({
+                        contents: updateData(
+                          contents,
+                          value,
+                          "products",
+                          "secondProduct",
+                          "subTitle"
+                        ),
+                      })
+                    }
+                    value={contents.products?.secondProduct.subTitle}
+                    Component={InputControl}
+                    {...premiumProps}
+                  />
+                </>
+              )}
+
+              <Flex justify="start" align="center" gap={2}>
+                <BControlPro
+                  checked={contents?.products?.thirdProduct?.status}
+                  onChange={() =>
+                    setAttributes({
+                      contents: updateData(
+                        contents,
+                        !contents?.products?.thirdProduct?.status,
+                        "products",
+                        "thirdProduct",
+                        "status"
+                      ),
+                    })
+                  }
+                  Component={ToggleControl}
+                  {...premiumProps}
+                />
+                <p className="mt10">Show left Product Card</p>
+              </Flex>
+              {contents?.products?.thirdProduct?.status && (
+                <>
+                  <InlineMediaUpload
+                    label={__("Left Card Image", "parallax-section")}
+                    value={contents?.products?.thirdProduct?.image}
+                    onChange={(value) =>
+                      setAttributes({
+                        contents: updateData(
+                          contents,
+                          value,
+                          "products",
+                          "thirdProduct",
+                          "image"
+                        ),
+                      })
+                    }
+                  />
+                  <BControlPro
+                    placeholder={__("title...", "parallax-section")}
+                    className="mt5"
+                    label={__("Right card title", "parallax-section")}
+                    onChange={(value) =>
+                      setAttributes({
+                        contents: updateData(
+                          contents,
+                          value,
+                          "products",
+                          "thirdProduct",
+                          "title"
+                        ),
+                      })
+                    }
+                    value={contents.products?.thirdProduct.title}
+                    Component={InputControl}
+                    {...premiumProps}
+                  />
+                  <BControlPro
+                    placeholder={__("sub title...", "parallax-section")}
+                    className="mt5"
+                    label={__("Right card sub title", "parallax-section")}
+                    onChange={(value) =>
+                      setAttributes({
+                        contents: updateData(
+                          contents,
+                          value,
+                          "products",
+                          "thirdProduct",
+                          "subTitle"
+                        ),
+                      })
+                    }
+                    value={contents.products?.thirdProduct.subTitle}
+                    Component={InputControl}
+                    {...premiumProps}
+                  />
+                </>
+              )}
+            </>
+          )}
 
           <Flex justify="start" align="center" gap={2}>
             <BControlPro
@@ -467,6 +640,13 @@ const General = ({ attributes, setAttributes, device, premiumProps }) => {
           />
           <small>{__("0 will not perform parallax", "parallax-section")}</small>
         </PanelBody>
+      )}
+      {selectedTheme === "theme4" && (
+        <PanelBody
+          className="bPlPanelBody"
+          title={__("Product Cards", "parallax-section")}
+          initialOpen={false}
+        ></PanelBody>
       )}
     </>
   );

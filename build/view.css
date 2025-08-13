@@ -450,8 +450,8 @@
   transform: rotate(-5deg);
 }
 .wp-block-psb-parallax .bplThreeImageParallax .right-card {
-  bottom: 15%;
-  right: -5%;
+  top: 65%;
+  left: 85%;
   transform: rotate(8deg);
 }
 .wp-block-psb-parallax .bplThreeImageParallax .product-image {

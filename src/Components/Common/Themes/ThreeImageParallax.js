@@ -217,13 +217,9 @@ const ThreeImageParallax = ({
                       rel="noreferrer"
                       href={btns?.btn1.link}
                     >
-                      <button
-                        className="btn primary"
-                      >
+                      <button className="btn primary">
                         {btns?.btn1.text}
-                        <span className="arrow">
-                          &rarr;
-                        </span>
+                        <span className="arrow">&rarr;</span>
                       </button>
                     </a>
                   )}
@@ -253,12 +249,57 @@ const ThreeImageParallax = ({
                       <img src={products?.secondProduct?.image} alt="Product" />
                     </div>
                     <div className="product-text">
-                      <div className="label">
-                        {products?.secondProduct?.title}
-                      </div>
-                      <div className="title">
-                        {products?.secondProduct?.subTitle}
-                      </div>
+                      {isBackend ? (
+                        <>
+                          <RichText
+                            className="label"
+                            tagName="div"
+                            value={products?.secondProduct?.title}
+                            placeholder={__("title...", "parallax-section")}
+                            onChange={(value) =>
+                              setAttributes({
+                                contents: updateData(
+                                  contents,
+                                  value,
+                                  "products",
+                                  "secondProduct",
+                                  "title"
+                                ),
+                              })
+                            }
+                          />
+                          <RichText
+                            className="title"
+                            tagName="div"
+                            value={products?.secondProduct?.subTitle}
+                            placeholder={__("sub title...", "parallax-section")}
+                            onChange={(value) =>
+                              setAttributes({
+                                contents: updateData(
+                                  contents,
+                                  value,
+                                  "products",
+                                  "secondProduct",
+                                  "subTitle"
+                                ),
+                              })
+                            }
+                          />
+                        </>
+                      ) : (
+                        <>
+                          <RichText.Content
+                            tagName="div"
+                            className="label"
+                            value={products?.secondProduct?.title}
+                          />
+                          <RichText.Content
+                            tagName="div"
+                            className="title"
+                            value={products?.secondProduct?.subTitle}
+                          />
+                        </>
+                      )}
                     </div>
                   </div>
                 )}
@@ -269,12 +310,57 @@ const ThreeImageParallax = ({
                       <img src={products?.thirdProduct?.image} alt="Product" />
                     </div>
                     <div className="product-text">
-                      <div className="label">
-                        {products?.thirdProduct?.title}
-                      </div>
-                      <div className="title">
-                        {products?.thirdProduct?.subTitle}
-                      </div>
+                      {isBackend ? (
+                        <>
+                          <RichText
+                            className="label"
+                            tagName="div"
+                            value={products?.thirdProduct?.title}
+                            placeholder={__("title...", "parallax-section")}
+                            onChange={(value) =>
+                              setAttributes({
+                                contents: updateData(
+                                  contents,
+                                  value,
+                                  "products",
+                                  "thirdProduct",
+                                  "title"
+                                ),
+                              })
+                            }
+                          />
+                          <RichText
+                            className="title"
+                            tagName="div"
+                            value={products?.thirdProduct?.subTitle}
+                            placeholder={__("sub title...", "parallax-section")}
+                            onChange={(value) =>
+                              setAttributes({
+                                contents: updateData(
+                                  contents,
+                                  value,
+                                  "products",
+                                  "thirdProduct",
+                                  "subTitle"
+                                ),
+                              })
+                            }
+                          />
+                        </>
+                      ) : (
+                        <>
+                          <RichText.Content
+                            tagName="div"
+                            className="label"
+                            value={products?.thirdProduct?.title}
+                          />
+                          <RichText.Content
+                            tagName="div"
+                            className="title"
+                            value={products?.thirdProduct?.subTitle}
+                          />
+                        </>
+                      )}
                     </div>
                   </div>
                 )}

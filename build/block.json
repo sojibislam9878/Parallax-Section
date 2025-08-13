@@ -111,13 +111,23 @@
             "status": true,
             "image": "https://templates.bplugins.com/wp-content/uploads/2025/08/parallaxTheme4_2.jpg",
             "title": "Eco-friendly",
-            "subTitle": "Bamboo Utensils"
+            "subTitle": "Bamboo Utensils",
+            "position": {
+              "x": "",
+              "y": "",
+              "rotate": 8
+            }
           },
           "thirdProduct": {
             "status": true,
             "image": "https://templates.bplugins.com/wp-content/uploads/2025/08/parallaxTheme4.jpg",
             "title": "Plastic-free",
-            "subTitle": "Reusable Bags"
+            "subTitle": "Reusable Bags",
+            "position": {
+              "x": "",
+              "y": "",
+              "rotate": 8
+            }
           }
         },
         "btns": {

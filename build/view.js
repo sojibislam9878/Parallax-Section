@@ -2985,11 +2985,31 @@ const ThreeImageParallax = ({
     alt: "Product"
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "product-text"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "label"
-  }, products?.secondProduct?.title), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "title"
-  }, products?.secondProduct?.subTitle))), products?.thirdProduct?.status && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, isBackend ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    className: "label",
+    tagName: "div",
+    value: products?.secondProduct?.title,
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("title...", "parallax-section"),
+    onChange: value => setAttributes({
+      contents: (0,_utils_functions__WEBPACK_IMPORTED_MODULE_3__.updateData)(contents, value, "products", "secondProduct", "title")
+    })
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    className: "title",
+    tagName: "div",
+    value: products?.secondProduct?.subTitle,
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("sub title...", "parallax-section"),
+    onChange: value => setAttributes({
+      contents: (0,_utils_functions__WEBPACK_IMPORTED_MODULE_3__.updateData)(contents, value, "products", "secondProduct", "subTitle")
+    })
+  })) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, {
+    tagName: "div",
+    className: "label",
+    value: products?.secondProduct?.title
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, {
+    tagName: "div",
+    className: "title",
+    value: products?.secondProduct?.subTitle
+  })))), products?.thirdProduct?.status && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "product-card right-card",
     ref: rightCardRef
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -2999,11 +3019,31 @@ const ThreeImageParallax = ({
     alt: "Product"
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "product-text"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "label"
-  }, products?.thirdProduct?.title), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "title"
-  }, products?.thirdProduct?.subTitle)))))))));
+  }, isBackend ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    className: "label",
+    tagName: "div",
+    value: products?.thirdProduct?.title,
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("title...", "parallax-section"),
+    onChange: value => setAttributes({
+      contents: (0,_utils_functions__WEBPACK_IMPORTED_MODULE_3__.updateData)(contents, value, "products", "thirdProduct", "title")
+    })
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    className: "title",
+    tagName: "div",
+    value: products?.thirdProduct?.subTitle,
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("sub title...", "parallax-section"),
+    onChange: value => setAttributes({
+      contents: (0,_utils_functions__WEBPACK_IMPORTED_MODULE_3__.updateData)(contents, value, "products", "thirdProduct", "subTitle")
+    })
+  })) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, {
+    tagName: "div",
+    className: "label",
+    value: products?.thirdProduct?.title
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, {
+    tagName: "div",
+    className: "title",
+    value: products?.thirdProduct?.subTitle
+  }))))))))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ThreeImageParallax);
 
