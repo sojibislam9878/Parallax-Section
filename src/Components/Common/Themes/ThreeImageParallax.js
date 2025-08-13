@@ -219,14 +219,9 @@ const ThreeImageParallax = ({
                     >
                       <button
                         className="btn primary"
-                        style={{
-                          display: "flex",
-                          justifyContent: "center",
-                          alignItems: "center",
-                        }}
                       >
                         {btns?.btn1.text}
-                        <span className="arrow" style={{ marginLeft: "6px" }}>
+                        <span className="arrow">
                           &rarr;
                         </span>
                       </button>

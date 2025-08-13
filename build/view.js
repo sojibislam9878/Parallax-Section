@@ -2958,17 +2958,9 @@ const ThreeImageParallax = ({
     rel: "noreferrer",
     href: btns?.btn1.link
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-    className: "btn primary",
-    style: {
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center"
-    }
+    className: "btn primary"
   }, btns?.btn1.text, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    className: "arrow",
-    style: {
-      marginLeft: "6px"
-    }
+    className: "arrow"
   }, "\u2192"))), btns.btn2.status && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     target: options.isNewTab ? "_blank" : "_self",
     rel: "noreferrer",

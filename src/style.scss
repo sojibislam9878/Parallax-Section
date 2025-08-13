@@ -288,12 +288,13 @@ $scroll-factor: 1;
     }
 
     .hero-content {
+      // border: 1px solid red;
       position: relative;
       z-index: 1;
       height: 100%;
       display: flex;
       align-items: center;
-      // justify-content: center;
+      // justify-content: center !important;
       // padding: 0px 300px;
     }
 
@@ -413,12 +414,6 @@ $scroll-factor: 1;
       padding: 0;
     }
     
-    body,
-    html {
-      height: 100%;
-      font-family: sans-serif;
-    }
-    
     .parallax-hero {
       position: relative;
       height: 100vh;
@@ -450,13 +445,14 @@ $scroll-factor: 1;
       z-index: 10;
       display: flex;
       align-items: center;
+      justify-content: center;
       height: 100%;
       width: 100%;
     }
     
     .container {
       display: grid;
-      gap: 2rem;
+      gap: 4rem;
       grid-template-columns: 1fr 1fr;
       padding: 0 1rem;
     }
@@ -538,14 +534,13 @@ $scroll-factor: 1;
     /* Images */
     .image-section {
       position: relative;
-      display: none;
     }
     
-    @media (min-width: 768px) {
-      .image-section {
-        display: block;
-      }
-    }
+    // @media (min-width: 768px) {
+    //   .image-section {
+    //     display: block;
+    //   }
+    // }
     
     .main-image {
       position: relative;
@@ -642,6 +637,35 @@ $scroll-factor: 1;
     #leaves-container svg {
       position: absolute;
       z-index: 0;
+    }
+
+    @media (min-width: 641px) and (max-width: 1024px) {
+      .container {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+      .hero-content{
+        display: flex;
+      }
+      .image-section{
+        margin-top: 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        display: block;
+        padding: 2.5rem 1rem;
+      }
+      .hero-content{
+        display: block;
+      }
+      .parallax-hero{
+        height: auto;
+      }
+      .image-section{
+        margin-top: 56px;
+      }
     }
   }
 }
