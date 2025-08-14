@@ -351,6 +351,7 @@
   width: 100%;
 }
 .wp-block-psb-parallax .bplThreeImageParallax .container {
+  width: 90%;
   display: grid;
   gap: 4rem;
   grid-template-columns: 1fr 1fr;
@@ -509,6 +510,9 @@
   }
   .wp-block-psb-parallax .bplThreeImageParallax .hero-content {
     display: flex;
+  }
+  .wp-block-psb-parallax .bplThreeImageParallax .parallax-hero {
+    height: auto;
   }
   .wp-block-psb-parallax .bplThreeImageParallax .image-section {
     margin-top: 0;

@@ -2836,9 +2836,10 @@ const ThreeImageParallax = ({
   const scrollIndicatorRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   const leavesContainerRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    const wrapper = wrapperRef.current;
     const leavesContainer = leavesContainerRef.current;
-    if (!wrapper || !leavesContainer) return;
+    let initialTop = 0;
+    let componentHeight = 0;
+    let isComponentInView = false;
 
     // Generate random leaf positions
     const NUM_LEAVES = 20;
@@ -2848,21 +2849,15 @@ const ThreeImageParallax = ({
       leaf.setAttribute("height", "40");
       leaf.setAttribute("viewBox", "0 0 24 24");
       leaf.innerHTML = `
-  <path d="M12 2C7 6 4 12 12 22C20 12 17 6 12 2Z" fill="#16a34a"/>
-  
-  <!-- Central vein -->
-  <path d="M12 2C12 8 12 16 12 22" stroke="#065f46" stroke-width="0.8" stroke-linecap="round"/>
-
-  <!-- Side veins (left) -->
-  <path d="M12 7 L9 8.5" stroke="#065f46" stroke-width="0.5" stroke-linecap="round"/>
-  <path d="M12 10 L8.5 12" stroke="#065f46" stroke-width="0.5" stroke-linecap="round"/>
-  <path d="M12 13 L9 15" stroke="#065f46" stroke-width="0.5" stroke-linecap="round"/>
-
-  <!-- Side veins (right) -->
-  <path d="M12 7 L15 8.5" stroke="#065f46" stroke-width="0.5" stroke-linecap="round"/>
-  <path d="M12 10 L15.5 12" stroke="#065f46" stroke-width="0.5" stroke-linecap="round"/>
-  <path d="M12 13 L15 15" stroke="#065f46" stroke-width="0.5" stroke-linecap="round"/>
-`;
+        <path d="M12 2C7 6 4 12 12 22C20 12 17 6 12 2Z" fill="#16a34a"/>
+        <path d="M12 2C12 8 12 16 12 22" stroke="#065f46" stroke-width="0.8" stroke-linecap="round"/>
+        <path d="M12 7 L9 8.5" stroke="#065f46" stroke-width="0.5" stroke-linecap="round"/>
+        <path d="M12 10 L8.5 12" stroke="#065f46" stroke-width="0.5" stroke-linecap="round"/>
+        <path d="M12 13 L9 15" stroke="#065f46" stroke-width="0.5" stroke-linecap="round"/>
+        <path d="M12 7 L15 8.5" stroke="#065f46" stroke-width="0.5" stroke-linecap="round"/>
+        <path d="M12 10 L15.5 12" stroke="#065f46" stroke-width="0.5" stroke-linecap="round"/>
+        <path d="M12 13 L15 15" stroke="#065f46" stroke-width="0.5" stroke-linecap="round"/>
+      `;
       leaf.style.position = "absolute";
       leaf.style.left = `${Math.random() * 100}%`;
       leaf.style.top = `${Math.random() * 100}%`;
@@ -2871,31 +2866,54 @@ const ThreeImageParallax = ({
       leaf.style.transform = `rotate(${Math.random() * 360}deg)`;
       leavesContainer.appendChild(leaf);
     }
-    const handleScroll = () => {
-      if (!wrapperRef.current) return;
-      const rect = wrapperRef.current.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
 
-      // Run only if component is visible
-      if (rect.bottom > 0 && rect.top < windowHeight) {
-        // Distance scrolled since component entered viewport
-        const relativeScroll = window.scrollY - (wrapperRef.current.offsetTop - windowHeight);
-        if (bgTopRef.current) bgTopRef.current.style.transform = `translateY(${relativeScroll * 0.05}px)`;
-        if (bgBottomRef.current) bgBottomRef.current.style.transform = `translateY(${relativeScroll * 0.08}px)`;
-        if (contentRef.current) contentRef.current.style.transform = `translateY(${-relativeScroll * 0.1}px)`;
-        if (imageSectionRef.current) imageSectionRef.current.style.transform = `translateY(${relativeScroll * 0.05}px)`;
-        if (leftCardRef.current) leftCardRef.current.style.transform = `rotate(-5deg) translateY(${relativeScroll * 0.15}px)`;
-        if (rightCardRef.current) rightCardRef.current.style.transform = `rotate(8deg) translateY(${relativeScroll * 0.2}px)`;
-        if (scrollIndicatorRef.current) scrollIndicatorRef.current.style.opacity = Math.max(0, 1 - relativeScroll * 0.01);
-        Array.from(leavesContainer.children).forEach(leaf => {
-          const speed = parseFloat(leaf.dataset.speed);
-          leaf.style.transform = `translateY(${relativeScroll * speed}px) rotate(${Math.random() * 360}deg)`;
-        });
+    // Initialize component position and height
+    const initComponent = () => {
+      const component = wrapperRef.current;
+      if (component) {
+        const rect = component.getBoundingClientRect();
+        initialTop = rect.top + window.scrollY;
+        componentHeight = rect.height;
+      } else {
+        console.warn("Component not found");
       }
     };
+
+    // Run once on mount
+    initComponent();
+    const handleScroll = () => {
+      const currentScroll = window.scrollY;
+
+      // Check if component is in view
+      isComponentInView = currentScroll >= initialTop && currentScroll <= initialTop + componentHeight;
+      if (!isComponentInView) return;
+
+      // Calculate scroll relative to component start
+      const scrollY = currentScroll - initialTop;
+
+      // Apply effects only when component is in view
+      if (bgTopRef.current) bgTopRef.current.style.transform = `translateY(${scrollY * 0.05}px)`;
+      if (bgBottomRef.current) bgBottomRef.current.style.transform = `translateY(${scrollY * 0.08}px)`;
+      if (contentRef.current) contentRef.current.style.transform = `translateY(${-scrollY * 0.1}px)`;
+      if (imageSectionRef.current) imageSectionRef.current.style.transform = `translateY(${scrollY * 0.05}px)`;
+      if (leftCardRef.current) leftCardRef.current.style.transform = `rotate(-5deg) translateY(${scrollY * 0.15}px)`;
+      if (rightCardRef.current) rightCardRef.current.style.transform = `rotate(8deg) translateY(${scrollY * 0.2}px)`;
+      if (scrollIndicatorRef.current) scrollIndicatorRef.current.style.opacity = Math.max(0, 1 - scrollY * 0.01);
+      Array.from(leavesContainer.children).forEach(leaf => {
+        const speed = parseFloat(leaf.dataset.speed);
+        leaf.style.transform = `translateY(${scrollY * speed}px) rotate(${Math.random() * 360}deg)`;
+      });
+    };
+
+    // Also handle resize to update component position
+    const handleResize = () => {
+      initComponent();
+    };
     window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -2944,7 +2962,9 @@ const ThreeImageParallax = ({
     onChange: value => setAttributes({
       contents: (0,_utils_functions__WEBPACK_IMPORTED_MODULE_3__.updateData)(contents, value, "subTitle", "text")
     })
-  })) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h1", null, title.text, " ", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, subTitle.text)), isBackend ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+  })) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h1", null, title.text, " ", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "sub-title"
+  }, subTitle.text)), isBackend ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     tagName: "p",
     value: description.text,
     placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("description...", "parallax-section"),
