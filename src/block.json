@@ -86,8 +86,10 @@
         "badge": {
           "status": true,
           "text": "Eco-Friendly Solutions",
-          "color": "#065f46",
-          "bgColor": "#d1fae5",
+          "colors": {
+            "color":"#065f46",
+            "bg":"#d1fae5"
+          },
           "typo": {
             "fontSize": {
               "desktop": 18,

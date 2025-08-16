@@ -507,6 +507,7 @@
   .wp-block-psb-parallax .bplThreeImageParallax .container {
     display: grid;
     grid-template-columns: 1fr;
+    padding: 12px;
   }
   .wp-block-psb-parallax .bplThreeImageParallax .hero-content {
     display: flex;
@@ -522,6 +523,7 @@
   .wp-block-psb-parallax .bplThreeImageParallax .container {
     display: block;
     padding: 2.5rem 1rem;
+    width: 100%;
   }
   .wp-block-psb-parallax .bplThreeImageParallax .hero-content {
     display: block;

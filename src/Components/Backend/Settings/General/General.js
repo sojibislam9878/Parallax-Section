@@ -641,13 +641,15 @@ const General = ({ attributes, setAttributes, device, premiumProps }) => {
           <small>{__("0 will not perform parallax", "parallax-section")}</small>
         </PanelBody>
       )}
-      {selectedTheme === "theme4" && (
+      {/* {selectedTheme === "theme4" && (
         <PanelBody
           className="bPlPanelBody"
           title={__("Product Cards", "parallax-section")}
           initialOpen={false}
-        ></PanelBody>
-      )}
+        >
+      
+        </PanelBody>
+      )} */}
     </>
   );
 };

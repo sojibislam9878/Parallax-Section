@@ -22,10 +22,9 @@ import { BControlPro } from "../../../../../../bpl-tools/ProControls";
 
 const Style = ({ attributes, setAttributes, premiumProps, device }) => {
   const { background, selectedTheme, contents, styles, options } = attributes;
-  const { title, description, btns, subTitle } = contents || {};
+  const { title, description, btns, subTitle, badge } = contents || {};
   const { particles, cube } = styles || {};
   const { btn1, btn2 } = btns || {};
-  
 
   return (
     <>
@@ -141,6 +140,93 @@ const Style = ({ attributes, setAttributes, premiumProps, device }) => {
                 />
               </>
             )}
+            {selectedTheme === "theme4" && (
+              <>
+                {badge?.status && (
+                  <>
+                    <ColorsControl
+                      label="Badge Colors"
+                      value={badge?.colors}
+                      onChange={(value) =>
+                        setAttributes({
+                          contents: updateData(
+                            contents,
+                            value,
+                            "badge",
+                            "colors"
+                          ),
+                        })
+                      }
+                    />
+                    <Typography
+                      label="Badge typo"
+                      value={badge?.typo}
+                      onChange={(value) =>
+                        setAttributes({
+                          contents: updateData(
+                            contents,
+                            value,
+                            "badge",
+                            "typo"
+                          ),
+                        })
+                      }
+                    />
+                  </>
+                )}
+                <BControlPro
+                  label="Title Color"
+                  value={title.color}
+                  onChange={(value) =>
+                    setAttributes({
+                      contents: updateData(contents, value, "title", "color"),
+                    })
+                  }
+                  Component={ColorControl}
+                  {...premiumProps}
+                />
+
+                <BControlPro
+                  label="Title Typo"
+                  value={title.typo}
+                  onChange={(value) =>
+                    setAttributes({
+                      contents: updateData(contents, value, "title", "typo"),
+                    })
+                  }
+                  Component={Typography}
+                  {...premiumProps}
+                />
+                <BControlPro
+                  label="Sub Title Color"
+                  value={subTitle.color}
+                  onChange={(value) =>
+                    setAttributes({
+                      contents: updateData(
+                        contents,
+                        value,
+                        "subTitle",
+                        "color"
+                      ),
+                    })
+                  }
+                  Component={ColorControl}
+                  {...premiumProps}
+                />
+
+                <BControlPro
+                  label="Sub Title Typo"
+                  value={subTitle.typo}
+                  onChange={(value) =>
+                    setAttributes({
+                      contents: updateData(contents, value, "subTitle", "typo"),
+                    })
+                  }
+                  Component={Typography}
+                  {...premiumProps}
+                />
+              </>
+            )}
 
             <BControlPro
               label="Description Color"
@@ -202,7 +288,7 @@ const Style = ({ attributes, setAttributes, premiumProps, device }) => {
               {...premiumProps}
             />
 
-            {selectedTheme === "theme3" && (
+            {(selectedTheme === "theme3" || selectedTheme === "theme4" && btn2?.status) && (
               <>
                 <BControlPro
                   label="Button 2 Colors"
@@ -442,7 +528,7 @@ const Style = ({ attributes, setAttributes, premiumProps, device }) => {
               Component={ColorControl}
               {...premiumProps}
             />
-            
+
             <BControlPro
               label="Back Color"
               value={cube.back}
@@ -454,7 +540,7 @@ const Style = ({ attributes, setAttributes, premiumProps, device }) => {
               Component={ColorControl}
               {...premiumProps}
             />
-            
+
             <BControlPro
               label="Top Color"
               value={cube.top}
@@ -490,7 +576,7 @@ const Style = ({ attributes, setAttributes, premiumProps, device }) => {
               Component={ColorControl}
               {...premiumProps}
             />
-            
+
             <BControlPro
               label="Right Color"
               value={cube.right}
