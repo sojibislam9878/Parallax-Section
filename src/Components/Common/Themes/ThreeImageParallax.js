@@ -8,7 +8,7 @@ const ThreeImageParallax = ({
   setAttributes,
   isBackend = false,
 }) => {
-  const { contents, options } = attributes || [];
+  const { contents, options, styles } = attributes || [];
   const { title, subTitle, badge, products, description, btns } =
     contents || {};
 
@@ -31,7 +31,7 @@ const ThreeImageParallax = ({
     let isComponentInView = false;
 
     // Generate random leaf positions
-    const NUM_LEAVES = 20;
+    const NUM_LEAVES = styles?.leaf?.count;
     for (let i = 0; i < NUM_LEAVES; i++) {
       const leaf = document.createElementNS(
         "http://www.w3.org/2000/svg",
@@ -41,7 +41,7 @@ const ThreeImageParallax = ({
       leaf.setAttribute("height", "40");
       leaf.setAttribute("viewBox", "0 0 24 24");
       leaf.innerHTML = `
-        <path d="M12 2C7 6 4 12 12 22C20 12 17 6 12 2Z" fill="#16a34a"/>
+        <path d="M12 2C7 6 4 12 12 22C20 12 17 6 12 2Z" />
         <path d="M12 2C12 8 12 16 12 22" stroke="#065f46" stroke-width="0.8" stroke-linecap="round"/>
         <path d="M12 7 L9 8.5" stroke="#065f46" stroke-width="0.5" stroke-linecap="round"/>
         <path d="M12 10 L8.5 12" stroke="#065f46" stroke-width="0.5" stroke-linecap="round"/>
@@ -56,7 +56,9 @@ const ThreeImageParallax = ({
       leaf.dataset.speed = 0.1 + Math.random() * 0.2;
       leaf.style.opacity = 0.2 + Math.random() * 0.3;
       leaf.style.transform = `rotate(${Math.random() * 360}deg)`;
-      leavesContainer.appendChild(leaf);
+      if (styles?.leaf?.status) {
+        leavesContainer.appendChild(leaf);
+      }
     }
 
     // Initialize component position and height
@@ -131,8 +133,12 @@ const ThreeImageParallax = ({
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleResize);
+      // Clean up leaves if component unmounts
+      if (leavesContainer) {
+        leavesContainer.innerHTML = "";
+      }
     };
-  }, []);
+  }, [styles?.leaf?.count, styles?.leaf?.status]);
 
   return (
     <>
@@ -143,7 +149,9 @@ const ThreeImageParallax = ({
           <div className="bg-layer bg-bottom" ref={bgBottomRef}></div>
 
           {/* Leaves */}
-          <div id="leaves-container" ref={leavesContainerRef}></div>
+          {styles?.leaf?.status && (
+            <div id="leaves-container" ref={leavesContainerRef}></div>
+          )}
 
           {/* Main content */}
           <div className="hero-content">

@@ -23,7 +23,7 @@ import { BControlPro } from "../../../../../../bpl-tools/ProControls";
 const Style = ({ attributes, setAttributes, premiumProps, device }) => {
   const { background, selectedTheme, contents, styles, options } = attributes;
   const { title, description, btns, subTitle, badge } = contents || {};
-  const { particles, cube } = styles || {};
+  const { particles, cube, leaf } = styles || {};
   const { btn1, btn2 } = btns || {};
 
   return (
@@ -288,7 +288,8 @@ const Style = ({ attributes, setAttributes, premiumProps, device }) => {
               {...premiumProps}
             />
 
-            {(selectedTheme === "theme3" || selectedTheme === "theme4" && btn2?.status) && (
+            {(selectedTheme === "theme3" ||
+              (selectedTheme === "theme4" && btn2?.status)) && (
               <>
                 <BControlPro
                   label="Button 2 Colors"
@@ -590,6 +591,57 @@ const Style = ({ attributes, setAttributes, premiumProps, device }) => {
             />
           </PanelBody>
         </>
+      )}
+
+      {selectedTheme === "theme4" && (
+        <PanelBody
+          className="bPlPanelBody"
+          title={__("Leaf Style", "parallax-section")}
+          initialOpen={false}
+        >
+          <Flex justify="start" align="center" gap={2}>
+            <BControlPro
+              checked={styles?.leaf?.status}
+              onChange={() =>
+                setAttributes({
+                  styles: updateData(
+                    styles,
+                    !styles?.leaf?.status,
+                    "leaf",
+                    "status"
+                  ),
+                })
+              }
+              Component={ToggleControl}
+              {...premiumProps}
+            />
+            <p className="mt10">Show Leaf</p>
+          </Flex>
+          {styles?.leaf?.status && (
+            <>
+              <Flex>
+                <Label className="mt0">Leaf Count</Label>
+                <NumberControl
+                  value={leaf?.count}
+                  onChange={(value) =>
+                    setAttributes({
+                      styles: updateData(styles, value++, "leaf", "count"),
+                    })
+                  }
+                />
+              </Flex>
+              <ColorControl
+                label={__("Leaf Color", "parallax-section")}
+                value={leaf?.color}
+                onChange={(value) =>
+                  setAttributes({
+                    styles: updateData(styles, value, "leaf", "color"),
+                  })
+                }
+              />
+            </>
+          )}
+        </PanelBody>
       )}
     </>
   );

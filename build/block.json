@@ -67,7 +67,7 @@
         },
         "subTitle": {
           "text": "The Digital World",
-          "color": "#fff",
+          "color": "#16a34a",
           "typo": {
             "fontSize": {
               "desktop": 64,
@@ -240,6 +240,11 @@
           },
           "movingSpeed": 0.5,
           "density": 20
+        },
+        "leaf": {
+          "status": true,
+          "color": "#16a34a",
+          "count": 20
         },
         "cube": {
           "position": {

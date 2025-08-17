@@ -110,7 +110,9 @@ const ParticleParallax = ({ attributes, setAttributes, isBackend = false }) => {
         const rotateY = 23 + scrollY * 0.2;
         // const rotateX = 13 + scrollY * 0.1;
         // const rotateY = 35 + scrollY * 0.06;
-        cube.style.transform = `translateY(${scrollY * 0.3}px) translateX(${-scrollY * 0.1}px) rotateX(${-rotateX}deg) rotateY(${-rotateY}deg)`;
+        cube.style.transform = `translateY(${scrollY * 0.3}px) translateX(${
+          -scrollY * 0.1
+        }px) rotateX(${-rotateX}deg) rotateY(${-rotateY}deg)`;
       }
 
       requestAnimationFrame(animate);
@@ -189,7 +191,19 @@ const ParticleParallax = ({ attributes, setAttributes, isBackend = false }) => {
                 </>
               )}
             </h1>
-            <p> {description.text} </p>
+            {isBackend ? (
+              <RichText
+                tagName="p"
+                value={description.text}
+                onChange={(value) =>
+                  setAttributes({
+                    contents: updateData(contents, value, "description"),
+                  })
+                }
+              />
+            ) : (
+              <p> {description.text} </p>
+            )}
             <div className="buttons">
               {btn1.status && (
                 <a

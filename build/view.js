@@ -2179,7 +2179,7 @@ const Style = ({
   const mainSl = `#${id}`;
   // console.log(mainSl);
 
-  // ================== theme 1 ========================= //
+  // ================== theme 2 ========================= //
   const theme2Sl = `${mainSl} .BPBlurEffectParallax`;
   const sectionSl = `${theme2Sl} .hero`;
   const bgSl = `${theme2Sl} .hero-bg`;
@@ -2188,7 +2188,7 @@ const Style = ({
   const descriptionSl = `${theme2Sl} p`;
   const btnSl = `${theme2Sl} .btn`;
 
-  // =================== theme 2 ======================= //
+  // =================== theme 3 ======================= //
   const theme3Sl = `${mainSl} .BPVerticalParallax`;
   const parallaxItemSL = `${theme3Sl} .parallax-item`;
   const textContSL = `${parallaxItemSL} .text-cont`;
@@ -2196,7 +2196,7 @@ const Style = ({
   const descriptionSL = `${textContSL} .description`;
   const btnSL = `${textContSL} .btn`;
 
-  // ============== theme 3 ========================= //
+  // ============== theme 4 ========================= //
   const theme4Sl = `${mainSl} .bpParticleParallax`;
   const particleParallaxSl = `${theme4Sl} .hero-container`;
   const cubeSl = `${particleParallaxSl} .floating-cube`;
@@ -2204,6 +2204,19 @@ const Style = ({
   const textContentSl = `${heroContentSl} .text-content`;
   const gradientTextSl = `${textContentSl} .gradient-text`;
   const subTitleSl = `${textContentSl} .block`;
+  const t4Description = `${theme4Sl} p`;
+  const t4PrimaryBtn = `${theme4Sl} .gradient-btn`;
+  const t4OutlineBtn = `${theme4Sl} .outline-btn`;
+
+  // ======================== theme 5 ======================= //
+  const theme5Sl = `${mainSl} .bplThreeImageParallax`;
+  const badgeSl = `${theme5Sl} .badge`;
+  const t5Title = `${theme5Sl} h1`;
+  const t5SubTitle = `${theme5Sl} .sub-title `;
+  const t5Description = `${theme5Sl} p `;
+  const t5PrimaryBtn = `${theme5Sl} .btn.primary`;
+  const t5OutlineBtn = `${theme5Sl} .btn.outline`;
+  const leafSvg = `${theme5Sl} #leaves-container svg`;
 
   // console.log(contents?.title?.typo);
 
@@ -2213,6 +2226,7 @@ const Style = ({
 		${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)("", contents?.title?.typo)?.googleFontLink}
 		${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)("", contents?.description?.typo)?.googleFontLink}
 		${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)("", contents?.subTitle?.typo)?.googleFontLink}
+		${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)("", contents?.badge?.typo)?.googleFontLink}
 
     ${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)(titleSl, contents?.title?.typo)?.styles}
     ${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)(descriptionSl, contents?.description?.typo)?.styles}
@@ -2220,6 +2234,11 @@ const Style = ({
     ${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)(descriptionSL, contents?.description?.typo)?.styles}
     ${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)(gradientTextSl, contents?.title?.typo)?.styles}
     ${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)(subTitleSl, contents?.subTitle?.typo)?.styles}
+    ${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)(t4Description, contents?.description?.typo)?.styles}
+		${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)(badgeSl, contents?.badge?.typo)?.styles}
+		${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)(t5Title, contents?.title?.typo)?.styles}
+		${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)(t5SubTitle, contents?.subTitle?.typo)?.styles}
+		${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)(t5Description, contents?.description?.typo)?.styles}
 
 		${selectedTheme === "default" && `
 				${mainBlk}{
@@ -2379,6 +2398,19 @@ const Style = ({
 				color:${contents.subTitle.color};
 				}
 
+				${t4PrimaryBtn}{
+					${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getColorsCSS)(contents?.btns?.btn1?.colors)}
+					&:hover{
+						${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getColorsCSS)(contents?.btns?.btn1?.hoverColors)}
+					}
+				}
+				${t4OutlineBtn}{
+					${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getColorsCSS)(contents?.btns?.btn2?.colors)}
+					&:hover{
+						${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getColorsCSS)(contents?.btns?.btn2?.hoverColors)}
+					}
+				}
+
 				@media  (min-width:641px) and (max-width: 1024px){
 					${particleParallaxSl}{
 					padding:${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(layout.padding.tablet)};
@@ -2401,6 +2433,36 @@ const Style = ({
 							top: ${styles?.cube?.position?.x?.mobile};
 							right: ${styles?.cube?.position?.y?.mobile};;
 						}
+				}
+
+				${badgeSl}{
+				${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getColorsCSS)(contents?.badge?.colors)}
+				}
+
+				${t5Title}{
+				color:${contents?.title?.color};
+				}
+				${t5SubTitle}{
+				color:${contents?.subTitle?.color};
+				}
+				${t5Description}{
+				color:${contents?.description?.color};
+				}
+				${t5PrimaryBtn}{
+					${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getColorsCSS)(contents?.btns?.btn1?.colors)}
+					&:hover{
+						${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getColorsCSS)(contents?.btns?.btn1?.hoverColors)}
+					}
+				}
+				${t5OutlineBtn}{
+					${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getColorsCSS)(contents?.btns?.btn2?.colors)}
+					&:hover{
+						${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getColorsCSS)(contents?.btns?.btn2?.hoverColors)}
+					}
+				}
+
+				${leafSvg}{
+				fill:${styles?.leaf?.color};
 				}
 
 
@@ -2749,7 +2811,13 @@ const ParticleParallax = ({
     tagName: "span",
     className: "block",
     value: subTitle.text
-  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, " ", description.text, " "), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }))), isBackend ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    tagName: "p",
+    value: description.text,
+    onChange: value => setAttributes({
+      contents: (0,_utils_functions__WEBPACK_IMPORTED_MODULE_3__.updateData)(contents, value, "description")
+    })
+  }) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, " ", description.text, " "), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "buttons"
   }, btn1.status && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     target: options.isNewTab ? "_blank" : "_self",
@@ -2813,7 +2881,8 @@ const ThreeImageParallax = ({
 }) => {
   const {
     contents,
-    options
+    options,
+    styles
   } = attributes || [];
   const {
     title,
@@ -2842,14 +2911,14 @@ const ThreeImageParallax = ({
     let isComponentInView = false;
 
     // Generate random leaf positions
-    const NUM_LEAVES = 20;
+    const NUM_LEAVES = styles?.leaf?.count;
     for (let i = 0; i < NUM_LEAVES; i++) {
       const leaf = document.createElementNS("http://www.w3.org/2000/svg", "svg");
       leaf.setAttribute("width", "40");
       leaf.setAttribute("height", "40");
       leaf.setAttribute("viewBox", "0 0 24 24");
       leaf.innerHTML = `
-        <path d="M12 2C7 6 4 12 12 22C20 12 17 6 12 2Z" fill="#16a34a"/>
+        <path d="M12 2C7 6 4 12 12 22C20 12 17 6 12 2Z" />
         <path d="M12 2C12 8 12 16 12 22" stroke="#065f46" stroke-width="0.8" stroke-linecap="round"/>
         <path d="M12 7 L9 8.5" stroke="#065f46" stroke-width="0.5" stroke-linecap="round"/>
         <path d="M12 10 L8.5 12" stroke="#065f46" stroke-width="0.5" stroke-linecap="round"/>
@@ -2864,7 +2933,9 @@ const ThreeImageParallax = ({
       leaf.dataset.speed = 0.1 + Math.random() * 0.2;
       leaf.style.opacity = 0.2 + Math.random() * 0.3;
       leaf.style.transform = `rotate(${Math.random() * 360}deg)`;
-      leavesContainer.appendChild(leaf);
+      if (styles?.leaf?.status) {
+        leavesContainer.appendChild(leaf);
+      }
     }
 
     // Initialize component position and height
@@ -2914,8 +2985,12 @@ const ThreeImageParallax = ({
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleResize);
+      // Clean up leaves if component unmounts
+      if (leavesContainer) {
+        leavesContainer.innerHTML = "";
+      }
     };
-  }, []);
+  }, [styles?.leaf?.count, styles?.leaf?.status]);
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "bplThreeImageParallax",
     ref: wrapperRef
@@ -2927,7 +3002,7 @@ const ThreeImageParallax = ({
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "bg-layer bg-bottom",
     ref: bgBottomRef
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }), styles?.leaf?.status && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     id: "leaves-container",
     ref: leavesContainerRef
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -3235,21 +3310,24 @@ const themeChanger = (theme = "theme1", attributes) => (0,immer__WEBPACK_IMPORTE
     //======================= case for theme 1 ========================//
     case "theme1":
       // draft["styles"]["background"]["image"]["url"] ="https://templates.bplugins.com/wp-content/uploads/2025/05/blureffectparallax-scaled.jpeg",
-      draft["contents"]["title"]["color"] = "#2d2d2d", draft["styles"]["textAlign"] = "left";
+      draft["contents"]["title"]["color"] = "#2d2d2d", draft["contents"]["description"]["color"] = "white", draft["styles"]["textAlign"] = "left";
       break;
 
     //====================== case for theme 2 ===============================//
 
     case "theme2":
       // draft["styles"]["background"]["image"]["url"] = "https://templates.bplugins.com/wp-content/uploads/2025/05/Screenshot-2025-05-17-105053.png",
-      draft["contents"]["title"]["color"] = "#fff", draft["styles"]["textAlign"] = "center";
+      draft["contents"]["title"]["color"] = "#fff", draft["contents"]["description"]["color"] = "white", draft["styles"]["textAlign"] = "center";
       break;
 
     //====================== case for theme 3 ===============================//
 
     case "theme3":
       // draft["styles"]["background"]["image"]["url"] = "https://templates.bplugins.com/wp-content/uploads/2025/05/Screenshot-2025-05-17-105053.png",
-      draft["contents"]["title"]["color"] = "linear-gradient(to right, #38bdf8, #34d399)";
+      draft["contents"]["title"]["color"] = "linear-gradient(to right, #38bdf8, #34d399)", draft["contents"]["description"]["color"] = "white";
+      break;
+    case "theme4":
+      draft["contents"]["title"]["color"] = "#111827", draft["contents"]["description"]["color"] = "#4b5563";
       break;
     default:
       break;

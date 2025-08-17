@@ -12,7 +12,7 @@ const Style = ({ attributes, id }) => {
 	
 
 
-	// ================== theme 1 ========================= //
+	// ================== theme 2 ========================= //
 	const theme2Sl = `${mainSl} .BPBlurEffectParallax`
 	const sectionSl = `${theme2Sl} .hero`;
 	const bgSl = `${theme2Sl} .hero-bg`;
@@ -21,7 +21,7 @@ const Style = ({ attributes, id }) => {
 	const descriptionSl = `${theme2Sl} p`
 	const btnSl = `${theme2Sl} .btn`
 
-	// =================== theme 2 ======================= //
+	// =================== theme 3 ======================= //
 	const theme3Sl = `${mainSl} .BPVerticalParallax`
 	const parallaxItemSL = `${theme3Sl} .parallax-item`;
 	const textContSL = `${parallaxItemSL} .text-cont`;
@@ -29,7 +29,7 @@ const Style = ({ attributes, id }) => {
 	const descriptionSL = `${textContSL} .description`;
 	const btnSL = `${textContSL} .btn`;
 
-	// ============== theme 3 ========================= //
+	// ============== theme 4 ========================= //
 	const theme4Sl = `${mainSl} .bpParticleParallax`
 	const particleParallaxSl = `${theme4Sl} .hero-container`
 	const cubeSl = `${particleParallaxSl} .floating-cube`;
@@ -37,6 +37,20 @@ const Style = ({ attributes, id }) => {
 	const textContentSl = `${heroContentSl} .text-content`;
 	const gradientTextSl = `${textContentSl} .gradient-text`;
 	const subTitleSl = `${textContentSl} .block`;
+	const t4Description = `${theme4Sl} p`
+	const t4PrimaryBtn = `${theme4Sl} .gradient-btn`;
+  const t4OutlineBtn = `${theme4Sl} .outline-btn`;
+
+	// ======================== theme 5 ======================= //
+	const theme5Sl = `${mainSl} .bplThreeImageParallax`;
+	const badgeSl = `${theme5Sl} .badge`;
+	const t5Title = `${theme5Sl} h1`;
+	const t5SubTitle = `${theme5Sl} .sub-title `;
+	const t5Description = `${theme5Sl} p `;
+	const t5PrimaryBtn = `${theme5Sl} .btn.primary`;
+	const t5OutlineBtn = `${theme5Sl} .btn.outline`;
+	const leafSvg = `${theme5Sl} #leaves-container svg`;
+
 
 	// console.log(contents?.title?.typo);
 	
@@ -49,6 +63,7 @@ const Style = ({ attributes, id }) => {
 		${getTypoCSS("", contents?.title?.typo)?.googleFontLink}
 		${getTypoCSS("", contents?.description?.typo)?.googleFontLink}
 		${getTypoCSS("", contents?.subTitle?.typo)?.googleFontLink}
+		${getTypoCSS("", contents?.badge?.typo)?.googleFontLink}
 
     ${getTypoCSS(titleSl, contents?.title?.typo)?.styles}
     ${getTypoCSS(descriptionSl, contents?.description?.typo)?.styles}
@@ -56,6 +71,11 @@ const Style = ({ attributes, id }) => {
     ${getTypoCSS(descriptionSL, contents?.description?.typo)?.styles}
     ${getTypoCSS(gradientTextSl, contents?.title?.typo)?.styles}
     ${getTypoCSS(subTitleSl, contents?.subTitle?.typo)?.styles}
+    ${getTypoCSS(t4Description, contents?.description?.typo)?.styles}
+		${getTypoCSS(badgeSl, contents?.badge?.typo)?.styles}
+		${getTypoCSS(t5Title, contents?.title?.typo)?.styles}
+		${getTypoCSS(t5SubTitle, contents?.subTitle?.typo)?.styles}
+		${getTypoCSS(t5Description, contents?.description?.typo)?.styles}
 
 		${
       selectedTheme === "default" &&
@@ -218,6 +238,19 @@ const Style = ({ attributes, id }) => {
 				color:${contents.subTitle.color};
 				}
 
+				${t4PrimaryBtn}{
+					${getColorsCSS(contents?.btns?.btn1?.colors)}
+					&:hover{
+						${getColorsCSS(contents?.btns?.btn1?.hoverColors)}
+					}
+				}
+				${t4OutlineBtn}{
+					${getColorsCSS(contents?.btns?.btn2?.colors)}
+					&:hover{
+						${getColorsCSS(contents?.btns?.btn2?.hoverColors)}
+					}
+				}
+
 				@media  (min-width:641px) and (max-width: 1024px){
 					${particleParallaxSl}{
 					padding:${getBoxCSS(layout.padding.tablet)};
@@ -240,6 +273,36 @@ const Style = ({ attributes, id }) => {
 							top: ${styles?.cube?.position?.x?.mobile};
 							right: ${styles?.cube?.position?.y?.mobile};;
 						}
+				}
+
+				${badgeSl}{
+				${getColorsCSS(contents?.badge?.colors)}
+				}
+
+				${t5Title}{
+				color:${contents?.title?.color};
+				}
+				${t5SubTitle}{
+				color:${contents?.subTitle?.color};
+				}
+				${t5Description}{
+				color:${contents?.description?.color};
+				}
+				${t5PrimaryBtn}{
+					${getColorsCSS(contents?.btns?.btn1?.colors)}
+					&:hover{
+						${getColorsCSS(contents?.btns?.btn1?.hoverColors)}
+					}
+				}
+				${t5OutlineBtn}{
+					${getColorsCSS(contents?.btns?.btn2?.colors)}
+					&:hover{
+						${getColorsCSS(contents?.btns?.btn2?.hoverColors)}
+					}
+				}
+
+				${leafSvg}{
+				fill:${styles?.leaf?.color};
 				}
 
 
