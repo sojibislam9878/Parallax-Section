@@ -2852,6 +2852,142 @@ const ParticleParallax = ({
 
 /***/ }),
 
+/***/ "./src/Components/Common/Themes/ScrollingParallax.js":
+/*!***********************************************************!*\
+  !*** ./src/Components/Common/Themes/ScrollingParallax.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+"use client";
+
+
+
+const ScrollingParallax = () => {
+  // 👉 In production, fetch contentRows from DB instead of hardcoding
+  const contentRows = [[{
+    title: "PACHINKO",
+    subtitle: "Apple TV+",
+    image: "https://templates.bplugins.com/wp-content/uploads/2025/07/41475.jpg"
+  }, {
+    title: "USHER",
+    subtitle: "Apple Music",
+    image: "https://templates.bplugins.com/wp-content/uploads/2025/07/coffee-cup-scaled.jpg"
+  }, {
+    title: "บลิงก์ ทวิช",
+    subtitle: "Streaming",
+    image: "https://templates.bplugins.com/wp-content/uploads/2025/02/n-46.jpg"
+  }, {
+    title: "PRESUMED INNOCENT",
+    subtitle: "Apple TV+",
+    image: "https://templates.bplugins.com/wp-content/uploads/2025/02/n-38.jpg"
+  }, {
+    title: "ดินแดนโจรสลัด",
+    subtitle: "Adventure",
+    image: "https://templates.bplugins.com/wp-content/uploads/2025/02/n-29.jpg"
+  }, {
+    title: "PHOENIX",
+    subtitle: "Action",
+    image: "https://templates.bplugins.com/wp-content/uploads/2025/02/n-32.jpg"
+  }], [{
+    title: "Jennifer Lopez",
+    subtitle: "Apple Music",
+    image: "https://templates.bplugins.com/wp-content/uploads/2025/07/41475.jpg"
+  }, {
+    title: "ANGRY BIRDS RELOADED",
+    subtitle: "Apple Arcade",
+    image: "https://templates.bplugins.com/wp-content/uploads/2025/07/coffee-cup-scaled.jpg"
+  }, {
+    title: "พรีเดเตอร์",
+    subtitle: "Action Movie",
+    image: "https://templates.bplugins.com/wp-content/uploads/2025/02/n-46.jpg"
+  }, {
+    title: "Ice Spice",
+    subtitle: "Apple Music",
+    image: "https://templates.bplugins.com/wp-content/uploads/2025/02/n-38.jpg"
+  }, {
+    title: "DREAMLIGHT VALLEY",
+    subtitle: "Apple Arcade",
+    image: "https://templates.bplugins.com/wp-content/uploads/2025/02/n-62.jpg"
+  }, {
+    title: "BAD BOYS",
+    subtitle: "Action Movie",
+    image: "https://templates.bplugins.com/wp-content/uploads/2025/02/n-32.jpg"
+  }], [{
+    title: "IT ENDS WITH US",
+    subtitle: "Drama",
+    image: "https://templates.bplugins.com/wp-content/uploads/2025/07/41475.jpg"
+  }, {
+    title: "โค่นอสูรป่วนเมือง",
+    subtitle: "Action",
+    image: "https://templates.bplugins.com/wp-content/uploads/2025/07/coffee-cup-scaled.jpg"
+  }, {
+    title: "บิดาสาม",
+    subtitle: "Thai Movie",
+    image: "https://templates.bplugins.com/wp-content/uploads/2025/02/n-46.jpg"
+  }, {
+    title: "TOM & JERRY",
+    subtitle: "Apple Arcade",
+    image: "https://templates.bplugins.com/wp-content/uploads/2025/02/n-38.jpg"
+  }, {
+    title: "SILO",
+    subtitle: "Apple TV+",
+    image: "https://templates.bplugins.com/wp-content/uploads/2025/02/n-62.jpg"
+  }, {
+    title: "MUSIC",
+    subtitle: "Apple Music",
+    image: "https://templates.bplugins.com/wp-content/uploads/2025/02/n-32.jpg"
+  }]];
+  const rowRefs = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)([]);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      rowRefs.current.forEach(row => {
+        if (!row) return;
+        const direction = parseFloat(row.dataset.direction);
+        const offset = parseFloat(row.dataset.offset || "0");
+        const speed = 0.5;
+        row.style.transform = `translateX(${offset + scrollY * speed * direction}px)`;
+      });
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "bplScrolingParallax"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: ""
+  }, contentRows.map((rowItems, rowIndex) => {
+    // Duplicate for seamless loop
+    const items = [...rowItems, ...rowItems];
+    const direction = rowIndex % 2 === 0 ? -1 : 1;
+    const offset = rowIndex === 1 ? -400 : 0;
+    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      key: rowIndex,
+      className: "parallax-row",
+      "data-direction": direction,
+      "data-offset": offset,
+      ref: el => rowRefs.current[rowIndex] = el
+    }, items.map((item, i) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      key: i,
+      className: "card"
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+      src: item.image,
+      alt: item.title
+    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "card-content"
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", null, item.title), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, item.subtitle)))));
+  })));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ScrollingParallax);
+
+/***/ }),
+
 /***/ "./src/Components/Common/Themes/ThreeImageParallax.js":
 /*!************************************************************!*\
   !*** ./src/Components/Common/Themes/ThreeImageParallax.js ***!
@@ -3461,6 +3597,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Components_Common_Themes_VerticalParallax__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Components/Common/Themes/VerticalParallax */ "./src/Components/Common/Themes/VerticalParallax.js");
 /* harmony import */ var _Components_Common_Themes_ParticleParallax__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Components/Common/Themes/ParticleParallax */ "./src/Components/Common/Themes/ParticleParallax.js");
 /* harmony import */ var _Components_Common_Themes_ThreeImageParallax__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Components/Common/Themes/ThreeImageParallax */ "./src/Components/Common/Themes/ThreeImageParallax.js");
+/* harmony import */ var _Components_Common_Themes_ScrollingParallax__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Components/Common/Themes/ScrollingParallax */ "./src/Components/Common/Themes/ScrollingParallax.js");
+
 
 
 
@@ -3515,6 +3653,10 @@ document.addEventListener('DOMContentLoaded', () => {
             });
           case "theme4":
             return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components_Common_Themes_ThreeImageParallax__WEBPACK_IMPORTED_MODULE_8__["default"], {
+              attributes
+            });
+          case "theme5":
+            return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components_Common_Themes_ScrollingParallax__WEBPACK_IMPORTED_MODULE_9__["default"], {
               attributes
             });
           default:

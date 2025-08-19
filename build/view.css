@@ -533,5 +533,95 @@
     margin-top: 56px;
   }
 }
+.wp-block-psb-parallax .bplScrolingParallax {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: black;
+  color: white;
+  overflow-x: hidden;
+}
+.wp-block-psb-parallax .bplScrolingParallax .header {
+  text-align: center;
+  padding: 5rem 1rem;
+}
+.wp-block-psb-parallax .bplScrolingParallax .header h1 {
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+.wp-block-psb-parallax .bplScrolingParallax .header p {
+  font-size: 1.25rem;
+  color: #9ca3af;
+}
+.wp-block-psb-parallax .bplScrolingParallax .parallax-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-bottom: 5rem;
+}
+.wp-block-psb-parallax .bplScrolingParallax .parallax-row {
+  display: flex;
+  gap: 1.5rem;
+  width: -moz-max-content;
+  width: max-content;
+  will-change: transform;
+}
+.wp-block-psb-parallax .bplScrolingParallax .card {
+  position: relative;
+  width: 20rem;
+  height: 12rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background: #1f2937;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.wp-block-psb-parallax .bplScrolingParallax .card:hover {
+  transform: scale(1.05);
+}
+.wp-block-psb-parallax .bplScrolingParallax .card img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.wp-block-psb-parallax .bplScrolingParallax .card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent, transparent);
+}
+.wp-block-psb-parallax .bplScrolingParallax .card-content {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  z-index: 2;
+}
+.wp-block-psb-parallax .bplScrolingParallax .card-content h3 {
+  font-size: 1.125rem;
+  font-weight: bold;
+  margin: 0;
+}
+.wp-block-psb-parallax .bplScrolingParallax .card-content p {
+  font-size: 0.875rem;
+  color: #d1d5db;
+  margin: 0.25rem 0 0;
+}
+.wp-block-psb-parallax .bplScrolingParallax .footer {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.wp-block-psb-parallax .bplScrolingParallax .footer h2 {
+  font-size: 2.25rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+.wp-block-psb-parallax .bplScrolingParallax .footer p {
+  color: #9ca3af;
+}
 
 /*# sourceMappingURL=view.css.map*/

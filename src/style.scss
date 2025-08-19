@@ -674,4 +674,109 @@ $scroll-factor: 1;
       }
     }
   }
+
+  .bplScrolingParallax{
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: black;
+      color: white;
+      overflow-x: hidden;
+    
+
+    .header {
+      text-align: center;
+      padding: 5rem 1rem;
+    }
+
+    .header h1 {
+      font-size: 3.5rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    .header p {
+      font-size: 1.25rem;
+      color: #9ca3af;
+    }
+
+    .parallax-container {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      padding-bottom: 5rem;
+    }
+
+    .parallax-row {
+      display: flex;
+      gap: 1.5rem;
+      width: max-content;
+      will-change: transform;
+    }
+
+    .card {
+      position: relative;
+      width: 20rem;
+      height: 12rem;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      background: #1f2937;
+      flex-shrink: 0;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent, transparent);
+    }
+
+    .card-content {
+      position: absolute;
+      bottom: 1rem;
+      left: 1rem;
+      z-index: 2;
+    }
+
+    .card-content h3 {
+      font-size: 1.125rem;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    .card-content p {
+      font-size: 0.875rem;
+      color: #d1d5db;
+      margin: 0.25rem 0 0;
+    }
+
+    .footer {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .footer h2 {
+      font-size: 2.25rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    .footer p {
+      color: #9ca3af;
+    }
+  }
 }

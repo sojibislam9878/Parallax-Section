@@ -11,6 +11,7 @@ import { parallaxInit } from '../../utils/functions';
 import { usePremiumInEditor } from "../../../../bpl-tools/hooks";
 import ParticleParallax from '../Common/Themes/ParticleParallax';
 import ThreeImageParallax from '../Common/Themes/ThreeImageParallax';
+import ScrollingParallax from '../Common/Themes/ScrollingParallax';
 
 const Edit = props => {
 	const {attributes, setAttributes, isSelected, device, clientId} = props;
@@ -67,6 +68,12 @@ const Edit = props => {
 						case "theme4":
 							return (
                 <ThreeImageParallax
+                  {...{ isBackend, attributes, setAttributes }}
+                />
+              );
+						case "theme5":
+							return (
+                <ScrollingParallax
                   {...{ isBackend, attributes, setAttributes }}
                 />
               );

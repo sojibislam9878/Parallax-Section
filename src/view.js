@@ -6,6 +6,7 @@ import { parallaxInit } from './utils/functions';
 import VerticalParallax from './Components/Common/Themes/VerticalParallax';
 import ParticleParallax from './Components/Common/Themes/ParticleParallax';
 import ThreeImageParallax from './Components/Common/Themes/ThreeImageParallax';
+import ScrollingParallax from './Components/Common/Themes/ScrollingParallax';
 
 document.addEventListener('DOMContentLoaded', () => {
 	const parallaxEls = document.querySelectorAll('.wp-block-psb-parallax');
@@ -48,6 +49,8 @@ document.addEventListener('DOMContentLoaded', () => {
 								return <ParticleParallax {...{ attributes }} />;
 							case "theme4":
 								return <ThreeImageParallax {...{ attributes }} />;
+							case "theme5":
+								return <ScrollingParallax {...{ attributes }} />;
 							default:
 								return null;
 						}
