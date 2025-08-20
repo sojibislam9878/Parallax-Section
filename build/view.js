@@ -2218,6 +2218,8 @@ const Style = ({
   const t5OutlineBtn = `${theme5Sl} .btn.outline`;
   const leafSvg = `${theme5Sl} #leaves-container svg`;
 
+  // ========================= theme 6 ============================ //
+
   // console.log(contents?.title?.typo);
 
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
@@ -2869,8 +2871,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const ScrollingParallax = () => {
-  // 👉 In production, fetch contentRows from DB instead of hardcoding
-  const contentRows = [[{
+  // 👉 Single array
+  const contentRow = [{
     title: "PACHINKO",
     subtitle: "Apple TV+",
     image: "https://templates.bplugins.com/wp-content/uploads/2025/07/41475.jpg"
@@ -2894,7 +2896,7 @@ const ScrollingParallax = () => {
     title: "PHOENIX",
     subtitle: "Action",
     image: "https://templates.bplugins.com/wp-content/uploads/2025/02/n-32.jpg"
-  }], [{
+  }, {
     title: "Jennifer Lopez",
     subtitle: "Apple Music",
     image: "https://templates.bplugins.com/wp-content/uploads/2025/07/41475.jpg"
@@ -2918,7 +2920,7 @@ const ScrollingParallax = () => {
     title: "BAD BOYS",
     subtitle: "Action Movie",
     image: "https://templates.bplugins.com/wp-content/uploads/2025/02/n-32.jpg"
-  }], [{
+  }, {
     title: "IT ENDS WITH US",
     subtitle: "Drama",
     image: "https://templates.bplugins.com/wp-content/uploads/2025/07/41475.jpg"
@@ -2942,8 +2944,22 @@ const ScrollingParallax = () => {
     title: "MUSIC",
     subtitle: "Apple Music",
     image: "https://templates.bplugins.com/wp-content/uploads/2025/02/n-32.jpg"
-  }]];
+  }];
   const rowRefs = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)([]);
+  const [selectedCard, setSelectedCard] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
+  const fullView = true; // toggle modal functionality
+
+  // 👉 Utility: split array into 3 chunks
+  const chunkArray = (arr, chunkCount) => {
+    const perChunk = Math.ceil(arr.length / chunkCount);
+    return Array.from({
+      length: chunkCount
+    }, (_, i) => arr.slice(i * perChunk, (i + 1) * perChunk));
+  };
+  const contentRows = chunkArray(contentRow, 3);
+  if (contentRows[1]) {
+    contentRows[1] = [...contentRows[1]].reverse();
+  }
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
@@ -2960,11 +2976,8 @@ const ScrollingParallax = () => {
   }, []);
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "bplScrolingParallax"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: ""
-  }, contentRows.map((rowItems, rowIndex) => {
-    // Duplicate for seamless loop
-    const items = [...rowItems, ...rowItems];
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, contentRows.map((rowItems, rowIndex) => {
+    const items = [...rowItems, ...rowItems]; // Duplicate for seamless loop
     const direction = rowIndex % 2 === 0 ? -1 : 1;
     const offset = rowIndex === 1 ? -400 : 0;
     return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -2975,14 +2988,37 @@ const ScrollingParallax = () => {
       ref: el => rowRefs.current[rowIndex] = el
     }, items.map((item, i) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       key: i,
-      className: "card"
+      className: "card cursor-pointer",
+      onClick: () => fullView && setSelectedCard(item)
     }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
       src: item.image,
       alt: item.title
     }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "card-content"
     }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", null, item.title), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, item.subtitle)))));
-  })));
+  })), selectedCard && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "modal-overlay"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "modal-container"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    onClick: () => setSelectedCard(null),
+    className: "modal-close"
+  }, "\u2715"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    src: selectedCard.image,
+    alt: selectedCard.title,
+    className: "modal-image"
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    style: {
+      display: "flex",
+      justifyContent: "space-between"
+    }
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "modal-text"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, selectedCard.title), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, selectedCard.subtitle)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    style: {
+      height: "100px"
+    }
+  }, "hello world")))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ScrollingParallax);
 
@@ -3189,7 +3225,7 @@ const ThreeImageParallax = ({
     rel: "noreferrer",
     href: btns?.btn1.link
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-    className: "btn primary"
+    className: "btn  primary"
   }, btns?.btn1.text, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "arrow"
   }, "\u2192"))), btns.btn2.status && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {

@@ -239,7 +239,7 @@ const ThreeImageParallax = ({
                       rel="noreferrer"
                       href={btns?.btn1.link}
                     >
-                      <button className="btn primary">
+                      <button className="btn  primary">
                         {btns?.btn1.text}
                         <span className="arrow">&rarr;</span>
                       </button>

@@ -51,6 +51,9 @@ const Style = ({ attributes, id }) => {
 	const t5OutlineBtn = `${theme5Sl} .btn.outline`;
 	const leafSvg = `${theme5Sl} #leaves-container svg`;
 
+	// ========================= theme 6 ============================ //
+
+
 
 	// console.log(contents?.title?.typo);
 	

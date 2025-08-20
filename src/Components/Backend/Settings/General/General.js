@@ -624,6 +624,13 @@ const General = ({ attributes, setAttributes, device, premiumProps }) => {
         </PanelBody>
       )}
 
+      
+
+
+
+
+
+
       {selectedTheme === "default" && (
         <PanelBody
           className="bPlPanelBody"
