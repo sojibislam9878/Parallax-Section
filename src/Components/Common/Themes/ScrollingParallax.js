@@ -2,122 +2,15 @@
 
 import { useEffect, useRef, useState } from "react";
 
-const ScrollingParallax = () => {
-  // 👉 Single array
-  const contentRow = [
-    {
-      title: "PACHINKO",
-      subtitle: "Apple TV+",
-      image:
-        "https://templates.bplugins.com/wp-content/uploads/2025/07/41475.jpg",
-    },
-    {
-      title: "USHER",
-      subtitle: "Apple Music",
-      image:
-        "https://templates.bplugins.com/wp-content/uploads/2025/07/coffee-cup-scaled.jpg",
-    },
-    {
-      title: "บลิงก์ ทวิช",
-      subtitle: "Streaming",
-      image:
-        "https://templates.bplugins.com/wp-content/uploads/2025/02/n-46.jpg",
-    },
-    {
-      title: "PRESUMED INNOCENT",
-      subtitle: "Apple TV+",
-      image:
-        "https://templates.bplugins.com/wp-content/uploads/2025/02/n-38.jpg",
-    },
-    {
-      title: "ดินแดนโจรสลัด",
-      subtitle: "Adventure",
-      image:
-        "https://templates.bplugins.com/wp-content/uploads/2025/02/n-29.jpg",
-    },
-    {
-      title: "PHOENIX",
-      subtitle: "Action",
-      image:
-        "https://templates.bplugins.com/wp-content/uploads/2025/02/n-32.jpg",
-    },
-    {
-      title: "Jennifer Lopez",
-      subtitle: "Apple Music",
-      image:
-        "https://templates.bplugins.com/wp-content/uploads/2025/07/41475.jpg",
-    },
-    {
-      title: "ANGRY BIRDS RELOADED",
-      subtitle: "Apple Arcade",
-      image:
-        "https://templates.bplugins.com/wp-content/uploads/2025/07/coffee-cup-scaled.jpg",
-    },
-    {
-      title: "พรีเดเตอร์",
-      subtitle: "Action Movie",
-      image:
-        "https://templates.bplugins.com/wp-content/uploads/2025/02/n-46.jpg",
-    },
-    {
-      title: "Ice Spice",
-      subtitle: "Apple Music",
-      image:
-        "https://templates.bplugins.com/wp-content/uploads/2025/02/n-38.jpg",
-    },
-    {
-      title: "DREAMLIGHT VALLEY",
-      subtitle: "Apple Arcade",
-      image:
-        "https://templates.bplugins.com/wp-content/uploads/2025/02/n-62.jpg",
-    },
-    {
-      title: "BAD BOYS",
-      subtitle: "Action Movie",
-      image:
-        "https://templates.bplugins.com/wp-content/uploads/2025/02/n-32.jpg",
-    },
-    {
-      title: "IT ENDS WITH US",
-      subtitle: "Drama",
-      image:
-        "https://templates.bplugins.com/wp-content/uploads/2025/07/41475.jpg",
-    },
-    {
-      title: "โค่นอสูรป่วนเมือง",
-      subtitle: "Action",
-      image:
-        "https://templates.bplugins.com/wp-content/uploads/2025/07/coffee-cup-scaled.jpg",
-    },
-    {
-      title: "บิดาสาม",
-      subtitle: "Thai Movie",
-      image:
-        "https://templates.bplugins.com/wp-content/uploads/2025/02/n-46.jpg",
-    },
-    {
-      title: "TOM & JERRY",
-      subtitle: "Apple Arcade",
-      image:
-        "https://templates.bplugins.com/wp-content/uploads/2025/02/n-38.jpg",
-    },
-    {
-      title: "SILO",
-      subtitle: "Apple TV+",
-      image:
-        "https://templates.bplugins.com/wp-content/uploads/2025/02/n-62.jpg",
-    },
-    {
-      title: "MUSIC",
-      subtitle: "Apple Music",
-      image:
-        "https://templates.bplugins.com/wp-content/uploads/2025/02/n-32.jpg",
-    },
-  ];
+const ScrollingParallax = ({ attributes, setAttributs, isBackend = false }) => {
+  const t5Contents = attributes?.t5Contents || {};
+  const contentRow = t5Contents.fristRow || [];
 
+  const containerRef = useRef(null);
   const rowRefs = useRef([]);
+  const initialTopRef = useRef(0);
   const [selectedCard, setSelectedCard] = useState(null);
-  const fullView = true; // toggle modal functionality
+  const fullView = true;
 
   // 👉 Utility: split array into 3 chunks
   const chunkArray = (arr, chunkCount) => {
@@ -128,33 +21,73 @@ const ScrollingParallax = () => {
   };
 
   const contentRows = chunkArray(contentRow, 3);
-  if (contentRows[1]) {
-    contentRows[1] = [...contentRows[1]].reverse();
-  }
+  if (contentRows[1]) contentRows[1] = [...contentRows[1]].reverse();
 
   useEffect(() => {
+    const measure = () => {
+      if (!containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      initialTopRef.current = rect.top + window.scrollY;
+
+      // 👉 measure each row’s width for offset (especially for reversed rows)
+      rowRefs.current.forEach((row, index) => {
+        if (!row) return;
+        if (index === 1) {
+          // shift so reversed row starts aligned from the right edge
+          const containerWidth = containerRef.current.offsetWidth;
+          row.dataset.offset = -(row.scrollWidth - containerWidth);
+          row.style.transform = `translateX(${row.dataset.offset}px)`;
+        } else {
+          row.dataset.offset = 0;
+          row.style.transform = `translateX(0px)`;
+        }
+      });
+    };
+
+    measure();
+    const afterTick = requestAnimationFrame(measure);
+    window.addEventListener("resize", measure);
+
     const handleScroll = () => {
-      const scrollY = window.scrollY;
+      if (!containerRef.current) return;
+
+      let relativeScroll = window.scrollY - initialTopRef.current;
+      if (relativeScroll < 0) {
+        rowRefs.current.forEach((row) => {
+          if (!row) return;
+          const offset = parseFloat(row?.dataset?.offset || "0");
+          row.style.transform = `translateX(${offset}px)`;
+        });
+        return;
+      }
+
       rowRefs.current.forEach((row) => {
         if (!row) return;
         const direction = parseFloat(row.dataset.direction);
         const offset = parseFloat(row.dataset.offset || "0");
-        const speed = 0.5;
+        const speed = 7;
         row.style.transform = `translateX(${
-          offset + scrollY * speed * direction
+          offset + relativeScroll * speed * direction
         }px)`;
       });
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+
+    return () => {
+      cancelAnimationFrame(afterTick);
+      window.removeEventListener("resize", measure);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
+  
 
   return (
-    <div className="bplScrolingParallax">
+    <div id="main-container" className="bplScrolingParallax" ref={containerRef}>
       <div>
-        {contentRows.map((rowItems, rowIndex) => {
-          const items = [...rowItems, ...rowItems]; // Duplicate for seamless loop
+        {contentRows.map((rowItems = [], rowIndex) => {
+          const items = [...rowItems, ...rowItems];
           const direction = rowIndex % 2 === 0 ? -1 : 1;
           const offset = rowIndex === 1 ? -400 : 0;
 
@@ -165,6 +98,7 @@ const ScrollingParallax = () => {
               data-direction={direction}
               data-offset={offset}
               ref={(el) => (rowRefs.current[rowIndex] = el)}
+              style={{ transform: `translateX(${offset}px)` }}
             >
               {items.map((item, i) => (
                 <div
@@ -184,7 +118,6 @@ const ScrollingParallax = () => {
         })}
       </div>
 
-      {/* Modal */}
       {selectedCard && (
         <div className="modal-overlay">
           <div className="modal-container">
@@ -199,7 +132,7 @@ const ScrollingParallax = () => {
               alt={selectedCard.title}
               className="modal-image"
             />
-            <div style={{display:"flex", justifyContent:"space-between"}}>
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
               <div className="modal-text">
                 <h2>{selectedCard.title}</h2>
                 <p>{selectedCard.subtitle}</p>

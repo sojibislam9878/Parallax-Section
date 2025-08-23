@@ -263,7 +263,7 @@ const Style = ({ attributes, id }) => {
 						top: ${styles?.cube?.position?.x?.tablet};
 						right: ${styles?.cube?.position?.y?.tablet};;
 					}
-				}
+				} 
 		
 	
 	

@@ -487,7 +487,7 @@ const General = ({ attributes, setAttributes, device, premiumProps }) => {
                       "btns",
                       "btn1",
                       "text"
-                    ),
+                    ), 
                   })
                 }
                 value={contents.btns.btn1.text}
