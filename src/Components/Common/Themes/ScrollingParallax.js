@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 const ScrollingParallax = ({ attributes, setAttributs, isBackend = false }) => {
   const t5Contents = attributes?.t5Contents || {};
-  const contentRow = t5Contents.fristRow || [];
+  const contentRow = t5Contents || [];
 
   const containerRef = useRef(null);
   const rowRefs = useRef([]);
@@ -65,7 +65,7 @@ const ScrollingParallax = ({ attributes, setAttributs, isBackend = false }) => {
         if (!row) return;
         const direction = parseFloat(row.dataset.direction);
         const offset = parseFloat(row.dataset.offset || "0");
-        const speed = 7;
+        const speed = 0.5;
         row.style.transform = `translateX(${
           offset + relativeScroll * speed * direction
         }px)`;
@@ -89,7 +89,7 @@ const ScrollingParallax = ({ attributes, setAttributs, isBackend = false }) => {
         {contentRows.map((rowItems = [], rowIndex) => {
           const items = [...rowItems, ...rowItems];
           const direction = rowIndex % 2 === 0 ? -1 : 1;
-          const offset = rowIndex === 1 ? -400 : 0;
+          const offset = rowIndex === 1 ? -400 : 400;
 
           return (
             <div

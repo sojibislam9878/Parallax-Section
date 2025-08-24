@@ -45,13 +45,22 @@
       }
     },
     "t5Contents":{
-      "type":"object",
-      "default":{
-        "fristRow":[
+      "type":"array",
+      "default":[
           {
             "title": "PACHINKO",
             "subtitle": "Apple TV+",
-            "image": "https://templates.bplugins.com/wp-content/uploads/2025/07/41475.jpg"
+            "image": "https://templates.bplugins.com/wp-content/uploads/2025/07/41475.jpg",
+            "button":{
+              "status":true,
+              "link":"#",
+              "isNewTab":false,
+              "buttonTitle":"string",
+              "colors":{
+                "color":"rgba(0, 168, 53, 0.7)",
+                "bg":""
+              }
+            }
           },
           {
             "title": "USHER",
@@ -139,7 +148,6 @@
             "image": "https://templates.bplugins.com/wp-content/uploads/2025/02/n-32.jpg"
           }
         ]
-      }
     },
     "contents": {
       "type": "object",

@@ -22,11 +22,13 @@ import {
   BoxControl,
   Device,
   InlineMediaUpload,
+  ItemsPanel,
   Label,
 } from "../../../../../../bpl-tools/Components";
 import { textAlignOptions, themeOptions } from "../../../../utils/options";
 import { themeChanger, updateData } from "../../../../utils/functions";
 import { BControlPro } from "../../../../../../bpl-tools/ProControls";
+import FristContRow from "../../RowItems/FristContRow";
 
 const General = ({ attributes, setAttributes, device, premiumProps }) => {
   const {
@@ -191,7 +193,7 @@ const General = ({ attributes, setAttributes, device, premiumProps }) => {
       </PanelBody>
 
       {/* Contents for theme 1, 2, 3, 4 */}
-      {selectedTheme != "default" && (
+      {selectedTheme != "default" && selectedTheme != "theme5" && (
         <PanelBody
           className="bPlPanelBody"
           title={__("Contents", "parallax-section")}
@@ -487,7 +489,7 @@ const General = ({ attributes, setAttributes, device, premiumProps }) => {
                       "btns",
                       "btn1",
                       "text"
-                    ), 
+                    ),
                   })
                 }
                 value={contents.btns.btn1.text}
@@ -624,13 +626,6 @@ const General = ({ attributes, setAttributes, device, premiumProps }) => {
         </PanelBody>
       )}
 
-      
-
-
-
-
-
-
       {selectedTheme === "default" && (
         <PanelBody
           className="bPlPanelBody"
@@ -648,15 +643,31 @@ const General = ({ attributes, setAttributes, device, premiumProps }) => {
           <small>{__("0 will not perform parallax", "parallax-section")}</small>
         </PanelBody>
       )}
-      {/* {selectedTheme === "theme4" && (
+
+      {selectedTheme === "theme5" && (
         <PanelBody
           className="bPlPanelBody"
-          title={__("Product Cards", "parallax-section")}
+          title={__("Contents", "parallax-section")}
           initialOpen={false}
         >
-      
+          <ItemsPanel
+            {...{ attributes, setAttributes }}
+            arrKey="t5Contents"
+            newItem={{
+              name: "Kiss Dorka",
+              designation: "Product Design &amp; UX Lead",
+              image:
+                "https://templates.bplugins.com/wp-content/uploads/2025/02/p-32.png",
+              content:
+                "Started using @flowmapp to create some App and Website Sitempas. Really liking it. Easy to use. Good to see that user flows appear to be in the Product Roadmap as well.",
+              tags: ["uxdesign", "ux", "webdesing", "uidesign"],
+            }}
+            ItemSettings={FristContRow}
+            title="title"
+            design="sortable"
+          />
         </PanelBody>
-      )} */}
+      )}
     </>
   );
 };

@@ -2876,7 +2876,7 @@ const ScrollingParallax = ({
   isBackend = false
 }) => {
   const t5Contents = attributes?.t5Contents || {};
-  const contentRow = t5Contents.fristRow || [];
+  const contentRow = t5Contents || [];
   const containerRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   const rowRefs = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)([]);
   const initialTopRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(0);
@@ -2930,7 +2930,7 @@ const ScrollingParallax = ({
         if (!row) return;
         const direction = parseFloat(row.dataset.direction);
         const offset = parseFloat(row.dataset.offset || "0");
-        const speed = 7;
+        const speed = 0.5;
         row.style.transform = `translateX(${offset + relativeScroll * speed * direction}px)`;
       });
     };
@@ -2951,7 +2951,7 @@ const ScrollingParallax = ({
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, contentRows.map((rowItems = [], rowIndex) => {
     const items = [...rowItems, ...rowItems];
     const direction = rowIndex % 2 === 0 ? -1 : 1;
-    const offset = rowIndex === 1 ? -400 : 0;
+    const offset = rowIndex === 1 ? -400 : 400;
     return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       key: rowIndex,
       className: "parallax-row",
