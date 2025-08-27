@@ -57,10 +57,10 @@ const Style = ({ attributes, setAttributes, premiumProps, device }) => {
               {...premiumProps}
             />
 
-            {(selectedTheme === "theme1" || selectedTheme === "theme2") && (
+            {(selectedTheme === "theme1" || selectedTheme === "theme2" || selectedTheme === "theme5") && (
               <>
                 <BControlPro
-                  label="Header Color"
+                  label="Title Color"
                   value={title.color}
                   onChange={(value) =>
                     setAttributes({
@@ -72,7 +72,7 @@ const Style = ({ attributes, setAttributes, premiumProps, device }) => {
                 />
 
                 <BControlPro
-                  label="Header Typo"
+                  label="Title Typo"
                   value={title.typo}
                   onChange={(value) =>
                     setAttributes({

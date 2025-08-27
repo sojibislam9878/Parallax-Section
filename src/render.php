@@ -6,7 +6,7 @@ use PSB\GetCSS as GetCSS;
 
 extract( $attributes );
 
-// Styles
+// Styles 
 $bgCSS = PSB\GetCSS::getBackgroundCSS($background);
 $paddingCSS = PSB\GetCSS::getSpaceCSS($padding);
 

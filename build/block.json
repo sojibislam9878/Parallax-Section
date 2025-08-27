@@ -55,7 +55,7 @@
       "default": [
         {
           "title": "PACHINKO",
-          "subtitle": "Apple TV+",
+          "--": "Apple TV+",
           "image": "https://templates.bplugins.com/wp-content/uploads/2025/07/41475.jpg",
           "button": {
             "status": true,

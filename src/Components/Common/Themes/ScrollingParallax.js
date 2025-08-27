@@ -1,16 +1,20 @@
-"use client";
-
 import { useEffect, useRef, useState } from "react";
+import { __ } from "@wordpress/i18n";
+import { RichText } from "@wordpress/block-editor";
+import { updateData } from "../../../utils/functions";
 
-const ScrollingParallax = ({ attributes, setAttributs, isBackend = false }) => {
+const ScrollingParallax = ({
+  attributes,
+  setAttributes,
+  isBackend = false,
+}) => {
   const t5Contents = attributes?.t5Contents || {};
   const contentRow = t5Contents || [];
-
   const containerRef = useRef(null);
   const rowRefs = useRef([]);
   const initialTopRef = useRef(0);
   const [selectedCard, setSelectedCard] = useState(null);
-  const fullView = true;
+  const fullView = false;
 
   // 👉 Utility: split array into 3 chunks
   const chunkArray = (arr, chunkCount) => {
@@ -50,7 +54,6 @@ const ScrollingParallax = ({ attributes, setAttributs, isBackend = false }) => {
 
     const handleScroll = () => {
       if (!containerRef.current) return;
-
       let relativeScroll = window.scrollY - initialTopRef.current;
       if (relativeScroll < 0) {
         rowRefs.current.forEach((row) => {
@@ -81,7 +84,6 @@ const ScrollingParallax = ({ attributes, setAttributs, isBackend = false }) => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-  
 
   return (
     <div id="main-container" className="bplScrolingParallax" ref={containerRef}>
@@ -108,8 +110,43 @@ const ScrollingParallax = ({ attributes, setAttributs, isBackend = false }) => {
                 >
                   <img src={item.image} alt={item.title} />
                   <div className="card-content">
-                    <h3>{item.title}</h3>
-                    <p>{item.subtitle}</p>
+                    {isBackend ? (
+                      <>
+                        <RichText
+                          tagName="h3"
+                          value={item.title}
+                          onChange={(value) =>
+                            setAttributes({
+                              t5Contents: updateData(
+                                t5Contents,
+                                value,
+                                i,
+                                "title"
+                              ),
+                            })
+                          }
+                        />
+                        <RichText
+                          tagName="p"
+                          value={item.subtitle}
+                          onChange={(value) =>
+                            setAttributes({
+                              t5Contents: updateData(
+                                t5Contents,
+                                value,
+                                i,
+                                "subtitle"
+                              ),
+                            })
+                          }
+                        />
+                      </>
+                    ) : (
+                      <>
+                        <h3>{item.title}</h3>
+                        <p>{item.subtitle}</p>
+                      </>
+                    )}
                   </div>
                 </div>
               ))}

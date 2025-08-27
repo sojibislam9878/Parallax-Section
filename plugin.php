@@ -135,6 +135,7 @@ if( !class_exists( 'PSBPlugin' ) ){
 	}
 	new PSBPlugin();
 }
+
 }
 
 require_once PSB_DIR_PATH . '/includes/adminMenu.php';

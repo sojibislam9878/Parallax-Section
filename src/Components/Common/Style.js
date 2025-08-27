@@ -52,8 +52,11 @@ const Style = ({ attributes, id }) => {
 	const leafSvg = `${theme5Sl} #leaves-container svg`;
 
 	// ========================= theme 6 ============================ //
-
-
+	const theme6Sl = `${mainSl} .bplScrolingParallax`;
+	const t6Title = `${theme6Sl} h3`;
+	const t6SubTitle = `${theme6Sl} p`;
+	// ${getTypoCSS(t6Title, contents?.title?.typo)?.styles}
+	// ${getTypoCSS(t6SubTitle, contents?.description?.typo)?.styles}
 
 	// console.log(contents?.title?.typo);
 	
@@ -306,6 +309,18 @@ const Style = ({ attributes, id }) => {
 
 				${leafSvg}{
 				fill:${styles?.leaf?.color};
+				}
+
+				${theme6Sl}{
+					${getBackgroundCSS(styles.background)}
+				}
+
+				${t6Title}{
+					color:${contents?.title?.color};
+					}
+					
+				${t6SubTitle}{
+				color:${contents?.description?.color};
 				}
 
 

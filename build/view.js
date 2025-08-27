@@ -2219,6 +2219,11 @@ const Style = ({
   const leafSvg = `${theme5Sl} #leaves-container svg`;
 
   // ========================= theme 6 ============================ //
+  const theme6Sl = `${mainSl} .bplScrolingParallax`;
+  const t6Title = `${theme6Sl} h3`;
+  const t6SubTitle = `${theme6Sl} p`;
+  // ${getTypoCSS(t6Title, contents?.title?.typo)?.styles}
+  // ${getTypoCSS(t6SubTitle, contents?.description?.typo)?.styles}
 
   // console.log(contents?.title?.typo);
 
@@ -2465,6 +2470,18 @@ const Style = ({
 
 				${leafSvg}{
 				fill:${styles?.leaf?.color};
+				}
+
+				${theme6Sl}{
+					${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getBackgroundCSS)(styles.background)}
+				}
+
+				${t6Title}{
+					color:${contents?.title?.color};
+					}
+					
+				${t6SubTitle}{
+				color:${contents?.description?.color};
 				}
 
 
@@ -2866,13 +2883,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-"use client";
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _utils_functions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../utils/functions */ "./src/utils/functions.js");
+
+
 
 
 
 const ScrollingParallax = ({
   attributes,
-  setAttributs,
+  setAttributes,
   isBackend = false
 }) => {
   const t5Contents = attributes?.t5Contents || {};
@@ -2881,7 +2904,7 @@ const ScrollingParallax = ({
   const rowRefs = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)([]);
   const initialTopRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(0);
   const [selectedCard, setSelectedCard] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
-  const fullView = true;
+  const fullView = false;
 
   // 👉 Utility: split array into 3 chunks
   const chunkArray = (arr, chunkCount) => {
@@ -2970,7 +2993,19 @@ const ScrollingParallax = ({
       alt: item.title
     }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "card-content"
-    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", null, item.title), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, item.subtitle)))));
+    }, isBackend ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+      tagName: "h3",
+      value: item.title,
+      onChange: value => setAttributes({
+        t5Contents: (0,_utils_functions__WEBPACK_IMPORTED_MODULE_3__.updateData)(t5Contents, value, i, "title")
+      })
+    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+      tagName: "p",
+      value: item.subtitle,
+      onChange: value => setAttributes({
+        t5Contents: (0,_utils_functions__WEBPACK_IMPORTED_MODULE_3__.updateData)(t5Contents, value, i, "subtitle")
+      })
+    })) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", null, item.title), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, item.subtitle))))));
   })), selectedCard && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "modal-overlay"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {

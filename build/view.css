@@ -536,7 +536,7 @@
 .wp-block-psb-parallax .bplScrolingParallax {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: black;
+  background: rgb(124, 10, 255);
   color: white;
   overflow-x: hidden;
   position: relative;

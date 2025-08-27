@@ -668,7 +668,7 @@ const General = ({ attributes, setAttributes, device, premiumProps }) => {
           />
         </PanelBody>
       )}
-    </>
+    </> 
   );
 };
 
