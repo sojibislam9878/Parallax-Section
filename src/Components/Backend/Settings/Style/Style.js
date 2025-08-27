@@ -23,7 +23,7 @@ import { BControlPro } from "../../../../../../bpl-tools/ProControls";
 const Style = ({ attributes, setAttributes, premiumProps, device }) => {
   const { background, selectedTheme, contents, styles, options } = attributes;
   const { title, description, btns, subTitle, badge } = contents || {};
-  const { particles, cube, leaf } = styles || {};
+  const { particles, cube, leaf, t4Styles } = styles || {};
   const { btn1, btn2 } = btns || {};
 
   return (
@@ -45,19 +45,45 @@ const Style = ({ attributes, setAttributes, premiumProps, device }) => {
 
         {selectedTheme != "default" && (
           <>
-            <BControlPro
-              label={__("Background", "parallax-section")}
-              value={styles.background}
-              onChange={(value) =>
-                setAttributes({
-                  styles: updateData(styles, value, "background"),
-                })
-              }
-              Component={Background}
-              {...premiumProps}
-            />
+            {selectedTheme != "theme4" ? (
+              <BControlPro
+                label={__("Background", "parallax-section")}
+                value={styles.background}
+                onChange={(value) =>
+                  setAttributes({
+                    styles: updateData(styles, value, "background"),
+                  })
+                }
+                Component={Background}
+                {...premiumProps}
+              />
+            ) : (
+              <>
+                <Label>Background Colors:</Label>
+                <ColorControl
+                  label="Upper Background Color"
+                  value={t4Styles?.backgroundColors?.upper}
+                  onChange={(value) =>
+                    setAttributes({
+                      styles: updateData(styles, value, "t4Styles", "backgroundColors", "upper"),
+                    })
+                  }
+                />
+                <ColorControl
+                  label="Lower Background Color"
+                  value={t4Styles?.backgroundColors?.lower}
+                  onChange={(value) =>
+                    setAttributes({
+                      styles: updateData(styles, value, "t4Styles", "backgroundColors", "lower"),
+                    })
+                  }
+                />
+              </>
+            )}
 
-            {(selectedTheme === "theme1" || selectedTheme === "theme2" || selectedTheme === "theme5") && (
+            {(selectedTheme === "theme1" ||
+              selectedTheme === "theme2" ||
+              selectedTheme === "theme5") && (
               <>
                 <BControlPro
                   label="Title Color"

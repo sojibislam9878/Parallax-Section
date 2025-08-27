@@ -1,4 +1,5 @@
 import { __ } from "@wordpress/i18n";
+import { BControlPro } from "../../../../../bpl-tools/ProControls";
 import {
   PanelBody,
   RangeControl,
@@ -13,12 +14,9 @@ import {
 } from "@wordpress/components";
 import { InlineMediaUpload } from "../../../../../bpl-tools/Components";
 import { updateData } from "../../../utils/functions";
-const FristContRow = ({
-  attributes,
-  setAttributes,
-  index,
-}) => {
-  const {t5Contents} = attributes || []
+const FristContRow = ({ attributes, setAttributes, index, premiumProps }) => {
+  const { t5Contents, options } = attributes || [];
+
   return (
     <div>
       <InlineMediaUpload
@@ -50,6 +48,64 @@ const FristContRow = ({
           })
         }
       />
+      {options?.t5Options?.imgFullView && (
+        <>
+          <Flex className="mt10" justify="start" align="center" gap={2}>
+            <BControlPro
+              checked={t5Contents[index]?.button?.status}
+              onChange={() =>
+                setAttributes({
+                  t5Contents: updateData(
+                    t5Contents,
+                    !t5Contents[index]?.button?.status,
+                    index,
+                    "button",
+                    "status"
+                  ),
+                })
+              }
+              Component={ToggleControl}
+              {...premiumProps}
+            />
+            <p className="mt10">Button Status</p>
+          </Flex>
+          {t5Contents[index]?.button?.status && (
+            <>
+              <InputControl
+                value={t5Contents[index]?.button?.buttonTitle}
+                label={__("Button Title", "parallax-section")}
+                onChange={(value) =>
+                  setAttributes({
+                    t5Contents: updateData(
+                      t5Contents,
+                      value,
+                      index,
+                      "button",
+                      "buttonTitle"
+                    ),
+                  })
+                }
+              />
+              <InputControl
+                className="mt5"
+                value={t5Contents[index]?.button?.link}
+                label={__("Button Title", "parallax-section")}
+                onChange={(value) =>
+                  setAttributes({
+                    t5Contents: updateData(
+                      t5Contents,
+                      value,
+                      index,
+                      "button",
+                      "link"
+                    ),
+                  })
+                }
+              />
+            </>
+          )}
+        </>
+      )}
     </div>
   );
 };

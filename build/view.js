@@ -2210,6 +2210,8 @@ const Style = ({
 
   // ======================== theme 5 ======================= //
   const theme5Sl = `${mainSl} .bplThreeImageParallax`;
+  const upperBackground = `${theme5Sl} .bg-top`;
+  const lowerBackground = `${theme5Sl} .bg-bottom`;
   const badgeSl = `${theme5Sl} .badge`;
   const t5Title = `${theme5Sl} h1`;
   const t5SubTitle = `${theme5Sl} .sub-title `;
@@ -2444,6 +2446,12 @@ const Style = ({
 
 				${badgeSl}{
 				${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getColorsCSS)(contents?.badge?.colors)}
+				}
+				${upperBackground}{
+      		background-color:${styles?.t4Styles?.backgroundColors?.upper};
+				}
+				${lowerBackground}{
+      		background-color:${styles?.t4Styles?.backgroundColors?.lower};
 				}
 
 				${t5Title}{

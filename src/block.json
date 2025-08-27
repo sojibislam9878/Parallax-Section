@@ -49,103 +49,183 @@
       "default":[
           {
             "title": "PACHINKO",
-            "--": "Apple TV+",
+            "subtitle": "Apple TV+",
             "image": "https://templates.bplugins.com/wp-content/uploads/2025/07/41475.jpg",
             "button":{
               "status":true,
               "link":"#",
-              "isNewTab":false,
-              "buttonTitle":"string",
-              "colors":{
-                "color":"rgba(0, 168, 53, 0.7)",
-                "bg":""
-              }
+              "buttonTitle":"string"
             }
           },
           {
             "title": "USHER",
             "subtitle": "Apple Music",
-            "image": "https://templates.bplugins.com/wp-content/uploads/2025/07/coffee-cup-scaled.jpg"
+            "image": "https://templates.bplugins.com/wp-content/uploads/2025/07/coffee-cup-scaled.jpg",
+            "button": {
+              "status": true,
+              "link": "#",
+              "buttonTitle": "string"
+            }
           },
           {
             "title": "บลิงก์ ทวิช",
             "subtitle": "Streaming",
-            "image": "https://templates.bplugins.com/wp-content/uploads/2025/02/n-46.jpg"
+            "image": "https://templates.bplugins.com/wp-content/uploads/2025/02/n-46.jpg",
+            "button": {
+              "status": true,
+              "link": "#",
+              "buttonTitle": "string"
+            }
           },
           {
             "title": "PRESUMED INNOCENT",
             "subtitle": "Apple TV+",
-            "image": "https://templates.bplugins.com/wp-content/uploads/2025/02/n-38.jpg"
+            "image": "https://templates.bplugins.com/wp-content/uploads/2025/02/n-38.jpg",
+            "button": {
+              "status": true,
+              "link": "#",
+              "buttonTitle": "string"
+            }
           },
           {
             "title": "ดินแดนโจรสลัด",
             "subtitle": "Adventure",
-            "image": "https://templates.bplugins.com/wp-content/uploads/2025/02/n-29.jpg"
+            "image": "https://templates.bplugins.com/wp-content/uploads/2025/02/n-29.jpg",
+            "button": {
+              "status": true,
+              "link": "#",
+              "buttonTitle": "string"
+            }
           },
           {
             "title": "PHOENIX",
             "subtitle": "Action",
-            "image": "https://templates.bplugins.com/wp-content/uploads/2025/02/n-32.jpg"
+            "image": "https://templates.bplugins.com/wp-content/uploads/2025/02/n-32.jpg",
+            "button": {
+              "status": true,
+              "link": "#",
+              "buttonTitle": "string"
+            }
           },
           {
             "title": "Jennifer Lopez",
             "subtitle": "Apple Music",
-            "image": "https://templates.bplugins.com/wp-content/uploads/2025/07/41475.jpg"
+            "image": "https://templates.bplugins.com/wp-content/uploads/2025/07/41475.jpg",
+            "button": {
+              "status": true,
+              "link": "#",
+              "buttonTitle": "string"
+            }
           },
           {
             "title": "ANGRY BIRDS RELOADED",
             "subtitle": "Apple Arcade",
-            "image": "https://templates.bplugins.com/wp-content/uploads/2025/07/coffee-cup-scaled.jpg"
+            "image": "https://templates.bplugins.com/wp-content/uploads/2025/07/coffee-cup-scaled.jpg",
+            "button": {
+              "status": true,
+              "link": "#",
+              "buttonTitle": "string"
+            }
           },
           {
             "title": "พรีเดเตอร์",
             "subtitle": "Action Movie",
-            "image": "https://templates.bplugins.com/wp-content/uploads/2025/02/n-46.jpg"
+            "image": "https://templates.bplugins.com/wp-content/uploads/2025/02/n-46.jpg",
+            "button": {
+              "status": true,
+              "link": "#",
+              "buttonTitle": "string"
+            }
           },
           {
             "title": "Ice Spice",
             "subtitle": "Apple Music",
-            "image": "https://templates.bplugins.com/wp-content/uploads/2025/02/n-38.jpg"
+            "image": "https://templates.bplugins.com/wp-content/uploads/2025/02/n-38.jpg",
+            "button": {
+              "status": true,
+              "link": "#",
+              "buttonTitle": "string"
+            }
           },
           {
             "title": "DREAMLIGHT VALLEY",
             "subtitle": "Apple Arcade",
-            "image": "https://templates.bplugins.com/wp-content/uploads/2025/02/n-62.jpg"
+            "image": "https://templates.bplugins.com/wp-content/uploads/2025/02/n-62.jpg",
+            "button": {
+              "status": true,
+              "link": "#",
+              "buttonTitle": "string"
+            }
           },
           {
             "title": "BAD BOYS",
             "subtitle": "Action Movie",
-            "image": "https://templates.bplugins.com/wp-content/uploads/2025/02/n-32.jpg"
+            "image": "https://templates.bplugins.com/wp-content/uploads/2025/02/n-32.jpg",
+            "button": {
+              "status": true,
+              "link": "#",
+              "buttonTitle": "string"
+            }
           },
           {
             "title": "IT ENDS WITH US",
             "subtitle": "Drama",
-            "image": "https://templates.bplugins.com/wp-content/uploads/2025/07/41475.jpg"
+            "image": "https://templates.bplugins.com/wp-content/uploads/2025/07/41475.jpg",
+            "button": {
+              "status": true,
+              "link": "#",
+              "buttonTitle": "string"
+            }
           },
           {
             "title": "โค่นอสูรป่วนเมือง",
             "subtitle": "Action",
-            "image": "https://templates.bplugins.com/wp-content/uploads/2025/07/coffee-cup-scaled.jpg"
+            "image": "https://templates.bplugins.com/wp-content/uploads/2025/07/coffee-cup-scaled.jpg",
+            "button": {
+              "status": true,
+              "link": "#",
+              "buttonTitle": "string"
+            }
           },
           {
             "title": "บิดาสาม",
             "subtitle": "Thai Movie",
-            "image": "https://templates.bplugins.com/wp-content/uploads/2025/02/n-46.jpg"
+            "image": "https://templates.bplugins.com/wp-content/uploads/2025/02/n-46.jpg",
+            "button": {
+              "status": true,
+              "link": "#",
+              "buttonTitle": "string"
+            }
           },
           {
             "title": "TOM & JERRY",
             "subtitle": "Apple Arcade",
-            "image": "https://templates.bplugins.com/wp-content/uploads/2025/02/n-38.jpg"
+            "image": "https://templates.bplugins.com/wp-content/uploads/2025/02/n-38.jpg",
+            "button": {
+              "status": true,
+              "link": "#",
+              "buttonTitle": "string"
+            }
           },
           {
             "title": "SILO",
             "subtitle": "Apple TV+",
-            "image": "https://templates.bplugins.com/wp-content/uploads/2025/02/n-62.jpg"
+            "image": "https://templates.bplugins.com/wp-content/uploads/2025/02/n-62.jpg",
+            "button": {
+              "status": true,
+              "link": "#",
+              "buttonTitle": "string"
+            }
           },
           {
             "title": "MUSIC",
             "subtitle": "Apple Music",
-            "image": "https://templates.bplugins.com/wp-content/uploads/2025/02/n-32.jpg"
+            "image": "https://templates.bplugins.com/wp-content/uploads/2025/02/n-32.jpg",
+            "button": {
+              "status": true,
+              "link": "#",
+              "buttonTitle": "string"
+            }
           }
         ]
     },
@@ -314,6 +394,14 @@
             "bottom": "0px",
             "left": "6px"
           }
+        },
+        "t5LayoutSetting":{
+          "card":{
+            "height":"100px",
+            "width":"100px",
+            "rowGap":"0px",
+            "colGap":"0px"
+          }
         }
       }
     },
@@ -370,6 +458,12 @@
             "type":"solid",
             "color":""
           }
+        },
+        "t4Styles":{
+          "backgroundColors":{
+            "upper":"#f0fdf4",
+            "lower":"#dcfce7"
+          }
         }
       }
     },
@@ -377,7 +471,11 @@
       "type": "object",
       "default": {
         "isNewTab": true,
-        "isCube": true
+        "isCube": true,
+        "t5Options":{
+          "imgFullView":true,
+          "speed":5
+        }
       }
     },
     "selectedTheme": {

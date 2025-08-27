@@ -43,6 +43,8 @@ const Style = ({ attributes, id }) => {
 
 	// ======================== theme 5 ======================= //
 	const theme5Sl = `${mainSl} .bplThreeImageParallax`;
+	const upperBackground = `${theme5Sl} .bg-top`;
+	const lowerBackground = `${theme5Sl} .bg-bottom`;
 	const badgeSl = `${theme5Sl} .badge`;
 	const t5Title = `${theme5Sl} h1`;
 	const t5SubTitle = `${theme5Sl} .sub-title `;
@@ -283,6 +285,12 @@ const Style = ({ attributes, id }) => {
 
 				${badgeSl}{
 				${getColorsCSS(contents?.badge?.colors)}
+				}
+				${upperBackground}{
+      		background-color:${styles?.t4Styles?.backgroundColors?.upper};
+				}
+				${lowerBackground}{
+      		background-color:${styles?.t4Styles?.backgroundColors?.lower};
 				}
 
 				${t5Title}{

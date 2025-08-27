@@ -430,12 +430,10 @@ $scroll-factor: 1;
     }
     
     .bg-top {
-      background-color: #f0fdf4;
       clip-path: polygon(0 0, 100% 0, 100% 100%, 0 70%);
     }
     
     .bg-bottom {
-      background-color: #dcfce7;
       clip-path: polygon(0 65%, 100% 95%, 100% 100%, 0 100%);
     }
     

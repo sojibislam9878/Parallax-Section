@@ -5,11 +5,13 @@ import {
   SelectControl,
   Flex,
   FlexBlock,
+  FlexItem,
   __experimentalUnitControl as UnitControl,
   __experimentalInputControl as InputControl,
   TextareaControl,
   ToggleControl,
   PanelRow,
+  __experimentalNumberControl as NumberControl,
 } from "@wordpress/components";
 import {
   pxUnit,
@@ -149,8 +151,8 @@ const General = ({ attributes, setAttributes, device, premiumProps }) => {
               {...premiumProps}
             />
 
-            {/* only for theme 3 */}
-            {selectedTheme === "theme3" && (
+            {/* only for theme 3 and 5 */}
+            {(selectedTheme === "theme3" || selectedTheme === "theme5") && (
               <>
                 <PanelRow>
                   <Label className="mt0">
@@ -168,6 +170,87 @@ const General = ({ attributes, setAttributes, device, premiumProps }) => {
                   }}
                   Component={BoxControl}
                   {...premiumProps}
+                />
+              </>
+            )}
+            {selectedTheme === "theme5" && (
+              <>
+                <Flex className="mt10" justify="start" align="center" gap={2}>
+                  <FlexItem>
+                    <p className="mt10">Row Gap</p>
+                  </FlexItem>
+                  <FlexBlock>
+                    <BControlPro
+                      value={layout?.t5LayoutSetting?.card?.rowGap}
+                      onChange={(value) =>
+                        setAttributes({
+                          layout: updateData(
+                            layout,
+                            value,
+                            "t5LayoutSetting",
+                            "card",
+                            "rowGap"
+                          ),
+                        })
+                      }
+                      Component={UnitControl}
+                      {...premiumProps}
+                    />
+                  </FlexBlock>
+                </Flex>
+                <Flex className="mt10" justify="start" align="center" gap={2}>
+                  <FlexItem>
+                    <p className="mt10">Column Gap</p>
+                  </FlexItem>
+                  <FlexBlock>
+                    <BControlPro
+                      value={layout?.t5LayoutSetting?.card?.colGap}
+                      onChange={(value) =>
+                        setAttributes({
+                          layout: updateData(
+                            layout,
+                            value,
+                            "t5LayoutSetting",
+                            "colGap"
+                          ),
+                        })
+                      }
+                      Component={UnitControl}
+                      {...premiumProps}
+                    />
+                  </FlexBlock>
+                </Flex>
+                <UnitControl
+                  className="mt10"
+                  label="Card Height"
+                  value={layout?.t5LayoutSetting?.card?.height}
+                  onChange={(value) => {
+                    setAttributes({
+                      layout: updateData(
+                        layout,
+                        value,
+                        "t5LayoutSetting",
+                        "card",
+                        "height"
+                      ),
+                    });
+                  }}
+                />
+                <UnitControl
+                  className="mt10"
+                  label="Card Width"
+                  value={layout?.t5LayoutSetting?.card?.width}
+                  onChange={(value) => {
+                    setAttributes({
+                      layout: updateData(
+                        layout,
+                        value,
+                        "t5LayoutSetting",
+                        "card",
+                        "width"
+                      ),
+                    });
+                  }}
                 />
               </>
             )}
@@ -645,30 +728,91 @@ const General = ({ attributes, setAttributes, device, premiumProps }) => {
       )}
 
       {selectedTheme === "theme5" && (
-        <PanelBody
-          className="bPlPanelBody"
-          title={__("Contents", "parallax-section")}
-          initialOpen={false}
-        >
-          <ItemsPanel
-            {...{ attributes, setAttributes }}
-            arrKey="t5Contents"
-            newItem={{
-              name: "Kiss Dorka",
-              designation: "Product Design &amp; UX Lead",
-              image:
-                "https://templates.bplugins.com/wp-content/uploads/2025/02/p-32.png",
-              content:
-                "Started using @flowmapp to create some App and Website Sitempas. Really liking it. Easy to use. Good to see that user flows appear to be in the Product Roadmap as well.",
-              tags: ["uxdesign", "ux", "webdesing", "uidesign"],
-            }}
-            ItemSettings={FristContRow}
-            title="title"
-            design="sortable"
-          />
-        </PanelBody>
+        <>
+          <PanelBody
+            className="bPlPanelBody"
+            title={__("Contents", "parallax-section")}
+            initialOpen={false}
+          >
+            <ItemsPanel
+              {...{ attributes, setAttributes, premiumProps }}
+              arrKey="t5Contents"
+              newItem={{
+                name: "Kiss Dorka",
+                designation: "Product Design &amp; UX Lead",
+                image:
+                  "https://templates.bplugins.com/wp-content/uploads/2025/02/p-32.png",
+                content:
+                  "Started using @flowmapp to create some App and Website Sitempas. Really liking it. Easy to use. Good to see that user flows appear to be in the Product Roadmap as well.",
+                tags: ["uxdesign", "ux", "webdesing", "uidesign"],
+              }}
+              ItemSettings={FristContRow}
+              title="title"
+              design="sortable"
+            />
+          </PanelBody>
+
+          <PanelBody
+            className="bPlPanelBody"
+            title={__("Options", "parallax-section")}
+            initialOpen={false}
+          >
+            <Flex justify="start" align="center" gap={2}>
+              <BControlPro
+                checked={options?.t5Options?.imgFullView}
+                onChange={() =>
+                  setAttributes({
+                    options: updateData(
+                      options,
+                      !options?.t5Options?.imgFullView,
+                      "t5Options",
+                      "imgFullView"
+                    ),
+                  })
+                }
+                Component={ToggleControl}
+                {...premiumProps}
+              />
+              <p className="mt10">Image Full View</p>
+            </Flex>
+            <Flex justify="start" align="center" gap={2}>
+              <BControlPro
+                checked={options?.isNewTab}
+                onChange={() =>
+                  setAttributes({
+                    options: updateData(
+                      options,
+                      !options?.isNewTab,
+                      "isNewTab"
+                    ),
+                  })
+                }
+                Component={ToggleControl}
+                {...premiumProps}
+              />
+              <p className="mt10">Open link in new tab</p>
+            </Flex>
+            <Flex justify="start" align="center" gap={2}>
+              <FlexItem>
+                <p className="mt10">Parallax Speed</p>
+              </FlexItem>
+              <FlexBlock>
+                <BControlPro
+                  value={options?.t5Options?.speed}
+                  onChange={(value) =>
+                    setAttributes({
+                      options: updateData(options, value, "t5Options", "speed"),
+                    })
+                  }
+                  Component={NumberControl}
+                  {...premiumProps}
+                />
+              </FlexBlock>
+            </Flex>
+          </PanelBody>
+        </>
       )}
-    </> 
+    </>
   );
 };
 
