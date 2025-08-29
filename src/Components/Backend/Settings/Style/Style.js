@@ -23,7 +23,7 @@ import { BControlPro } from "../../../../../../bpl-tools/ProControls";
 const Style = ({ attributes, setAttributes, premiumProps, device }) => {
   const { background, selectedTheme, contents, styles, options } = attributes;
   const { title, description, btns, subTitle, badge } = contents || {};
-  const { particles, cube, leaf, t4Styles } = styles || {};
+  const { particles, cube, leaf, t4Styles,t5Styles } = styles || {};
   const { btn1, btn2 } = btns || {};
 
   return (
@@ -65,7 +65,13 @@ const Style = ({ attributes, setAttributes, premiumProps, device }) => {
                   value={t4Styles?.backgroundColors?.upper}
                   onChange={(value) =>
                     setAttributes({
-                      styles: updateData(styles, value, "t4Styles", "backgroundColors", "upper"),
+                      styles: updateData(
+                        styles,
+                        value,
+                        "t4Styles",
+                        "backgroundColors",
+                        "upper"
+                      ),
                     })
                   }
                 />
@@ -74,7 +80,13 @@ const Style = ({ attributes, setAttributes, premiumProps, device }) => {
                   value={t4Styles?.backgroundColors?.lower}
                   onChange={(value) =>
                     setAttributes({
-                      styles: updateData(styles, value, "t4Styles", "backgroundColors", "lower"),
+                      styles: updateData(
+                        styles,
+                        value,
+                        "t4Styles",
+                        "backgroundColors",
+                        "lower"
+                      ),
                     })
                   }
                 />
@@ -278,41 +290,45 @@ const Style = ({ attributes, setAttributes, premiumProps, device }) => {
               {...premiumProps}
             />
 
-            <BControlPro
-              label="Button Colors"
-              value={btn1.colors}
-              onChange={(value) =>
-                setAttributes({
-                  contents: updateData(
-                    contents,
-                    value,
-                    "btns",
-                    "btn1",
-                    "colors"
-                  ),
-                })
-              }
-              Component={ColorsControl}
-              {...premiumProps}
-            />
+            {selectedTheme != "theme5" && (
+              <>
+                <BControlPro
+                  label="Button Colors"
+                  value={btn1.colors}
+                  onChange={(value) =>
+                    setAttributes({
+                      contents: updateData(
+                        contents,
+                        value,
+                        "btns",
+                        "btn1",
+                        "colors"
+                      ),
+                    })
+                  }
+                  Component={ColorsControl}
+                  {...premiumProps}
+                />
 
-            <BControlPro
-              label="Button Hover Colors"
-              value={btn1.hoverColors}
-              onChange={(value) =>
-                setAttributes({
-                  contents: updateData(
-                    contents,
-                    value,
-                    "btns",
-                    "btn1",
-                    "hoverColors"
-                  ),
-                })
-              }
-              Component={ColorsControl}
-              {...premiumProps}
-            />
+                <BControlPro
+                  label="Button Hover Colors"
+                  value={btn1.hoverColors}
+                  onChange={(value) =>
+                    setAttributes({
+                      contents: updateData(
+                        contents,
+                        value,
+                        "btns",
+                        "btn1",
+                        "hoverColors"
+                      ),
+                    })
+                  }
+                  Component={ColorsControl}
+                  {...premiumProps}
+                />
+              </>
+            )}
 
             {(selectedTheme === "theme3" ||
               (selectedTheme === "theme4" && btn2?.status)) && (
@@ -667,6 +683,126 @@ const Style = ({ attributes, setAttributes, premiumProps, device }) => {
               />
             </>
           )}
+        </PanelBody>
+      )}
+
+      {selectedTheme === "theme5" && (
+        <PanelBody
+          className="bPlPanelBody"
+          title={__("Modal Style", "parallax-section")}
+          initialOpen={false}
+        >
+          <ColorControl
+            label="Background Color"
+            value={t5Styles?.modal?.background}
+            onChange={(value) =>
+              setAttributes({
+                styles: updateData(
+                  styles,
+                  value,
+                  "t5Styles",
+                  "modal",
+                  "background"
+                ),
+              })
+            }
+          />
+          <ColorControl
+            label="Close Button Color"
+            value={t5Styles?.modal?.closeBtn?.color}
+            onChange={(value) =>
+              setAttributes({
+                styles: updateData(
+                  styles,
+                  value,
+                  "t5Styles",
+                  "modal",
+                  "closeBtn",
+                  "color"
+                ),
+              })
+            }
+          />
+          <ColorControl
+            label="Close Button Hover Color"
+            value={t5Styles?.modal?.closeBtn?.hovColor}
+            onChange={(value) =>
+              setAttributes({
+                styles: updateData(
+                  styles,
+                  value,
+                  "t5Styles",
+                  "modal",
+                  "closeBtn",
+                  "hovColor"
+                ),
+              })
+            }
+          />
+          <ColorControl
+            label="Title Color"
+            value={t5Styles?.modal?.title?.color}
+            onChange={(value) =>
+              setAttributes({
+                styles: updateData(
+                  styles,
+                  value,
+                  "t5Styles",
+                  "modal",
+                  "title",
+                  "color"
+                ),
+              })
+            }
+          />
+          <ColorControl
+            label="Title Color"
+            value={t5Styles?.modal?.subTitle?.color}
+            onChange={(value) =>
+              setAttributes({
+                styles: updateData(
+                  styles,
+                  value,
+                  "t5Styles",
+                  "modal",
+                  "subTitle",
+                  "color"
+                ),
+              })
+            }
+          />
+          <ColorsControl
+            label="Button Colors"
+            value={t5Styles?.modal?.btn?.colors}
+            onChange={(value) =>
+              setAttributes({
+                styles: updateData(
+                  styles,
+                  value,
+                  "t5Styles",
+                  "modal",
+                  "btn",
+                  "colors"
+                ),
+              })
+            }
+          />
+          <ColorsControl
+            label="Button Hover Colors"
+            value={t5Styles?.modal?.btn?.hovColors}
+            onChange={(value) =>
+              setAttributes({
+                styles: updateData(
+                  styles,
+                  value,
+                  "t5Styles",
+                  "modal",
+                  "btn",
+                  "hovColors"
+                ),
+              })
+            }
+          />
         </PanelBody>
       )}
     </>

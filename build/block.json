@@ -402,10 +402,11 @@
         },
         "t5LayoutSetting": {
           "card": {
-            "height": "100px",
-            "width": "100px",
-            "rowGap": "0px",
-            "colGap": "0px"
+            "height": "12rem",
+            "width": "20rem",
+            "radius": "0.5rem",
+            "rowGap": "1.5rem",
+            "colGap": "30px"
           }
         }
       }
@@ -468,6 +469,31 @@
           "backgroundColors": {
             "upper": "#f0fdf4",
             "lower": "#dcfce7"
+          }
+        },
+        "t5Styles": {
+          "modal": {
+            "background": "#111",
+            "closeBtn": {
+              "color": "#fff",
+              "hovColor": "#ff4d4d"
+            },
+            "title": {
+              "color": "#fff"
+            },
+            "subTitle": {
+              "color": "#fff"
+            },
+            "btn": {
+              "colors": {
+                "color": "",
+                "bg": ""
+              },
+              "hovColors": {
+                "color": "",
+                "bg": ""
+              }
+            }
           }
         }
       }

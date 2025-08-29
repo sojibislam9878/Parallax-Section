@@ -14,7 +14,9 @@ const ScrollingParallax = ({
   const rowRefs = useRef([]);
   const initialTopRef = useRef(0);
   const [selectedCard, setSelectedCard] = useState(null);
-  const fullView = false;
+  const fullView = attributes?.options?.t5Options?.imgFullView;
+  const speed = attributes?.options?.t5Options?.speed;
+  const {options}=attributes || []
 
   // 👉 Utility: split array into 3 chunks
   const chunkArray = (arr, chunkCount) => {
@@ -68,7 +70,7 @@ const ScrollingParallax = ({
         if (!row) return;
         const direction = parseFloat(row.dataset.direction);
         const offset = parseFloat(row.dataset.offset || "0");
-        const speed = 0.5;
+        // const speed = 0.5;
         row.style.transform = `translateX(${
           offset + relativeScroll * speed * direction
         }px)`;
@@ -96,7 +98,7 @@ const ScrollingParallax = ({
           return (
             <div
               key={rowIndex}
-              className="parallax-row"
+              className={`parallax-row ${rowIndex === 1 ? "middle" : ""}`}
               data-direction={direction}
               data-offset={offset}
               ref={(el) => (rowRefs.current[rowIndex] = el)}
@@ -169,12 +171,20 @@ const ScrollingParallax = ({
               alt={selectedCard.title}
               className="modal-image"
             />
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <div style={{display:"flex", justifyContent:"space-between", alignItems:"center"}}>
               <div className="modal-text">
                 <h2>{selectedCard.title}</h2>
                 <p>{selectedCard.subtitle}</p>
               </div>
-              <button style={{ height: "100px" }}>hello world</button>
+              {selectedCard?.button?.status && (
+                <a
+                  target={options.isNewTab ? "_blank" : "_self"}
+                  rel="noreferrer"
+                  href={selectedCard?.button?.link}
+                >
+                  <button className="btn">hello world</button>
+                </a>
+              )}
             </div>
           </div>
         </div>

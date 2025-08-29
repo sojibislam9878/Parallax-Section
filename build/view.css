@@ -539,6 +539,14 @@
   overflow-x: hidden;
   position: relative;
   z-index: 1;
+  display: flex;
+  align-items: center;
+  /* ===== Overlay ===== */
+  /* ===== Container ===== */
+  /* ===== Close Button ===== */
+  /* ===== Image ===== */
+  /* ===== Text ===== */
+  /* ===== Responsive Tweaks ===== */
   /* Animations */
 }
 .wp-block-psb-parallax .bplScrolingParallax .header {
@@ -564,15 +572,12 @@
   position: relative;
   z-index: 1;
   display: flex;
-  gap: 1.5rem;
   width: -moz-max-content;
   width: max-content;
   will-change: transform;
 }
 .wp-block-psb-parallax .bplScrolingParallax .card {
   position: relative;
-  width: 20rem;
-  height: 12rem;
   border-radius: 0.5rem;
   overflow: hidden;
   background: #1f2937;
@@ -634,31 +639,34 @@
   justify-content: center;
   align-items: center;
   z-index: 9999;
-  animation: fadeIn 0.3s ease;
+  animation: fadeIn 0.3s ease forwards;
+  padding: 16px; /* ensures modal doesn't touch edges on small screens */
 }
 .wp-block-psb-parallax .bplScrolingParallax .modal-container {
   position: relative;
   max-width: 900px;
-  width: 90%;
+  width: 100%;
   background: #111;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
-  animation: slideUp 0.3s ease;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.6);
+  animation: slideUp 0.35s ease forwards;
+  overflow: hidden;
 }
 .wp-block-psb-parallax .bplScrolingParallax .modal-close {
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: 14px;
+  right: 14px;
   background: transparent;
-  color: #fff;
+  color: white;
   border: none;
-  font-size: 28px;
+  font-size: 38px;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, color 0.2s ease;
+  -webkit-text-stroke: 1px black;
 }
 .wp-block-psb-parallax .bplScrolingParallax .modal-close:hover {
-  transform: scale(1.2);
+  transform: scale(1.15);
   color: #ff4d4d;
 }
 .wp-block-psb-parallax .bplScrolingParallax .modal-image {
@@ -666,20 +674,52 @@
   max-height: 70vh;
   -o-object-fit: contain;
      object-fit: contain;
-  border-radius: 8px;
+  border-radius: 10px;
+  display: block;
+  margin: 0 auto;
 }
 .wp-block-psb-parallax .bplScrolingParallax .modal-text {
-  margin-top: 18px;
+  margin-top: 20px;
   color: #f5f5f5;
 }
 .wp-block-psb-parallax .bplScrolingParallax .modal-text h2 {
-  font-size: 28px;
-  margin-bottom: 8px;
-  font-weight: bold;
+  font-size: clamp(20px, 2.5vw, 28px);
+  margin-bottom: 4px; /* tighter spacing */
+  font-weight: 700;
 }
 .wp-block-psb-parallax .bplScrolingParallax .modal-text p {
-  font-size: 18px;
-  opacity: 0.85;
+  font-size: clamp(14px, 2vw, 18px);
+  line-height: 1.5;
+  opacity: 0.9;
+  margin-bottom: 8px;
+}
+@media (max-width: 768px) {
+  .wp-block-psb-parallax .bplScrolingParallax .modal-container {
+    padding: 16px;
+    border-radius: 12px;
+  }
+  .wp-block-psb-parallax .bplScrolingParallax .modal-text h2 {
+    font-size: 22px;
+  }
+  .wp-block-psb-parallax .bplScrolingParallax .modal-text p {
+    font-size: 16px;
+  }
+}
+@media (max-width: 480px) {
+  .wp-block-psb-parallax .bplScrolingParallax .modal-container {
+    padding: 14px;
+  }
+  .wp-block-psb-parallax .bplScrolingParallax .modal-close {
+    font-size: 24px;
+    top: 10px;
+    right: 10px;
+  }
+  .wp-block-psb-parallax .bplScrolingParallax .modal-text h2 {
+    font-size: 20px;
+  }
+  .wp-block-psb-parallax .bplScrolingParallax .modal-text p {
+    font-size: 15px;
+  }
 }
 @keyframes fadeIn {
   from {

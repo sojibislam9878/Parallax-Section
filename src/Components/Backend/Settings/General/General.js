@@ -211,6 +211,7 @@ const General = ({ attributes, setAttributes, device, premiumProps }) => {
                             layout,
                             value,
                             "t5LayoutSetting",
+                            "card",
                             "colGap"
                           ),
                         })

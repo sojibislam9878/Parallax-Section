@@ -2224,10 +2224,13 @@ const Style = ({
   const theme6Sl = `${mainSl} .bplScrolingParallax`;
   const t6Title = `${theme6Sl} h3`;
   const t6SubTitle = `${theme6Sl} p`;
+  const t6CardSl = `${theme6Sl} .card`;
+  const t6ParallaxRow = `${theme6Sl} .parallax-row`;
+  const t6ParallaxMiddleRow = `${theme6Sl} .middle`;
   // ${getTypoCSS(t6Title, contents?.title?.typo)?.styles}
   // ${getTypoCSS(t6SubTitle, contents?.description?.typo)?.styles}
 
-  // console.log(contents?.title?.typo);
+  // console.log(layout?.t5LayoutSetting);
 
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
     dangerouslySetInnerHTML: {
@@ -2482,6 +2485,10 @@ const Style = ({
 
 				${theme6Sl}{
 					${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getBackgroundCSS)(styles.background)}
+					width:${layout.width.desktop};
+					height:${layout.height.desktop};
+					margin:${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(layout.margin.desktop)};
+					padding:${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getBoxCSS)(layout.padding.desktop)};
 				}
 
 				${t6Title}{
@@ -2491,6 +2498,19 @@ const Style = ({
 				${t6SubTitle}{
 				color:${contents?.description?.color};
 				}
+
+				${t6ParallaxRow}{
+      		gap: ${layout?.t5LayoutSetting?.card?.rowGap};
+				}
+				${t6ParallaxMiddleRow}{
+      		margin: ${layout?.t5LayoutSetting?.card?.colGap} 0;
+				}
+
+				${t6CardSl}{
+					width: ${layout?.t5LayoutSetting?.card?.width};
+					height: ${layout?.t5LayoutSetting?.card?.height};
+				}
+
 
 
 
@@ -2912,7 +2932,11 @@ const ScrollingParallax = ({
   const rowRefs = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)([]);
   const initialTopRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(0);
   const [selectedCard, setSelectedCard] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
-  const fullView = false;
+  const fullView = attributes?.options?.t5Options?.imgFullView;
+  const speed = attributes?.options?.t5Options?.speed;
+  const {
+    options
+  } = attributes || [];
 
   // 👉 Utility: split array into 3 chunks
   const chunkArray = (arr, chunkCount) => {
@@ -2961,7 +2985,7 @@ const ScrollingParallax = ({
         if (!row) return;
         const direction = parseFloat(row.dataset.direction);
         const offset = parseFloat(row.dataset.offset || "0");
-        const speed = 0.5;
+        // const speed = 0.5;
         row.style.transform = `translateX(${offset + relativeScroll * speed * direction}px)`;
       });
     };
@@ -2985,7 +3009,7 @@ const ScrollingParallax = ({
     const offset = rowIndex === 1 ? -400 : 400;
     return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       key: rowIndex,
-      className: "parallax-row",
+      className: `parallax-row ${rowIndex === 1 ? "middle" : ""}`,
       "data-direction": direction,
       "data-offset": offset,
       ref: el => rowRefs.current[rowIndex] = el,
@@ -3028,15 +3052,18 @@ const ScrollingParallax = ({
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     style: {
       display: "flex",
-      justifyContent: "space-between"
+      justifyContent: "space-between",
+      alignItems: "center"
     }
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "modal-text"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, selectedCard.title), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, selectedCard.subtitle)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-    style: {
-      height: "100px"
-    }
-  }, "hello world")))));
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, selectedCard.title), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, selectedCard.subtitle)), selectedCard?.button?.status && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    target: options.isNewTab ? "_blank" : "_self",
+    rel: "noreferrer",
+    href: selectedCard?.button?.link
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    className: "btn"
+  }, "hello world"))))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ScrollingParallax);
 

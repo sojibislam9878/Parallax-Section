@@ -57,10 +57,13 @@ const Style = ({ attributes, id }) => {
 	const theme6Sl = `${mainSl} .bplScrolingParallax`;
 	const t6Title = `${theme6Sl} h3`;
 	const t6SubTitle = `${theme6Sl} p`;
+	const t6CardSl = `${theme6Sl} .card`;
+	const t6ParallaxRow = `${theme6Sl} .parallax-row`;
+	const t6ParallaxMiddleRow = `${theme6Sl} .middle`;
 	// ${getTypoCSS(t6Title, contents?.title?.typo)?.styles}
 	// ${getTypoCSS(t6SubTitle, contents?.description?.typo)?.styles}
 
-	// console.log(contents?.title?.typo);
+	// console.log(layout?.t5LayoutSetting);
 	
 
 
@@ -321,6 +324,10 @@ const Style = ({ attributes, id }) => {
 
 				${theme6Sl}{
 					${getBackgroundCSS(styles.background)}
+					width:${layout.width.desktop};
+					height:${layout.height.desktop};
+					margin:${getBoxCSS(layout.margin.desktop)};
+					padding:${getBoxCSS(layout.padding.desktop)};
 				}
 
 				${t6Title}{
@@ -330,6 +337,19 @@ const Style = ({ attributes, id }) => {
 				${t6SubTitle}{
 				color:${contents?.description?.color};
 				}
+
+				${t6ParallaxRow}{
+      		gap: ${layout?.t5LayoutSetting?.card?.rowGap};
+				}
+				${t6ParallaxMiddleRow}{
+      		margin: ${layout?.t5LayoutSetting?.card?.colGap} 0;
+				}
+
+				${t6CardSl}{
+					width: ${layout?.t5LayoutSetting?.card?.width};
+					height: ${layout?.t5LayoutSetting?.card?.height};
+				}
+
 
 
 
