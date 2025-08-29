@@ -152,7 +152,7 @@ const General = ({ attributes, setAttributes, device, premiumProps }) => {
             />
 
             {/* only for theme 3 and 5 */}
-            {(selectedTheme === "theme3" || selectedTheme === "theme5") && (
+            {(selectedTheme === "theme3") && (
               <>
                 <PanelRow>
                   <Label className="mt0">

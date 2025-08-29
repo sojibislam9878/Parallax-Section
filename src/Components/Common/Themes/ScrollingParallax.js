@@ -171,7 +171,13 @@ const ScrollingParallax = ({
               alt={selectedCard.title}
               className="modal-image"
             />
-            <div style={{display:"flex", justifyContent:"space-between", alignItems:"center"}}>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}
+            >
               <div className="modal-text">
                 <h2>{selectedCard.title}</h2>
                 <p>{selectedCard.subtitle}</p>
@@ -182,7 +188,9 @@ const ScrollingParallax = ({
                   rel="noreferrer"
                   href={selectedCard?.button?.link}
                 >
-                  <button className="btn">hello world</button>
+                  <button className="btn">
+                    {selectedCard?.button?.buttonTitle}
+                  </button>
                 </a>
               )}
             </div>

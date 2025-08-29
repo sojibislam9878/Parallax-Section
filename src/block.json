@@ -54,7 +54,7 @@
           "button": {
             "status": true,
             "link": "#",
-            "buttonTitle": "string"
+            "buttonTitle": "Click Here"
           }
         },
         {
@@ -64,7 +64,7 @@
           "button": {
             "status": true,
             "link": "#",
-            "buttonTitle": "string"
+            "buttonTitle": "Click Here"
           }
         },
         {
@@ -74,7 +74,7 @@
           "button": {
             "status": true,
             "link": "#",
-            "buttonTitle": "string"
+            "buttonTitle": "Click Here"
           }
         },
         {
@@ -84,7 +84,7 @@
           "button": {
             "status": true,
             "link": "#",
-            "buttonTitle": "string"
+            "buttonTitle": "Click Here"
           }
         },
         {
@@ -94,7 +94,7 @@
           "button": {
             "status": true,
             "link": "#",
-            "buttonTitle": "string"
+            "buttonTitle": "Click Here"
           }
         },
         {
@@ -104,7 +104,7 @@
           "button": {
             "status": true,
             "link": "#",
-            "buttonTitle": "string"
+            "buttonTitle": "Click Here"
           }
         },
         {
@@ -114,7 +114,7 @@
           "button": {
             "status": true,
             "link": "#",
-            "buttonTitle": "string"
+            "buttonTitle": "Click Here"
           }
         },
         {
@@ -124,7 +124,7 @@
           "button": {
             "status": true,
             "link": "#",
-            "buttonTitle": "string"
+            "buttonTitle": "Click Here"
           }
         },
         {
@@ -134,7 +134,7 @@
           "button": {
             "status": true,
             "link": "#",
-            "buttonTitle": "string"
+            "buttonTitle": "Click Here"
           }
         },
         {
@@ -144,7 +144,7 @@
           "button": {
             "status": true,
             "link": "#",
-            "buttonTitle": "string"
+            "buttonTitle": "Click Here"
           }
         },
         {
@@ -154,7 +154,7 @@
           "button": {
             "status": true,
             "link": "#",
-            "buttonTitle": "string"
+            "buttonTitle": "Click Here"
           }
         },
         {
@@ -164,7 +164,7 @@
           "button": {
             "status": true,
             "link": "#",
-            "buttonTitle": "string"
+            "buttonTitle": "Click Here"
           }
         },
         {
@@ -174,7 +174,7 @@
           "button": {
             "status": true,
             "link": "#",
-            "buttonTitle": "string"
+            "buttonTitle": "Click Here"
           }
         },
         {
@@ -184,7 +184,7 @@
           "button": {
             "status": true,
             "link": "#",
-            "buttonTitle": "string"
+            "buttonTitle": "Click Here"
           }
         },
         {
@@ -194,7 +194,7 @@
           "button": {
             "status": true,
             "link": "#",
-            "buttonTitle": "string"
+            "buttonTitle": "Click Here"
           }
         },
         {
@@ -204,7 +204,7 @@
           "button": {
             "status": true,
             "link": "#",
-            "buttonTitle": "string"
+            "buttonTitle": "Click Here"
           }
         },
         {
@@ -214,7 +214,7 @@
           "button": {
             "status": true,
             "link": "#",
-            "buttonTitle": "string"
+            "buttonTitle": "Click Here"
           }
         },
         {
@@ -224,7 +224,7 @@
           "button": {
             "status": true,
             "link": "#",
-            "buttonTitle": "string"
+            "buttonTitle": "Click Here"
           }
         }
       ]
@@ -415,7 +415,8 @@
           "image": {
             "url": "https://templates.bplugins.com/wp-content/uploads/2025/05/blureffectparallax-scaled.jpeg"
           },
-          "color": "rgba(0, 168, 53, 0.7)",
+          "color": "#000",
+          "gradient": "linear-gradient(to bottom, #0f172a, #1e293b)",
           "repeat": "no-repeat",
           "position": "center right",
           "size": "cover"
@@ -480,8 +481,9 @@
               "color": "#fff"
             },
             "btn": {
-              "colors": { "color": "", "bg": "" },
-              "hovColors": { "color": "", "bg": "" }
+              "text":"Click Here",
+              "colors": { "color": "#000", "bg": "#fff" },
+              "hovColors": { "color": "#000", "bg": "#fff" }
             }
           }
         }

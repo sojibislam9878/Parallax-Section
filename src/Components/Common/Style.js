@@ -60,6 +60,8 @@ const Style = ({ attributes, id }) => {
 	const t6CardSl = `${theme6Sl} .card`;
 	const t6ParallaxRow = `${theme6Sl} .parallax-row`;
 	const t6ParallaxMiddleRow = `${theme6Sl} .middle`;
+	const t6ModalSl = `${theme6Sl} .modal-container`;
+	const t6ModalCloseSl = `${theme6Sl} .modal-close`;
 	// ${getTypoCSS(t6Title, contents?.title?.typo)?.styles}
 	// ${getTypoCSS(t6SubTitle, contents?.description?.typo)?.styles}
 
@@ -327,7 +329,6 @@ const Style = ({ attributes, id }) => {
 					width:${layout.width.desktop};
 					height:${layout.height.desktop};
 					margin:${getBoxCSS(layout.margin.desktop)};
-					padding:${getBoxCSS(layout.padding.desktop)};
 				}
 
 				${t6Title}{
@@ -348,6 +349,28 @@ const Style = ({ attributes, id }) => {
 				${t6CardSl}{
 					width: ${layout?.t5LayoutSetting?.card?.width};
 					height: ${layout?.t5LayoutSetting?.card?.height};
+				}
+				${t6ModalSl}{
+					background: ${styles?.t5Styles?.modal?.background};
+				}
+				${t6ModalCloseSl}{
+					color: ${styles?.t5Styles?.modal?.closeBtn?.color};
+				}
+				${t6ModalCloseSl}:hover{
+					color: ${styles?.t5Styles?.modal?.closeBtn?.hovColor};
+				}
+				${t6ModalSl} h2{
+					color: ${styles?.t5Styles?.modal?.title?.color};
+				}
+				${t6ModalSl} p{
+					color: ${styles?.t5Styles?.modal?.subTitle?.color};
+				}
+				${t6ModalSl} .btn{
+				${getColorsCSS(styles?.t5Styles?.modal?.btn?.colors)}
+				}
+				${t6ModalSl} .btn:hover{
+				${getColorsCSS(styles?.t5Styles?.modal?.btn?.hovColors)}
+					transition: all 0.5s ease;
 				}
 
 

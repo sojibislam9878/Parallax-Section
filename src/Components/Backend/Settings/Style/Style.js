@@ -8,6 +8,7 @@ import {
   ToggleControl,
   __experimentalUnitControl as UnitControl,
   PanelRow,
+  // __experimentalInputControl as InputControl,
 } from "@wordpress/components";
 import {
   Background,
@@ -25,6 +26,7 @@ const Style = ({ attributes, setAttributes, premiumProps, device }) => {
   const { title, description, btns, subTitle, badge } = contents || {};
   const { particles, cube, leaf, t4Styles,t5Styles } = styles || {};
   const { btn1, btn2 } = btns || {};
+  
 
   return (
     <>
@@ -756,7 +758,7 @@ const Style = ({ attributes, setAttributes, premiumProps, device }) => {
             }
           />
           <ColorControl
-            label="Title Color"
+            label="Sub Title Color"
             value={t5Styles?.modal?.subTitle?.color}
             onChange={(value) =>
               setAttributes({
@@ -771,6 +773,23 @@ const Style = ({ attributes, setAttributes, premiumProps, device }) => {
               })
             }
           />
+          {/* <InputControl
+            label="Button Text"
+            value={t5Styles?.modal?.btn?.text}
+            placeholder="text..."
+            onChange={(value) =>
+              setAttributes({
+                styles: updateData(
+                  styles,
+                  value,
+                  "t5Styles",
+                  "modal",
+                  "btn",
+                  "title"
+                ),
+              })
+            }
+          /> */}
           <ColorsControl
             label="Button Colors"
             value={t5Styles?.modal?.btn?.colors}
