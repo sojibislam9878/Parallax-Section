@@ -2159,4 +2159,8 @@ svg.bPlBlockIcon {
   text-transform: uppercase;
 }
 
+.bpl-parallax-warning {
+  color: rgb(255, 191, 0);
+}
+
 /*# sourceMappingURL=index.css.map*/

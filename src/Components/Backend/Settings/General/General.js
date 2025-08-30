@@ -68,6 +68,10 @@ const General = ({ attributes, setAttributes, device, premiumProps }) => {
           </FlexBlock>
         </Flex>
 
+        <p className="bpl-parallax-warning">
+          Note: Parallax effect only work on front-end
+        </p>
+
         {/* for default theme  */}
         {selectedTheme === "default" && (
           <>
@@ -152,7 +156,7 @@ const General = ({ attributes, setAttributes, device, premiumProps }) => {
             />
 
             {/* only for theme 3 and 5 */}
-            {(selectedTheme === "theme3") && (
+            {selectedTheme === "theme3" && (
               <>
                 <PanelRow>
                   <Label className="mt0">
@@ -221,7 +225,7 @@ const General = ({ attributes, setAttributes, device, premiumProps }) => {
                     />
                   </FlexBlock>
                 </Flex>
-                <UnitControl
+                <BControlPro
                   className="mt10"
                   label="Card Height"
                   value={layout?.t5LayoutSetting?.card?.height}
@@ -236,8 +240,10 @@ const General = ({ attributes, setAttributes, device, premiumProps }) => {
                       ),
                     });
                   }}
+                  Component={UnitControl}
+                  {...premiumProps}
                 />
-                <UnitControl
+                <BControlPro
                   className="mt10"
                   label="Card Width"
                   value={layout?.t5LayoutSetting?.card?.width}
@@ -252,6 +258,8 @@ const General = ({ attributes, setAttributes, device, premiumProps }) => {
                       ),
                     });
                   }}
+                  Component={UnitControl}
+                  {...premiumProps}
                 />
               </>
             )}
@@ -739,13 +747,15 @@ const General = ({ attributes, setAttributes, device, premiumProps }) => {
               {...{ attributes, setAttributes, premiumProps }}
               arrKey="t5Contents"
               newItem={{
-                name: "Kiss Dorka",
-                designation: "Product Design &amp; UX Lead",
+                title: "PACHINKO",
+                subtitle: "Apple TV+",
                 image:
-                  "https://templates.bplugins.com/wp-content/uploads/2025/02/p-32.png",
-                content:
-                  "Started using @flowmapp to create some App and Website Sitempas. Really liking it. Easy to use. Good to see that user flows appear to be in the Product Roadmap as well.",
-                tags: ["uxdesign", "ux", "webdesing", "uidesign"],
+                  "https://templates.bplugins.com/wp-content/uploads/2025/07/41475.jpg",
+                button: {
+                  status: true,
+                  link: "#",
+                  buttonTitle: "Click Here",
+                },
               }}
               ItemSettings={FristContRow}
               title="title"
@@ -810,6 +820,9 @@ const General = ({ attributes, setAttributes, device, premiumProps }) => {
                 />
               </FlexBlock>
             </Flex>
+            <p className="bpl-parallax-warning">
+              Note: Adjust speed according your content
+            </p>
           </PanelBody>
         </>
       )}

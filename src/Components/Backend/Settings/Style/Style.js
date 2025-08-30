@@ -24,9 +24,8 @@ import { BControlPro } from "../../../../../../bpl-tools/ProControls";
 const Style = ({ attributes, setAttributes, premiumProps, device }) => {
   const { background, selectedTheme, contents, styles, options } = attributes;
   const { title, description, btns, subTitle, badge } = contents || {};
-  const { particles, cube, leaf, t4Styles,t5Styles } = styles || {};
+  const { particles, cube, leaf, t4Styles, t5Styles } = styles || {};
   const { btn1, btn2 } = btns || {};
-  
 
   return (
     <>
@@ -62,7 +61,7 @@ const Style = ({ attributes, setAttributes, premiumProps, device }) => {
             ) : (
               <>
                 <Label>Background Colors:</Label>
-                <ColorControl
+                <BControlPro
                   label="Upper Background Color"
                   value={t4Styles?.backgroundColors?.upper}
                   onChange={(value) =>
@@ -76,8 +75,10 @@ const Style = ({ attributes, setAttributes, premiumProps, device }) => {
                       ),
                     })
                   }
+                  Component={ColorControl}
+                  {...premiumProps}
                 />
-                <ColorControl
+                <BControlPro
                   label="Lower Background Color"
                   value={t4Styles?.backgroundColors?.lower}
                   onChange={(value) =>
@@ -91,6 +92,8 @@ const Style = ({ attributes, setAttributes, premiumProps, device }) => {
                       ),
                     })
                   }
+                  Component={ColorControl}
+                  {...premiumProps}
                 />
               </>
             )}
@@ -184,7 +187,7 @@ const Style = ({ attributes, setAttributes, premiumProps, device }) => {
               <>
                 {badge?.status && (
                   <>
-                    <ColorsControl
+                    <BControlPro
                       label="Badge Colors"
                       value={badge?.colors}
                       onChange={(value) =>
@@ -197,8 +200,10 @@ const Style = ({ attributes, setAttributes, premiumProps, device }) => {
                           ),
                         })
                       }
+                      Component={ColorsControl}
+                      {...premiumProps}
                     />
-                    <Typography
+                    <BControlPro
                       label="Badge typo"
                       value={badge?.typo}
                       onChange={(value) =>
@@ -211,6 +216,8 @@ const Style = ({ attributes, setAttributes, premiumProps, device }) => {
                           ),
                         })
                       }
+                      Component={Typography}
+                      {...premiumProps}
                     />
                   </>
                 )}
@@ -410,7 +417,7 @@ const Style = ({ attributes, setAttributes, premiumProps, device }) => {
             <Flex>
               <FlexBlock>G :</FlexBlock>
               <FlexBlock>
-                <NumberControl
+                <BControlPro
                   value={particles.color.g}
                   max={255}
                   min={0}
@@ -425,13 +432,15 @@ const Style = ({ attributes, setAttributes, premiumProps, device }) => {
                       ),
                     })
                   }
+                  Component={NumberControl}
+                  {...premiumProps}
                 />
               </FlexBlock>
             </Flex>
             <Flex>
               <FlexBlock>B :</FlexBlock>
               <FlexBlock>
-                <NumberControl
+                <BControlPro
                   value={particles.color.b}
                   max={255}
                   min={0}
@@ -446,6 +455,8 @@ const Style = ({ attributes, setAttributes, premiumProps, device }) => {
                       ),
                     })
                   }
+                  Component={NumberControl}
+                  {...premiumProps}
                 />
               </FlexBlock>
             </Flex>
@@ -454,7 +465,7 @@ const Style = ({ attributes, setAttributes, premiumProps, device }) => {
             <Flex className="mt10">
               <FlexBlock>Moving Speed</FlexBlock>
               <FlexBlock>
-                <NumberControl
+                <BControlPro
                   value={particles.movingSpeed}
                   max={2}
                   min={0.1}
@@ -469,6 +480,8 @@ const Style = ({ attributes, setAttributes, premiumProps, device }) => {
                       ),
                     })
                   }
+                  Component={NumberControl}
+                  {...premiumProps}
                 />
               </FlexBlock>
             </Flex>
@@ -477,7 +490,7 @@ const Style = ({ attributes, setAttributes, premiumProps, device }) => {
             <Flex className="mt10">
               <FlexBlock>density</FlexBlock>
               <FlexBlock>
-                <NumberControl
+                <BControlPro
                   value={particles.density}
                   max={50}
                   min={1}
@@ -487,6 +500,8 @@ const Style = ({ attributes, setAttributes, premiumProps, device }) => {
                       styles: updateData(styles, value, "particles", "density"),
                     })
                   }
+                  Component={NumberControl}
+                  {...premiumProps}
                 />
               </FlexBlock>
             </Flex>
@@ -665,16 +680,18 @@ const Style = ({ attributes, setAttributes, premiumProps, device }) => {
             <>
               <Flex>
                 <Label className="mt0">Leaf Count</Label>
-                <NumberControl
+                <BControlPro
                   value={leaf?.count}
                   onChange={(value) =>
                     setAttributes({
                       styles: updateData(styles, value++, "leaf", "count"),
                     })
                   }
+                  Component={NumberControl}
+                  {...premiumProps}
                 />
               </Flex>
-              <ColorControl
+              <BControlPro
                 label={__("Leaf Color", "parallax-section")}
                 value={leaf?.color}
                 onChange={(value) =>
@@ -682,6 +699,8 @@ const Style = ({ attributes, setAttributes, premiumProps, device }) => {
                     styles: updateData(styles, value, "leaf", "color"),
                   })
                 }
+                Component={ColorControl}
+                {...premiumProps}
               />
             </>
           )}
@@ -694,7 +713,7 @@ const Style = ({ attributes, setAttributes, premiumProps, device }) => {
           title={__("Modal Style", "parallax-section")}
           initialOpen={false}
         >
-          <ColorControl
+          <BControlPro
             label="Background Color"
             value={t5Styles?.modal?.background}
             onChange={(value) =>
@@ -708,8 +727,10 @@ const Style = ({ attributes, setAttributes, premiumProps, device }) => {
                 ),
               })
             }
+            Component={ColorControl}
+            {...premiumProps}
           />
-          <ColorControl
+          <BControlPro
             label="Close Button Color"
             value={t5Styles?.modal?.closeBtn?.color}
             onChange={(value) =>
@@ -724,8 +745,10 @@ const Style = ({ attributes, setAttributes, premiumProps, device }) => {
                 ),
               })
             }
+            Component={ColorControl}
+            {...premiumProps}
           />
-          <ColorControl
+          <BControlPro
             label="Close Button Hover Color"
             value={t5Styles?.modal?.closeBtn?.hovColor}
             onChange={(value) =>
@@ -740,8 +763,10 @@ const Style = ({ attributes, setAttributes, premiumProps, device }) => {
                 ),
               })
             }
+            Component={ColorControl}
+            {...premiumProps}
           />
-          <ColorControl
+          <BControlPro
             label="Title Color"
             value={t5Styles?.modal?.title?.color}
             onChange={(value) =>
@@ -756,8 +781,10 @@ const Style = ({ attributes, setAttributes, premiumProps, device }) => {
                 ),
               })
             }
+            Component={ColorControl}
+            {...premiumProps}
           />
-          <ColorControl
+          <BControlPro
             label="Sub Title Color"
             value={t5Styles?.modal?.subTitle?.color}
             onChange={(value) =>
@@ -772,25 +799,10 @@ const Style = ({ attributes, setAttributes, premiumProps, device }) => {
                 ),
               })
             }
+            Component={ColorControl}
+            {...premiumProps}
           />
-          {/* <InputControl
-            label="Button Text"
-            value={t5Styles?.modal?.btn?.text}
-            placeholder="text..."
-            onChange={(value) =>
-              setAttributes({
-                styles: updateData(
-                  styles,
-                  value,
-                  "t5Styles",
-                  "modal",
-                  "btn",
-                  "title"
-                ),
-              })
-            }
-          /> */}
-          <ColorsControl
+          <BControlPro
             label="Button Colors"
             value={t5Styles?.modal?.btn?.colors}
             onChange={(value) =>
@@ -805,8 +817,10 @@ const Style = ({ attributes, setAttributes, premiumProps, device }) => {
                 ),
               })
             }
+            Component={ColorsControl}
+            {...premiumProps}
           />
-          <ColorsControl
+          <BControlPro
             label="Button Hover Colors"
             value={t5Styles?.modal?.btn?.hovColors}
             onChange={(value) =>
@@ -821,6 +835,8 @@ const Style = ({ attributes, setAttributes, premiumProps, device }) => {
                 ),
               })
             }
+            Component={ColorsControl}
+            {...premiumProps}
           />
         </PanelBody>
       )}

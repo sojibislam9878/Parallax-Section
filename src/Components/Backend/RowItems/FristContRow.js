@@ -19,7 +19,7 @@ const FristContRow = ({ attributes, setAttributes, index, premiumProps }) => {
 
   return (
     <div>
-      <InlineMediaUpload
+      <BControlPro
         value={t5Contents[index]?.image}
         label={__("Image", "parallax-section")}
         onChange={(value) =>
@@ -27,8 +27,10 @@ const FristContRow = ({ attributes, setAttributes, index, premiumProps }) => {
             t5Contents: updateData(t5Contents, value, index, "image"),
           })
         }
+        Component={InlineMediaUpload}
+        {...premiumProps}
       />
-      <InputControl
+      <BControlPro
         className="mt10"
         value={t5Contents[index]?.title}
         label={__("Title", "parallax-section")}
@@ -37,8 +39,10 @@ const FristContRow = ({ attributes, setAttributes, index, premiumProps }) => {
             t5Contents: updateData(t5Contents, value, index, "title"),
           })
         }
+        Component={InputControl}
+        {...premiumProps}
       />
-      <InputControl
+      <BControlPro
         className="mt10"
         value={t5Contents[index]?.subtitle}
         label={__("Sub Title", "parallax-section")}
@@ -47,6 +51,8 @@ const FristContRow = ({ attributes, setAttributes, index, premiumProps }) => {
             t5Contents: updateData(t5Contents, value, index, "subtitle"),
           })
         }
+        Component={InputControl}
+        {...premiumProps}
       />
       {options?.t5Options?.imgFullView && (
         <>
@@ -71,7 +77,7 @@ const FristContRow = ({ attributes, setAttributes, index, premiumProps }) => {
           </Flex>
           {t5Contents[index]?.button?.status && (
             <>
-              <InputControl
+              <BControlPro
                 value={t5Contents[index]?.button?.buttonTitle}
                 label={__("Button Title", "parallax-section")}
                 onChange={(value) =>
@@ -85,8 +91,10 @@ const FristContRow = ({ attributes, setAttributes, index, premiumProps }) => {
                     ),
                   })
                 }
+                Component={InputControl}
+                {...premiumProps}
               />
-              <InputControl
+              <BControlPro
                 className="mt5"
                 value={t5Contents[index]?.button?.link}
                 label={__("Button Title", "parallax-section")}
@@ -101,6 +109,8 @@ const FristContRow = ({ attributes, setAttributes, index, premiumProps }) => {
                     ),
                   })
                 }
+                Component={InputControl}
+                {...premiumProps}
               />
             </>
           )}
