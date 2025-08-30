@@ -4,10 +4,12 @@
   "title": "Parallax Section",
   "description": "Parallax scrolling effects in section.",
   "category": "widgets",
+  "version": "2.0.0",
   "keywords": [
     "parallax scroll",
     "background effect",
-    "scrolling effect"
+    "scrolling effect",
+    "parallax section"
   ],
   "textdomain": "parallax-section",
   "attributes": {

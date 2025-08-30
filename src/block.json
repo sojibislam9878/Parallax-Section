@@ -4,7 +4,13 @@
   "title": "Parallax Section",
   "description": "Parallax scrolling effects in section.",
   "category": "widgets",
-  "keywords": ["parallax scroll", "background effect", "scrolling effect"],
+  "version": "2.0.0",
+  "keywords": [
+    "parallax scroll",
+    "background effect",
+    "scrolling effect",
+    "parallax section"
+  ],
   "textdomain": "parallax-section",
   "attributes": {
     "align": {
@@ -481,7 +487,7 @@
               "color": "#fff"
             },
             "btn": {
-              "text":"Click Here",
+              "text": "Click Here",
               "colors": { "color": "#000", "bg": "#fff" },
               "hovColors": { "color": "#000", "bg": "#fff" }
             }

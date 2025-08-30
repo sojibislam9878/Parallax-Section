@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Parallax Section - Block
  * Description: Makes background element scrolls slower than foreground content.
- * Version: 1.0.9
+ * Version: 2.0.0
  * Author: bPlugins
  * Author URI: https://bplugins.com
  * License: GPLv3

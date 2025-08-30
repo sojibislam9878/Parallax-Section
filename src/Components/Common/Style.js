@@ -2,7 +2,7 @@ import { getSpaceCSS } from '../../../../bpl-tools/utils/getCSS';
 import { getBackgroundCSS, getBoxCSS, getColorsCSS, getTypoCSS } from '../../../../bpl-tools/utils/getCSS';
 
 const Style = ({ attributes, id }) => {
-	const { verticalAlign, textAlign, background, minHeight, padding, layout, styles, contents, selectedTheme } = attributes;
+	const { verticalAlign, textAlign, background, minHeight, padding, layout, styles = {}, contents, selectedTheme } = attributes;
 	
 
 	const mainBlk = `.wp-block-psb-parallax`;
@@ -331,7 +331,7 @@ const Style = ({ attributes, id }) => {
 				${theme6Sl}{
 					${getBackgroundCSS(styles.background)}
 					width:${layout.width.desktop};
-					height:${layout.height.desktop};
+					min-height:${layout.height.desktop};
 					margin:${getBoxCSS(layout.margin.desktop)};
 				}
 
