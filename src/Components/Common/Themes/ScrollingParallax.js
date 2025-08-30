@@ -18,7 +18,6 @@ const ScrollingParallax = ({
   const speed = attributes?.options?.t5Options?.speed;
   const {options}=attributes || []
 
-  // 👉 Utility: split array into 3 chunks
   const chunkArray = (arr, chunkCount) => {
     const perChunk = Math.ceil(arr.length / chunkCount);
     return Array.from({ length: chunkCount }, (_, i) =>
@@ -35,11 +34,9 @@ const ScrollingParallax = ({
       const rect = containerRef.current.getBoundingClientRect();
       initialTopRef.current = rect.top + window.scrollY;
 
-      // 👉 measure each row’s width for offset (especially for reversed rows)
       rowRefs.current.forEach((row, index) => {
         if (!row) return;
         if (index === 1) {
-          // shift so reversed row starts aligned from the right edge
           const containerWidth = containerRef.current.offsetWidth;
           row.dataset.offset = -(row.scrollWidth - containerWidth);
           row.style.transform = `translateX(${row.dataset.offset}px)`;
@@ -145,8 +142,8 @@ const ScrollingParallax = ({
                       </>
                     ) : (
                       <>
-                        <h3>{item.title}</h3>
-                        <p>{item.subtitle}</p>
+                        <RichText.Content tagName="h3" value={item.title} />
+                        <RichText.Content tagName="p" value={item.subtitle} />
                       </>
                     )}
                   </div>

@@ -12,8 +12,6 @@ const ThreeImageParallax = ({
   const { title, subTitle, badge, products, description, btns } =
     contents || {};
 
-  // console.log(badge.text);
-
   const wrapperRef = useRef(null);
   const bgTopRef = useRef(null);
   const bgBottomRef = useRef(null);
@@ -30,7 +28,6 @@ const ThreeImageParallax = ({
     let componentHeight = 0;
     let isComponentInView = false;
 
-    // Generate random leaf positions
     const NUM_LEAVES = styles?.leaf?.count;
     for (let i = 0; i < NUM_LEAVES; i++) {
       const leaf = document.createElementNS(
@@ -61,7 +58,6 @@ const ThreeImageParallax = ({
       }
     }
 
-    // Initialize component position and height
     const initComponent = () => {
       const component = wrapperRef.current;
       if (component) {
@@ -73,23 +69,17 @@ const ThreeImageParallax = ({
       }
     };
 
-    // Run once on mount
     initComponent();
 
     const handleScroll = () => {
       const currentScroll = window.scrollY;
 
-      // Check if component is in view
       isComponentInView =
         currentScroll >= initialTop &&
         currentScroll <= initialTop + componentHeight;
 
       if (!isComponentInView) return;
-
-      // Calculate scroll relative to component start
       const scrollY = currentScroll - initialTop;
-
-      // Apply effects only when component is in view
       if (bgTopRef.current)
         bgTopRef.current.style.transform = `translateY(${scrollY * 0.05}px)`;
       if (bgBottomRef.current)
@@ -121,8 +111,6 @@ const ThreeImageParallax = ({
         }deg)`;
       });
     };
-
-    // Also handle resize to update component position
     const handleResize = () => {
       initComponent();
     };
@@ -133,7 +121,6 @@ const ThreeImageParallax = ({
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleResize);
-      // Clean up leaves if component unmounts
       if (leavesContainer) {
         leavesContainer.innerHTML = "";
       }

@@ -2572,8 +2572,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-// import './BlurEffectParallax.css'; // Or move styles to a styled-component or CSS module
-
 const BlurEffectParallax = ({
   isBackend = false,
   setAttributes,
@@ -2603,11 +2601,7 @@ const BlurEffectParallax = ({
       const sectionTop = heroSection.offsetTop;
       const sectionHeight = heroSection.offsetHeight;
       const scrollY = window.scrollY;
-
-      // Start measuring scroll only after reaching the top of the section
       const scrollFromSectionTop = scrollY - sectionTop;
-
-      // If section not yet reached, skip blur effect
       if (scrollFromSectionTop < 0) {
         parallaxBg.style.transform = `translateY(0px)`;
         parallaxBg.style.filter = `blur(0px) brightness(1)`;
@@ -2615,18 +2609,10 @@ const BlurEffectParallax = ({
         heroContent.style.transform = "translateY(0px)";
         return;
       }
-
-      // Parallax movement (relative to section scroll)
       parallaxBg.style.transform = `translateY(${scrollFromSectionTop * 0.5}px)`;
-
-      // Scroll progress (from 0 to 1)
       const scrollProgress = Math.min(scrollFromSectionTop / sectionHeight, 1);
-
-      // Blur & brightness
       const blurValue = scrollProgress * 8;
       parallaxBg.style.filter = `blur(${blurValue}px) brightness(${1 - scrollProgress * 0.4})`;
-
-      // Content fade and shift
       heroContent.style.opacity = 1 - scrollProgress * 0.7;
       heroContent.style.transform = `translateY(${scrollProgress * 50}px)`;
     };
@@ -2640,8 +2626,7 @@ const BlurEffectParallax = ({
     }
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("resize", handleScroll);
-    handleScroll(); // Initial run
-
+    handleScroll();
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleScroll);
@@ -2885,9 +2870,12 @@ const ParticleParallax = ({
     tagName: "p",
     value: description.text,
     onChange: value => setAttributes({
-      contents: (0,_utils_functions__WEBPACK_IMPORTED_MODULE_3__.updateData)(contents, value, "description")
+      content: (0,_utils_functions__WEBPACK_IMPORTED_MODULE_3__.updateData)(contents, value, "description", "text")
     })
-  }) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, " ", description.text, " "), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, {
+    tagName: "p",
+    value: description.text
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "buttons"
   }, btn1.status && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     target: options.isNewTab ? "_blank" : "_self",
@@ -2960,8 +2948,6 @@ const ScrollingParallax = ({
   const {
     options
   } = attributes || [];
-
-  // 👉 Utility: split array into 3 chunks
   const chunkArray = (arr, chunkCount) => {
     const perChunk = Math.ceil(arr.length / chunkCount);
     return Array.from({
@@ -2975,12 +2961,9 @@ const ScrollingParallax = ({
       if (!containerRef.current) return;
       const rect = containerRef.current.getBoundingClientRect();
       initialTopRef.current = rect.top + window.scrollY;
-
-      // 👉 measure each row’s width for offset (especially for reversed rows)
       rowRefs.current.forEach((row, index) => {
         if (!row) return;
         if (index === 1) {
-          // shift so reversed row starts aligned from the right edge
           const containerWidth = containerRef.current.offsetWidth;
           row.dataset.offset = -(row.scrollWidth - containerWidth);
           row.style.transform = `translateX(${row.dataset.offset}px)`;
@@ -3060,7 +3043,13 @@ const ScrollingParallax = ({
       onChange: value => setAttributes({
         t5Contents: (0,_utils_functions__WEBPACK_IMPORTED_MODULE_3__.updateData)(t5Contents, value, i, "subtitle")
       })
-    })) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", null, item.title), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, item.subtitle))))));
+    })) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, {
+      tagName: "h3",
+      value: item.title
+    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, {
+      tagName: "p",
+      value: item.subtitle
+    }))))));
   })), selectedCard && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "modal-overlay"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -3132,9 +3121,6 @@ const ThreeImageParallax = ({
     description,
     btns
   } = contents || {};
-
-  // console.log(badge.text);
-
   const wrapperRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   const bgTopRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   const bgBottomRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
@@ -3149,8 +3135,6 @@ const ThreeImageParallax = ({
     let initialTop = 0;
     let componentHeight = 0;
     let isComponentInView = false;
-
-    // Generate random leaf positions
     const NUM_LEAVES = styles?.leaf?.count;
     for (let i = 0; i < NUM_LEAVES; i++) {
       const leaf = document.createElementNS("http://www.w3.org/2000/svg", "svg");
@@ -3177,8 +3161,6 @@ const ThreeImageParallax = ({
         leavesContainer.appendChild(leaf);
       }
     }
-
-    // Initialize component position and height
     const initComponent = () => {
       const component = wrapperRef.current;
       if (component) {
@@ -3189,20 +3171,12 @@ const ThreeImageParallax = ({
         console.warn("Component not found");
       }
     };
-
-    // Run once on mount
     initComponent();
     const handleScroll = () => {
       const currentScroll = window.scrollY;
-
-      // Check if component is in view
       isComponentInView = currentScroll >= initialTop && currentScroll <= initialTop + componentHeight;
       if (!isComponentInView) return;
-
-      // Calculate scroll relative to component start
       const scrollY = currentScroll - initialTop;
-
-      // Apply effects only when component is in view
       if (bgTopRef.current) bgTopRef.current.style.transform = `translateY(${scrollY * 0.05}px)`;
       if (bgBottomRef.current) bgBottomRef.current.style.transform = `translateY(${scrollY * 0.08}px)`;
       if (contentRef.current) contentRef.current.style.transform = `translateY(${-scrollY * 0.1}px)`;
@@ -3215,8 +3189,6 @@ const ThreeImageParallax = ({
         leaf.style.transform = `translateY(${scrollY * speed}px) rotate(${Math.random() * 360}deg)`;
       });
     };
-
-    // Also handle resize to update component position
     const handleResize = () => {
       initComponent();
     };
@@ -3225,7 +3197,6 @@ const ThreeImageParallax = ({
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleResize);
-      // Clean up leaves if component unmounts
       if (leavesContainer) {
         leavesContainer.innerHTML = "";
       }
@@ -3424,19 +3395,6 @@ const VerticalParallax = ({
   const {
     btn1
   } = btns || {};
-
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     const offset = window.pageYOffset;
-  //     if (parallaxRef.current) {
-  //       parallaxRef.current.style.backgroundPositionY = offset * 0.8 + "px";
-  //     }
-  //   };
-
-  //   window.addEventListener("scroll", handleScroll);
-  //   return () => window.removeEventListener("scroll", handleScroll);
-  // }, []);
-
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("section", {
     className: "BPVerticalParallax"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {

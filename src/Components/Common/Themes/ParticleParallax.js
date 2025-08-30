@@ -186,8 +186,6 @@ const ParticleParallax = ({ attributes, setAttributes, isBackend = false }) => {
                     className="block"
                     value={subTitle.text}
                   />
-                  {/* <span className="gradient-text">{title.text}</span> */}
-                  {/* <span className="block">{subTitle.text}</span> */}
                 </>
               )}
             </h1>
@@ -197,12 +195,12 @@ const ParticleParallax = ({ attributes, setAttributes, isBackend = false }) => {
                 value={description.text}
                 onChange={(value) =>
                   setAttributes({
-                    contents: updateData(contents, value, "description"),
+                    content: updateData(contents, value, "description", "text"),
                   })
                 }
               />
             ) : (
-              <p> {description.text} </p>
+              <RichText.Content tagName="p" value={description.text}/>
             )}
             <div className="buttons">
               {btn1.status && (
@@ -223,8 +221,6 @@ const ParticleParallax = ({ attributes, setAttributes, isBackend = false }) => {
                   <button className="btn outline-btn">{btn2.text}</button>
                 </a>
               )}
-              {/* <button className="btn gradient-btn">Join Network ➜</button> */}
-              {/* <button className="btn outline-btn">Learn More</button> */}
             </div>
           </div>
         </div>
@@ -237,11 +233,6 @@ const ParticleParallax = ({ attributes, setAttributes, isBackend = false }) => {
             <div className="face bottom"></div>
             <div className="face left"></div>
             <div className="face right"></div>
-            {/* <img
-            style={{height:"300px", width:"300px"}}
-            src="https://templates.bplugins.com/wp-content/uploads/2025/07/h124-scaled.jpg"
-            alt=""
-          /> */}
           </div>
         )}
       </div>

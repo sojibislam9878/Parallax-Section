@@ -9,18 +9,6 @@ const VerticalParallax = ({ isBackend = false, attributes, setAttributes }) => {
   const { title, description, btns } = contents || {};
   const { btn1 } = btns || {};
 
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     const offset = window.pageYOffset;
-  //     if (parallaxRef.current) {
-  //       parallaxRef.current.style.backgroundPositionY = offset * 0.8 + "px";
-  //     }
-  //   };
-
-  //   window.addEventListener("scroll", handleScroll);
-  //   return () => window.removeEventListener("scroll", handleScroll);
-  // }, []);
-
   return (
     <section className="BPVerticalParallax">
       <div ref={parallaxRef} className="parallax-item">
