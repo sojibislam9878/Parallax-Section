@@ -186,6 +186,14 @@ const General = ({ attributes, setAttributes, device, premiumProps }) => {
                   <FlexBlock>
                     <BControlPro
                       value={layout?.t5LayoutSetting?.card?.rowGap}
+                      step={1}
+                      shiftStep={10}
+                      max={
+                        layout?.t5LayoutSetting?.card?.rowGap.includes("%")
+                          ? 100
+                          : undefined
+                      }
+                      min={1}
                       onChange={(value) =>
                         setAttributes({
                           layout: updateData(
@@ -209,6 +217,14 @@ const General = ({ attributes, setAttributes, device, premiumProps }) => {
                   <FlexBlock>
                     <BControlPro
                       value={layout?.t5LayoutSetting?.card?.colGap}
+                      step={1}
+                      shiftStep={10}
+                      max={
+                        layout?.t5LayoutSetting?.card?.colGap.includes("%")
+                          ? 100
+                          : undefined
+                      }
+                      min={1}
                       onChange={(value) =>
                         setAttributes({
                           layout: updateData(
@@ -228,6 +244,14 @@ const General = ({ attributes, setAttributes, device, premiumProps }) => {
                 <BControlPro
                   className="mt10"
                   label="Card Height"
+                  step={1}
+                  shiftStep={10}
+                  max={
+                    layout?.t5LayoutSetting?.card?.height.includes("%")
+                      ? 100
+                      : undefined
+                  }
+                  min={1}
                   value={layout?.t5LayoutSetting?.card?.height}
                   onChange={(value) => {
                     setAttributes({
@@ -246,6 +270,14 @@ const General = ({ attributes, setAttributes, device, premiumProps }) => {
                 <BControlPro
                   className="mt10"
                   label="Card Width"
+                  step={1}
+                  shiftStep={10}
+                  max={
+                    layout?.t5LayoutSetting?.card?.width.includes("%")
+                      ? 100
+                      : undefined
+                  }
+                  min={1}
                   value={layout?.t5LayoutSetting?.card?.width}
                   onChange={(value) => {
                     setAttributes({
@@ -608,24 +640,6 @@ const General = ({ attributes, setAttributes, device, premiumProps }) => {
                 Component={InputControl}
                 {...premiumProps}
               />
-
-              <Flex justify="start" align="center" gap={2}>
-                <BControlPro
-                  checked={options.isNewTab}
-                  onChange={() =>
-                    setAttributes({
-                      options: updateData(
-                        options,
-                        !options.isNewTab,
-                        "isNewTab"
-                      ),
-                    })
-                  }
-                  Component={ToggleControl}
-                  {...premiumProps}
-                />
-                <p className="mt10">Open in new tab</p>
-              </Flex>
             </>
           )}
 
@@ -693,26 +707,25 @@ const General = ({ attributes, setAttributes, device, premiumProps }) => {
                     Component={InputControl}
                     {...premiumProps}
                   />
-
-                  <Flex justify="start" align="center" gap={2}>
-                    <BControlPro
-                      checked={options.isNewTab}
-                      onChange={() =>
-                        setAttributes({
-                          options: updateData(
-                            options,
-                            !options.isNewTab,
-                            "isNewTab"
-                          ),
-                        })
-                      }
-                      Component={ToggleControl}
-                      {...premiumProps}
-                    />
-                    <p className="mt10">Open in new tab</p>
-                  </Flex>
                 </>
               )}
+              <Flex justify="start" align="center" gap={2}>
+                <BControlPro
+                  checked={options.isNewTab}
+                  onChange={() =>
+                    setAttributes({
+                      options: updateData(
+                        options,
+                        !options.isNewTab,
+                        "isNewTab"
+                      ),
+                    })
+                  }
+                  Component={ToggleControl}
+                  {...premiumProps}
+                />
+                <p className="mt10">Button Links open in new tab</p>
+              </Flex>
             </>
           )}
         </PanelBody>

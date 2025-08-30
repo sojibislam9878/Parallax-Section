@@ -251,6 +251,10 @@ const Style = ({ attributes, id }) => {
 				color:${contents.subTitle.color};
 				}
 
+				${t4Description}{
+					color:${contents.description.color};
+					}
+
 				${t4PrimaryBtn}{
 					${getColorsCSS(contents?.btns?.btn1?.colors)}
 					&:hover{

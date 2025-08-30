@@ -2412,6 +2412,10 @@ const Style = ({
 				color:${contents.subTitle.color};
 				}
 
+				${t4Description}{
+					color:${contents.description.color};
+					}
+
 				${t4PrimaryBtn}{
 					${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getColorsCSS)(contents?.btns?.btn1?.colors)}
 					&:hover{
