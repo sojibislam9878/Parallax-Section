@@ -56,30 +56,39 @@ export const themeChanger = (theme = "theme1", attributes) =>
     switch (theme) {
       //======================= case for theme 1 ========================//
       case "theme1":
-				// draft["styles"]["background"]["image"]["url"] ="https://templates.bplugins.com/wp-content/uploads/2025/05/blureffectparallax-scaled.jpeg",
-				(draft["styles"]["background"]["type"] = "image"),
+        // draft["styles"]["background"]["image"]["url"] ="https://templates.bplugins.com/wp-content/uploads/2025/05/blureffectparallax-scaled.jpeg",
+        (draft["styles"]["background"]["type"] = "image"),
           (draft["contents"]["title"]["color"] = "#2d2d2d"),
           (draft["contents"]["description"]["color"] = "white"),
           (draft["styles"]["textAlign"] = "left");
-          draft["contents"]["btns"]["btn1"]["colors"]["color"] = "white";
-          draft["contents"]["btns"]["btn1"]["colors"]["bg"] = "#ff4757";
-          draft["contents"]["btns"]["btn1"]["hoverColors"]["color"] = "white";
-          draft["contents"]["btns"]["btn1"]["hoverColors"]["bg"] = "#ff6b81";
+        draft["contents"]["btns"]["btn1"]["colors"]["color"] = "white";
+        draft["contents"]["btns"]["btn1"]["colors"]["bg"] = "#ff4757";
+        draft["contents"]["btns"]["btn1"]["hoverColors"]["color"] = "white";
+        draft["contents"]["btns"]["btn1"]["hoverColors"]["bg"] = "#ff6b81";
+        draft["contents"]["title"]["typo"]["fontSize"]["desktop"] = 64;
+        draft["contents"]["title"]["typo"]["fontSize"]["tablet"] = 54;
+        draft["contents"]["title"]["typo"]["fontSize"]["mobile"] = 24;
         break;
 
       //====================== case for theme 2 ===============================//
 
       case "theme2":
-				// draft["styles"]["background"]["image"]["url"] = "https://templates.bplugins.com/wp-content/uploads/2025/05/Screenshot-2025-05-17-105053.png",
-				
+        // draft["styles"]["background"]["image"]["url"] = "https://templates.bplugins.com/wp-content/uploads/2025/05/Screenshot-2025-05-17-105053.png",
+
         (draft["styles"]["background"]["type"] = "image"),
           (draft["contents"]["title"]["color"] = "#fff"),
           (draft["contents"]["description"]["color"] = "white"),
           (draft["styles"]["textAlign"] = "center");
-          draft["contents"]["btns"]["btn1"]["colors"]["color"] = "white";
-          draft["contents"]["btns"]["btn1"]["colors"]["bg"] = "#ff4757";
-          draft["contents"]["btns"]["btn1"]["hoverColors"]["color"] = "white";
-          draft["contents"]["btns"]["btn1"]["hoverColors"]["bg"] = "#ff6b81";
+        draft["contents"]["btns"]["btn1"]["colors"]["color"] = "white";
+        draft["contents"]["btns"]["btn1"]["colors"]["bg"] = "#ff4757";
+        draft["contents"]["btns"]["btn1"]["hoverColors"]["color"] = "white";
+        draft["contents"]["btns"]["btn1"]["hoverColors"]["bg"] = "#ff6b81";
+        draft["contents"]["title"]["typo"]["fontSize"]["desktop"] = 64;
+        draft["contents"]["title"]["typo"]["fontSize"]["tablet"] = 54;
+        draft["contents"]["title"]["typo"]["fontSize"]["mobile"] = 24;
+        draft["contents"]["description"]["typo"]["fontSize"]["desktop"] = 18;
+        draft["contents"]["description"]["typo"]["fontSize"]["tablet"] = 18;
+        draft["contents"]["description"]["typo"]["fontSize"]["mobile"] = 16;
         break;
 
       //====================== case for theme 3 ===============================//
@@ -90,37 +99,56 @@ export const themeChanger = (theme = "theme1", attributes) =>
           (draft["contents"]["title"]["color"] =
             "linear-gradient(to right, #38bdf8, #34d399)"),
           (draft["contents"]["subTitle"]["color"] = "white");
-          (draft["contents"]["description"]["color"] = "white");
-          draft["contents"]["btns"]["btn1"]["colors"]["color"] = "white";
-          draft["contents"]["btns"]["btn1"]["colors"]["bg"] =
-            "linear-gradient(to right, #38bdf8, #34d399)";
-						draft["contents"]["btns"]["btn1"]["hoverColors"]["color"] = "white";
-            draft["contents"]["btns"]["btn1"]["hoverColors"]["bg"] =
-              "linear-gradient(to right, #0ea5e9, #10b981)";
-          draft["contents"]["btns"]["btn2"]["colors"]["color"] = "white";
-          draft["contents"]["btns"]["btn2"]["colors"]["bg"] = "transparent";
-					draft["contents"]["btns"]["btn2"]["hoverColors"]["color"] = "white";
-          draft["contents"]["btns"]["btn2"]["hoverColors"]["bg"] =" rgba(255, 255, 255, 0.05)";
+        draft["contents"]["description"]["color"] = "white";
+        draft["contents"]["btns"]["btn1"]["colors"]["color"] = "white";
+        draft["contents"]["btns"]["btn1"]["colors"]["bg"] =
+          "linear-gradient(to right, #38bdf8, #34d399)";
+        draft["contents"]["btns"]["btn1"]["hoverColors"]["color"] = "white";
+        draft["contents"]["btns"]["btn1"]["hoverColors"]["bg"] =
+          "linear-gradient(to right, #0ea5e9, #10b981)";
+        draft["contents"]["btns"]["btn2"]["colors"]["color"] = "white";
+        draft["contents"]["btns"]["btn2"]["colors"]["bg"] = "transparent";
+        draft["contents"]["btns"]["btn2"]["hoverColors"]["color"] = "white";
+        draft["contents"]["btns"]["btn2"]["hoverColors"]["bg"] =
+          " rgba(255, 255, 255, 0.05)";
+          draft["contents"]["title"]["typo"]["fontSize"]["desktop"] = 64;
+          draft["contents"]["title"]["typo"]["fontSize"]["tablet"] = 54;
+          draft["contents"]["title"]["typo"]["fontSize"]["mobile"] = 24;
+          draft["contents"]["description"]["typo"]["fontSize"]["desktop"] = 18;
+          draft["contents"]["description"]["typo"]["fontSize"]["tablet"] = 18;
+          draft["contents"]["description"]["typo"]["fontSize"]["mobile"] = 16;
         break;
 
-			case "theme4":
-          (draft["contents"]["title"]["color"] = "#111827"),
-            (draft["contents"]["description"]["color"] = "#4b5563");
-          draft["contents"]["subTitle"]["color"] = "#16a34a";
-          draft["contents"]["btns"]["btn1"]["colors"]["color"] = "white";
-          draft["contents"]["btns"]["btn1"]["colors"]["bg"] = "#16a34a";
-					draft["contents"]["btns"]["btn1"]["hoverColors"]["color"] = "white";
-          draft["contents"]["btns"]["btn1"]["hoverColors"]["bg"] = "#15803d";
-          draft["contents"]["btns"]["btn2"]["colors"]["color"] = "#16a34a";
-          draft["contents"]["btns"]["btn2"]["colors"]["bg"] = "transparent";
-					draft["contents"]["btns"]["btn2"]["hoverColors"]["color"] = "#16a34a";
-          draft["contents"]["btns"]["btn2"]["hoverColors"]["bg"] = "#f0fdf4";
+      case "theme4":
+        (draft["contents"]["title"]["color"] = "#111827"),
+          (draft["contents"]["description"]["color"] = "#4b5563");
+        draft["contents"]["subTitle"]["color"] = "#16a34a";
+        draft["contents"]["btns"]["btn1"]["colors"]["color"] = "white";
+        draft["contents"]["btns"]["btn1"]["colors"]["bg"] = "#16a34a";
+        draft["contents"]["btns"]["btn1"]["hoverColors"]["color"] = "white";
+        draft["contents"]["btns"]["btn1"]["hoverColors"]["bg"] = "#15803d";
+        draft["contents"]["btns"]["btn2"]["colors"]["color"] = "#16a34a";
+        draft["contents"]["btns"]["btn2"]["colors"]["bg"] = "transparent";
+        draft["contents"]["btns"]["btn2"]["hoverColors"]["color"] = "#16a34a";
+        draft["contents"]["btns"]["btn2"]["hoverColors"]["bg"] = "#f0fdf4";
+        draft["contents"]["title"]["typo"]["fontSize"]["desktop"] = 64;
+        draft["contents"]["title"]["typo"]["fontSize"]["tablet"] = 54;
+        draft["contents"]["title"]["typo"]["fontSize"]["mobile"] = 24;
+        draft["contents"]["description"]["typo"]["fontSize"]["desktop"] = 18;
+        draft["contents"]["description"]["typo"]["fontSize"]["tablet"] = 18;
+        draft["contents"]["description"]["typo"]["fontSize"]["mobile"] = 16;
         break;
 
-			case "theme5":
-				(draft["styles"]["background"]["type"] = "solid"),
+      case "theme5":
+        (draft["styles"]["background"]["type"] = "solid"),
           (draft["contents"]["title"]["color"] = "#fff"),
           (draft["contents"]["description"]["color"] = "#FFFFFFCC");
+          draft["contents"]["title"]["typo"]["fontSize"]["desktop"] = 18;
+          draft["contents"]["title"]["typo"]["fontSize"]["tablet"] = 18;
+          draft["contents"]["title"]["typo"]["fontSize"]["mobile"] = 18;
+          draft["contents"]["description"]["typo"]["fontSize"]["desktop"] = 16;
+          draft["contents"]["description"]["typo"]["fontSize"]["tablet"] = 16;
+          draft["contents"]["description"]["typo"]["fontSize"]["mobile"] = 16;
         break;
 
       default:

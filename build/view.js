@@ -2229,8 +2229,6 @@ const Style = ({
   const t6ParallaxMiddleRow = `${theme6Sl} .middle`;
   const t6ModalSl = `${theme6Sl} .modal-container`;
   const t6ModalCloseSl = `${theme6Sl} .modal-close`;
-  // ${getTypoCSS(t6Title, contents?.title?.typo)?.styles}
-  // ${getTypoCSS(t6SubTitle, contents?.description?.typo)?.styles}
 
   // console.log(layout?.t5LayoutSetting);
 
@@ -2253,6 +2251,8 @@ const Style = ({
 		${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)(t5Title, contents?.title?.typo)?.styles}
 		${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)(t5SubTitle, contents?.subTitle?.typo)?.styles}
 		${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)(t5Description, contents?.description?.typo)?.styles}
+		${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)(t6Title, contents?.title?.typo)?.styles}
+		${(0,_bpl_tools_utils_getCSS__WEBPACK_IMPORTED_MODULE_1__.getTypoCSS)(t6SubTitle, contents?.description?.typo)?.styles}
 
 		${selectedTheme === "default" && `
 				${mainBlk}{
@@ -3555,6 +3555,9 @@ const themeChanger = (theme = "theme1", attributes) => (0,immer__WEBPACK_IMPORTE
       draft["contents"]["btns"]["btn1"]["colors"]["bg"] = "#ff4757";
       draft["contents"]["btns"]["btn1"]["hoverColors"]["color"] = "white";
       draft["contents"]["btns"]["btn1"]["hoverColors"]["bg"] = "#ff6b81";
+      draft["contents"]["title"]["typo"]["fontSize"]["desktop"] = 64;
+      draft["contents"]["title"]["typo"]["fontSize"]["tablet"] = 54;
+      draft["contents"]["title"]["typo"]["fontSize"]["mobile"] = 24;
       break;
 
     //====================== case for theme 2 ===============================//
@@ -3567,6 +3570,12 @@ const themeChanger = (theme = "theme1", attributes) => (0,immer__WEBPACK_IMPORTE
       draft["contents"]["btns"]["btn1"]["colors"]["bg"] = "#ff4757";
       draft["contents"]["btns"]["btn1"]["hoverColors"]["color"] = "white";
       draft["contents"]["btns"]["btn1"]["hoverColors"]["bg"] = "#ff6b81";
+      draft["contents"]["title"]["typo"]["fontSize"]["desktop"] = 64;
+      draft["contents"]["title"]["typo"]["fontSize"]["tablet"] = 54;
+      draft["contents"]["title"]["typo"]["fontSize"]["mobile"] = 24;
+      draft["contents"]["description"]["typo"]["fontSize"]["desktop"] = 18;
+      draft["contents"]["description"]["typo"]["fontSize"]["tablet"] = 18;
+      draft["contents"]["description"]["typo"]["fontSize"]["mobile"] = 16;
       break;
 
     //====================== case for theme 3 ===============================//
@@ -3583,6 +3592,12 @@ const themeChanger = (theme = "theme1", attributes) => (0,immer__WEBPACK_IMPORTE
       draft["contents"]["btns"]["btn2"]["colors"]["bg"] = "transparent";
       draft["contents"]["btns"]["btn2"]["hoverColors"]["color"] = "white";
       draft["contents"]["btns"]["btn2"]["hoverColors"]["bg"] = " rgba(255, 255, 255, 0.05)";
+      draft["contents"]["title"]["typo"]["fontSize"]["desktop"] = 64;
+      draft["contents"]["title"]["typo"]["fontSize"]["tablet"] = 54;
+      draft["contents"]["title"]["typo"]["fontSize"]["mobile"] = 24;
+      draft["contents"]["description"]["typo"]["fontSize"]["desktop"] = 18;
+      draft["contents"]["description"]["typo"]["fontSize"]["tablet"] = 18;
+      draft["contents"]["description"]["typo"]["fontSize"]["mobile"] = 16;
       break;
     case "theme4":
       draft["contents"]["title"]["color"] = "#111827", draft["contents"]["description"]["color"] = "#4b5563";
@@ -3595,9 +3610,21 @@ const themeChanger = (theme = "theme1", attributes) => (0,immer__WEBPACK_IMPORTE
       draft["contents"]["btns"]["btn2"]["colors"]["bg"] = "transparent";
       draft["contents"]["btns"]["btn2"]["hoverColors"]["color"] = "#16a34a";
       draft["contents"]["btns"]["btn2"]["hoverColors"]["bg"] = "#f0fdf4";
+      draft["contents"]["title"]["typo"]["fontSize"]["desktop"] = 64;
+      draft["contents"]["title"]["typo"]["fontSize"]["tablet"] = 54;
+      draft["contents"]["title"]["typo"]["fontSize"]["mobile"] = 24;
+      draft["contents"]["description"]["typo"]["fontSize"]["desktop"] = 18;
+      draft["contents"]["description"]["typo"]["fontSize"]["tablet"] = 18;
+      draft["contents"]["description"]["typo"]["fontSize"]["mobile"] = 16;
       break;
     case "theme5":
       draft["styles"]["background"]["type"] = "solid", draft["contents"]["title"]["color"] = "#fff", draft["contents"]["description"]["color"] = "#FFFFFFCC";
+      draft["contents"]["title"]["typo"]["fontSize"]["desktop"] = 18;
+      draft["contents"]["title"]["typo"]["fontSize"]["tablet"] = 18;
+      draft["contents"]["title"]["typo"]["fontSize"]["mobile"] = 18;
+      draft["contents"]["description"]["typo"]["fontSize"]["desktop"] = 16;
+      draft["contents"]["description"]["typo"]["fontSize"]["tablet"] = 16;
+      draft["contents"]["description"]["typo"]["fontSize"]["mobile"] = 16;
       break;
     default:
       break;

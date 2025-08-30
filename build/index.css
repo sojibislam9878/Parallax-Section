@@ -2144,12 +2144,12 @@ svg.bPlBlockIcon {
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/editor.scss ***!
   \****************************************************************************************************************************************************************************************************************************************/
 .labelProActive {
-  color: #4527A4 !important;
+  color: #146EF5 !important;
   background-color: #fff !important;
 }
 
 .labelPro {
-  background-color: #4527A4;
+  background-color: #146EF5;
   margin-left: 5px;
   color: #fff;
   font-size: 10px;

@@ -62,8 +62,6 @@ const Style = ({ attributes, id }) => {
 	const t6ParallaxMiddleRow = `${theme6Sl} .middle`;
 	const t6ModalSl = `${theme6Sl} .modal-container`;
 	const t6ModalCloseSl = `${theme6Sl} .modal-close`;
-	// ${getTypoCSS(t6Title, contents?.title?.typo)?.styles}
-	// ${getTypoCSS(t6SubTitle, contents?.description?.typo)?.styles}
 
 	// console.log(layout?.t5LayoutSetting);
 	
@@ -89,6 +87,8 @@ const Style = ({ attributes, id }) => {
 		${getTypoCSS(t5Title, contents?.title?.typo)?.styles}
 		${getTypoCSS(t5SubTitle, contents?.subTitle?.typo)?.styles}
 		${getTypoCSS(t5Description, contents?.description?.typo)?.styles}
+		${getTypoCSS(t6Title, contents?.title?.typo)?.styles}
+		${getTypoCSS(t6SubTitle, contents?.description?.typo)?.styles}
 
 		${
       selectedTheme === "default" &&
